@@ -834,3 +834,148 @@ a:hover {
     break-inside: avoid;
   }
 }
+
+/* —— Depth banner —— */
+.depth-banner {
+  margin: 0 0 0.85rem;
+  padding: 0.7rem 1rem;
+  border-radius: 12px;
+  background: rgba(110, 193, 228, 0.08);
+  border: 1px solid rgba(110, 193, 228, 0.22);
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
+}
+.depth-banner strong {
+  color: var(--accent);
+}
+.depth-banner.is-detail {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.28);
+}
+.depth-banner.is-detail strong {
+  color: #c4b5fd;
+}
+
+/* —— Wealth panel —— */
+.wealth-panel {
+  margin: 0 0 1.5rem;
+  padding: 1rem 1.1rem 0.85rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+.wealth-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.35rem 1rem;
+  margin-bottom: 0.85rem;
+  align-items: baseline;
+}
+.wealth-head h3 {
+  margin: 0;
+  font-size: 0.95rem;
+  letter-spacing: -0.01em;
+}
+.wealth-axis {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-family: var(--mono);
+}
+.wealth-chart {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.35rem;
+  min-height: 120px;
+  padding-bottom: 0.25rem;
+  overflow-x: auto;
+}
+.wealth-bar {
+  flex: 1 1 0;
+  min-width: 52px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.25rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.2rem;
+  border-radius: 8px;
+  height: 120px;
+}
+.wealth-bar:hover,
+.wealth-bar:focus-visible {
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+}
+.wealth-col {
+  width: 70%;
+  max-width: 28px;
+  border-radius: 6px 6px 2px 2px;
+  background: linear-gradient(180deg, #6ec1e4, #e31937 90%);
+  opacity: 0.9;
+  min-height: 8px;
+  transition: height 0.2s;
+}
+.wealth-val {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+}
+.wealth-year {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+.wealth-disclaimer {
+  margin: 0.65rem 0 0;
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* —— Detail priority styling —— */
+.pri-pill-p2 {
+  background: rgba(139, 92, 246, 0.2) !important;
+  color: #c4b5fd !important;
+}
+.event-item.pri-p2 .card {
+  border-style: dashed;
+  opacity: 0.98;
+}
+.wealth-card {
+  border-color: rgba(245, 166, 35, 0.35) !important;
+  background: linear-gradient(135deg, rgba(245, 166, 35, 0.08), var(--bg-card)) !important;
+  cursor: default;
+  text-align: inherit;
+  width: 100%;
+}
+.wealth-item .dot {
+  background: var(--company);
+  color: var(--company);
+}
+.drawer-wealth {
+  margin: 0 0 1rem;
+  padding: 0.75rem 0.85rem;
+  border-radius: 10px;
+  background: rgba(245, 166, 35, 0.1);
+  border: 1px solid rgba(245, 166, 35, 0.3);
+  font-size: 0.85rem;
+}
+.drawer-wealth p {
+  margin: 0.35rem 0 0;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+.drawer-wealth strong {
+  margin-left: 0.35rem;
+  color: var(--company);
+  font-family: var(--mono);
+}

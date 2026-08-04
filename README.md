@@ -40,10 +40,14 @@ elon-musk-timeline/
 
 ### 메인 타임라인 (`index.html`)
 - **언어 토글** EN / 한 (localStorage + `?lang=en|ko`)
-- 시대·분야·밀도(P0 / P0+P1) 필터
-- 카드 클릭 → 상세 + Tier A/B 출처
+- **드릴다운 깊이**
+  - 기본(Auto): **핵심 P0만** (~34)
+  - 시대 또는 분야 클릭: **P0+P1+P2 상세** (Optimus, Colossus, 로보택시 등)
+  - 수동 override: Headline / Detail
+- **시기별 순자산 추정** 차트 (Forbes 등 공개 스냅샷, 로그형 막대)
+- 카드 클릭 → 상세 + Tier A/B 출처 + 해당 연도 자산 힌트
 - 키보드 `j`/`k`, `Esc`
-- 딥링크: `?id=spacex-2002&lang=en&era=scale`
+- 딥링크: `?id=robotaxi-austin-2025&lang=en&cat=tesla&depth=detail`
 
 ### 1장 포스터 (`poster.html`)
 - 6시대 × P0 마일스톤 한 장 레이아웃
