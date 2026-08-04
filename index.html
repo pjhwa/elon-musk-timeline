@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Elon Musk fact-checked interactive timeline / 일론 머스크 일대기 인포그래픽"
+    />
+    <title>일론 머스크 일대기 · Interactive Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <div class="brand">
+          <h1 data-i18n="brandTitle">Elon Musk · 일대기 타임라인</h1>
+          <span class="sub" data-i18n="brandSub">사실 검증 인터랙티브 인포그래픽</span>
+        </div>
+        <div class="header-actions">
+          <button
+            type="button"
+            class="btn"
+            id="btn-lang"
+            data-i18n-title="langBtnTitle"
+            title="Switch to English"
+          >
+            EN
+          </button>
+          <button type="button" class="btn btn-ghost" id="btn-method" aria-expanded="false" data-i18n="methodBtn">
+            검증 기준
+          </button>
+          <a class="btn" href="poster.html" data-i18n="posterBtn">1장 포스터</a>
+          <a class="btn" href="eras.html" data-i18n="erasBtn">시대 확대</a>
+          <a class="btn" href="docs/SOURCES.md" data-i18n="sourcesBtn">출처 목록</a>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <p class="hero-kicker" data-i18n="heroKicker">Biography timeline · 1971 → 2026</p>
+        <h2 data-i18n="heroTitle" data-i18n-html="1">일론 머스크,<br />검증 가능한 사실의 궤적</h2>
+        <p class="spine">
+          <strong data-i18n="spineLabel">논리 축:</strong>
+          <span id="spine-text"></span>
+        </p>
+
+        <div class="stats" aria-label="summary stats">
+          <div class="stat">
+            <div class="n" id="stat-total">—</div>
+            <div class="l" data-i18n="statEvents">수록 이벤트</div>
+          </div>
+          <div class="stat">
+            <div class="n" id="stat-p0">—</div>
+            <div class="l" data-i18n="statP0">핵심(P0)</div>
+          </div>
+          <div class="stat">
+            <div class="n" id="stat-span">—</div>
+            <div class="l" data-i18n="statRange">연도 범위</div>
+          </div>
+          <div class="stat">
+            <div class="n">6</div>
+            <div class="l" data-i18n="statEras">시대 블록</div>
+          </div>
+        </div>
+
+        <div class="method-box" id="method-box" role="region">
+          <h3 data-i18n="methodTitle">반박 여지를 줄이는 기록 원칙</h3>
+          <p data-i18n="methodP1" data-i18n-html="1"></p>
+          <ul>
+            <li>
+              <span class="tier-badge tier-a">Tier A</span>
+              <span data-i18n="methodLi1"></span>
+            </li>
+            <li>
+              <span class="tier-badge tier-b">Tier B</span>
+              <span data-i18n="methodLi2"></span>
+            </li>
+            <li data-i18n="methodLi3" data-i18n-html="1"></li>
+            <li data-i18n="methodLi4" data-i18n-html="1"></li>
+            <li data-i18n="methodLi5"></li>
+          </ul>
+          <p style="margin-top: 0.75rem; margin-bottom: 0">
+            <span data-i18n="methodFoot">최종 교차 검증일:</span>
+            <span id="last-verified">2026-08-04</span>
+            ·
+            <span data-i18n="methodKeys"></span>
+          </p>
+        </div>
+      </section>
+
+      <section class="filters" aria-label="filters">
+        <div class="filter-row">
+          <span class="filter-label" data-i18n="density">밀도</span>
+          <button type="button" class="chip" data-priority="P0" data-i18n="densityP0">핵심만 (P0)</button>
+          <button type="button" class="chip active" data-priority="P0P1" data-i18n="densityP0P1">
+            권장 (P0+P1)
+          </button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" data-i18n="era">시대</span>
+          <button type="button" class="chip active" data-era="all" data-i18n="eraAll">전체</button>
+          <button type="button" class="chip" data-era="formative" data-i18n="eraFormative">형성 71–94</button>
+          <button type="button" class="chip" data-era="internet" data-i18n="eraInternet">인터넷 95–02</button>
+          <button type="button" class="chip" data-era="dual-bet" data-i18n="eraDual">이중베팅 02–12</button>
+          <button type="button" class="chip" data-era="scale" data-i18n="eraScale">스케일 13–20</button>
+          <button type="button" class="chip" data-era="platform" data-i18n="eraPlatform">플랫폼·정치 21–25</button>
+          <button type="button" class="chip" data-era="now" data-i18n="eraNow">현재 25–26</button>
+        </div>
+        <div class="filter-row">
+          <span class="filter-label" data-i18n="field">분야</span>
+          <button type="button" class="chip active" data-cat="all" data-i18n="catAll">전체</button>
+          <button type="button" class="chip" data-cat="life" data-i18n="catLife">생애</button>
+          <button type="button" class="chip" data-cat="edu" data-i18n="catEdu">교육</button>
+          <button type="button" class="chip" data-cat="company" data-i18n="catCompany">기업</button>
+          <button type="button" class="chip" data-cat="spacex" data-i18n="catSpacex">SpaceX</button>
+          <button type="button" class="chip" data-cat="tesla" data-i18n="catTesla">Tesla</button>
+          <button type="button" class="chip" data-cat="ai" data-i18n="catAi">AI</button>
+          <button type="button" class="chip" data-cat="media" data-i18n="catMedia">미디어</button>
+          <button type="button" class="chip" data-cat="politics" data-i18n="catPolitics">정치</button>
+          <button type="button" class="chip" data-cat="personal" data-i18n="catPersonal">개인사</button>
+        </div>
+        <p class="result-count" id="result-count" aria-live="polite"></p>
+      </section>
+
+      <section class="timeline-wrap" aria-label="timeline">
+        <ol class="timeline" id="timeline"></ol>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p data-i18n="footer1" data-i18n-html="1"></p>
+      <p data-i18n="footer2"></p>
+      <p data-i18n="footer3"></p>
+      <p>
+        <a href="poster.html">Poster</a> ·
+        <a href="eras.html">Era deep-dives</a> ·
+        <a href="docs/SOURCES.md">Sources</a> ·
+        <a href="docs/EVENT_RUBRIC.md">Rubric</a>
+      </p>
+    </footer>
+
+    <div class="drawer-overlay" id="drawer-overlay"></div>
+    <aside
+      class="drawer"
+      id="drawer"
+      aria-hidden="true"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="drawer-title"
+    >
+      <div class="drawer-header">
+        <h2 id="drawer-title" data-i18n="event">이벤트</h2>
+        <button type="button" class="drawer-close" id="drawer-close" aria-label="Close" data-i18n-title="close">
+          ×
+        </button>
+      </div>
+      <div class="drawer-body" id="drawer-body"></div>
+    </aside>
+
+    <script src="data/events.js"></script>
+    <script src="data/en.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>

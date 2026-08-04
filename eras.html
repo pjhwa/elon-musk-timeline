@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elon Musk · Era deep-dives</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/eras.css" />
+  </head>
+  <body>
+    <nav class="topnav">
+      <div class="links">
+        <a href="index.html">← Timeline</a>
+        <a href="poster.html">Poster</a>
+        <a href="docs/SOURCES.md">Sources</a>
+      </div>
+      <button type="button" id="btn-lang">EN</button>
+    </nav>
+
+    <main class="wrap">
+      <p class="section-title" id="picker-label">Choose an era</p>
+      <div class="era-picker" id="era-picker"></div>
+
+      <article class="essay" id="essay"></article>
+
+      <div class="actions" id="actions"></div>
+
+      <p class="section-title" id="list-label">Events in this era</p>
+      <ul class="event-list" id="event-list"></ul>
+    </main>
+
+    <script src="data/events.js"></script>
+    <script src="data/en.js"></script>
+    <script src="data/era-essays.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/eras.js"></script>
+  </body>
+</html>

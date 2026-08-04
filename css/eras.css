@@ -1,0 +1,204 @@
+/* Era deep-dive pages — extends base design tokens */
+:root {
+  --bg: #0b0f14;
+  --card: #161d27;
+  --text: #e8edf4;
+  --muted: #8b97a8;
+  --border: rgba(255, 255, 255, 0.08);
+  --accent: #6ec1e4;
+  --font: "IBM Plex Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  --max: 900px;
+}
+
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  line-height: 1.55;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 40% at 50% -10%, rgba(110, 193, 228, 0.1), transparent);
+}
+
+.topnav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(12px);
+  background: rgba(11, 15, 20, 0.88);
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+}
+.topnav .links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+.topnav a,
+.topnav button {
+  font: inherit;
+  font-size: 0.78rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.topnav a:hover,
+.topnav button:hover,
+.topnav a.active {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.wrap {
+  position: relative;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+.era-picker {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+.era-picker button {
+  text-align: left;
+  font: inherit;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--text);
+  cursor: pointer;
+}
+.era-picker button .r {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+.era-picker button.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.essay h1 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.03em;
+  margin: 0 0 0.75rem;
+}
+.essay .lede {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin: 0 0 1.25rem;
+  padding: 1rem 1.1rem;
+  background: linear-gradient(135deg, rgba(110, 193, 228, 0.08), rgba(227, 25, 55, 0.05));
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+.essay .body p {
+  color: var(--muted);
+  margin: 0 0 1rem;
+  font-size: 0.95rem;
+}
+.essay .takeaway {
+  margin: 1.5rem 0 2rem;
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--card);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.9rem;
+}
+.essay .takeaway strong {
+  display: block;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  margin-bottom: 0.35rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+.actions a {
+  font-size: 0.8rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.event-list li {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.9rem 1rem;
+}
+.event-list .meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.35rem;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--muted);
+}
+.event-list h3 {
+  margin: 0 0 0.3rem;
+  font-size: 0.98rem;
+}
+.event-list p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+.event-list a.more {
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.78rem;
+  color: var(--accent);
+}
+
+.section-title {
+  font-size: 0.75rem;
+  font-family: var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  margin: 0 0 0.75rem;
+}

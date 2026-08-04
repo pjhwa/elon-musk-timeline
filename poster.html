@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Elon Musk · One-page poster</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/poster.css" />
+  </head>
+  <body>
+    <div class="toolbar no-print">
+      <a href="index.html">← Timeline</a>
+      <a href="eras.html">Era deep-dives</a>
+      <button type="button" id="btn-lang">한국어 / EN</button>
+      <button type="button" id="btn-print">Print / Save PDF</button>
+      <span style="color: #8b97a8; font-size: 0.78rem"
+        >Chrome → Print → Save as PDF · or run <code>scripts/export-poster.sh</code></span
+      >
+    </div>
+
+    <div class="poster-frame" id="poster">
+      <div class="poster-inner">
+        <header class="p-header">
+          <div>
+            <p class="kicker" id="p-kicker">FACT-CHECKED BIOGRAPHY TIMELINE</p>
+            <h1 id="p-title">Elon Musk · Verifiable trajectory</h1>
+            <p class="sub" id="p-sub">
+              Public records only · Tier A/B sources · Motives & judgments excluded
+            </p>
+          </div>
+          <div class="p-meta">
+            <strong id="p-count">—</strong>
+            <span id="p-count-label">core milestones (P0)</span><br />
+            <span>1971 → 2026</span><br />
+            <span id="p-verified">Verified 2026-08-04</span>
+          </div>
+        </header>
+
+        <div class="p-spine" id="p-spine" aria-label="narrative spine"></div>
+
+        <div class="p-eras" id="p-eras"></div>
+
+        <footer class="p-footer">
+          <div>
+            <div class="legend" id="p-legend"></div>
+            <div style="margin-top: 6px" id="p-method">
+              Source tiers: A = Britannica / company / NASA / government · B = cross-check media.
+              Tesla: Series A &amp; CEO ≠ sole incorporator.
+            </div>
+          </div>
+          <div class="note" id="p-note">
+            Not investment advice · Not a political ad · Full interactive:
+            index.html
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="data/events.js"></script>
+    <script src="data/en.js"></script>
+    <script src="js/i18n.js"></script>
+    <script src="js/poster.js"></script>
+  </body>
+</html>

@@ -1,0 +1,346 @@
+/* One-page poster — screen + print (A3 landscape / letter landscape) */
+:root {
+  --bg: #0b0f14;
+  --card: #141b24;
+  --text: #e8edf4;
+  --muted: #8b97a8;
+  --line: rgba(255, 255, 255, 0.1);
+  --accent: #6ec1e4;
+  --tesla: #e31937;
+  --spacex: #6ec1e4;
+  --company: #f5a623;
+  --ai: #8b5cf6;
+  --politics: #c9a227;
+  --life: #e8d5b7;
+  --font: "IBM Plex Sans", "Pretendard", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #1a1f26;
+  color: var(--text);
+  font-family: var(--font);
+}
+
+.toolbar {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+}
+.toolbar a,
+.toolbar button {
+  font: inherit;
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: #121820;
+  color: var(--text);
+  text-decoration: none;
+  cursor: pointer;
+}
+.toolbar a:hover,
+.toolbar button:hover {
+  border-color: var(--accent);
+}
+
+.poster-frame {
+  width: 1600px;
+  height: 1131px; /* ~A3 landscape 16:11.3 @ 1600 */
+  margin: 0 auto 2rem;
+  background: var(--bg);
+  color: var(--text);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.poster-frame::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 70% 40% at 15% 0%, rgba(110, 193, 228, 0.14), transparent),
+    radial-gradient(ellipse 50% 40% at 90% 100%, rgba(227, 25, 55, 0.1), transparent);
+  pointer-events: none;
+}
+
+.poster-inner {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 28px 32px 24px;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto;
+  gap: 14px;
+}
+
+/* Header */
+.p-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: end;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+.p-header h1 {
+  margin: 0;
+  font-size: 32px;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+.p-header .sub {
+  margin: 6px 0 0;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 720px;
+}
+.p-header .kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin: 0 0 6px;
+}
+.p-meta {
+  text-align: right;
+  font-size: 11px;
+  color: var(--muted);
+  font-family: var(--mono);
+}
+.p-meta strong {
+  display: block;
+  font-size: 22px;
+  color: var(--text);
+  font-weight: 650;
+  margin-bottom: 4px;
+}
+
+/* Spine bar */
+.p-spine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  font-size: 11px;
+}
+.p-spine .step {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 5px 8px;
+  white-space: nowrap;
+}
+.p-spine .arrow {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+/* Columns of eras */
+.p-eras {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+  min-height: 0;
+}
+
+.era-col {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 10px 10px 8px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+.era-col header {
+  margin-bottom: 8px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--line);
+}
+.era-col .era-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+.era-col .era-range {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--muted);
+  margin: 2px 0 0;
+}
+.era-col .era-hook {
+  font-size: 10px;
+  color: var(--muted);
+  margin: 4px 0 0;
+  line-height: 1.35;
+}
+
+.era-col ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+}
+.era-col li {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 6px;
+  padding: 4px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  font-size: 10px;
+  line-height: 1.3;
+}
+.era-col li:last-child {
+  border-bottom: none;
+}
+.era-col .y {
+  font-family: var(--mono);
+  font-size: 9px;
+  color: var(--muted);
+  padding-top: 1px;
+}
+.era-col .t {
+  font-weight: 500;
+}
+.era-col .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+.dot-life,
+.dot-edu {
+  background: var(--life);
+}
+.dot-company {
+  background: var(--company);
+}
+.dot-spacex {
+  background: var(--spacex);
+}
+.dot-tesla {
+  background: var(--tesla);
+}
+.dot-ai {
+  background: var(--ai);
+}
+.dot-media {
+  background: #e7e9ea;
+}
+.dot-politics {
+  background: var(--politics);
+}
+.dot-personal {
+  background: #d4a5a5;
+}
+
+/* Footer legend */
+.p-footer {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  font-size: 9.5px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+}
+.legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.p-footer .note {
+  text-align: right;
+  max-width: 420px;
+}
+
+/* Accent bars per era */
+.era-col[data-era="formative"] header {
+  border-top: 3px solid var(--life);
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+.era-col[data-era="internet"] header {
+  border-top: 3px solid var(--company);
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+.era-col[data-era="dual-bet"] header {
+  border-top: 3px solid var(--spacex);
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+.era-col[data-era="scale"] header {
+  border-top: 3px solid #3d5a80;
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+.era-col[data-era="platform"] header {
+  border-top: 3px solid var(--politics);
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+.era-col[data-era="now"] header {
+  border-top: 3px solid var(--tesla);
+  margin: -10px -10px 8px;
+  padding: 10px 10px 6px;
+}
+
+@media print {
+  @page {
+    size: landscape;
+    margin: 0;
+  }
+  body {
+    background: #fff;
+  }
+  .toolbar {
+    display: none !important;
+  }
+  .poster-frame {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    box-shadow: none;
+    page-break-after: avoid;
+  }
+}
+
+/* Export mode: hide toolbar via query */
+body.export .toolbar {
+  display: none;
+}
+body.export {
+  background: var(--bg);
+}
+body.export .poster-frame {
+  margin: 0;
+  box-shadow: none;
+}
