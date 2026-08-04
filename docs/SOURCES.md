@@ -1,40 +1,36 @@
-# Sources · 출처 목록
+# Sources · 출처
 
-최종 교차 검증: **2026-08-04**
+**Primary encyclopedia: [Grokipedia](https://grokipedia.com)** (xAI)
 
-본 타임라인은 아래 공개 자료를 우선 사용합니다. 카드마다 Tier 배지와 링크가 있습니다.
+본 타임라인의 1차 출처는 Grokipedia입니다. 각 이벤트 카드의 출처 링크는 관련 Grokipedia 문서로 연결됩니다.
 
-## Tier A — 1차·고신뢰
+## Core pages
 
-| Source | URL | 용도 |
-|--------|-----|------|
-| Encyclopaedia Britannica — Elon Musk | https://www.britannica.com/money/Elon-Musk | 생애·기업·정치 종합 (2026-07-31 갱신) |
-| Britannica — Zip2 | https://www.britannica.com/money/Zip2 | Zip2 인수 |
-| Tesla — Elon Musk | https://www.tesla.com/elon-musk | Tesla·SpaceX 공식 이정표 서술 |
-| SpaceX Mission | https://www.spacex.com/mission | Falcon·Dragon·착륙·재비행 firsts |
-| NASA SpaceX CRS Press Kit | https://www.nasa.gov/wp-content/uploads/2018/07/spacex_nasa_crs-6_presskit-2.pdf | 2006–2014 SpaceX 마일스톤 |
-| Hyperloop Alpha (Tesla PDF) | https://www.tesla.com/sites/default/files/blog_images/hyperloop-alpha.pdf | 2013 백서 |
-| White House EO (2025-01-20) | https://www.whitehouse.gov/presidential-actions/2025/01/establishing-and-implementing-the-presidents-department-of-government-efficiency/ | DOGE 구조 |
+| Page | URL | 용도 |
+|------|-----|------|
+| Elon Musk | https://grokipedia.com/page/Elon_Musk | 생애·전 구간 기본 |
+| SpaceX | https://grokipedia.com/page/SpaceX | 우주·발사·Starlink |
+| Tesla, Inc. | https://grokipedia.com/page/Tesla,_Inc. | EV·Optimus·Robotaxi |
+| Views of Elon Musk | https://grokipedia.com/page/Views_of_Elon_Musk | 정치·자유발언·평가 축 |
+| Awards & honors | https://grokipedia.com/page/List_of_awards_and_honors_received_by_Elon_Musk | 인정·유산 |
 
-## Tier B — 교차 확인
+## Assessments (평가)
 
-| Source | URL | 용도 |
-|--------|-----|------|
-| Wikipedia — Elon Musk | https://en.wikipedia.org/wiki/Elon_Musk | 날짜 교차, 시민권·결혼 |
-| Wikipedia — Tesla, Inc. | https://en.wikipedia.org/wiki/Tesla,_Inc. | 설립자·Series A·CEO 계보 |
-| Wikipedia — SpaceX | https://en.wikipedia.org/wiki/SpaceX | 보조 |
-| Biography.com — Elon Musk | https://www.biography.com/business-leaders/elon-musk | 결혼·개인사 요약 |
-| ABC / NBC / CNBC DOGE timelines | 각 매체 2025 타임라인 기사 | DOGE 발표·퇴임 연표 |
+각 카드의 **「평가 (Grokipedia 우호 관점)」** 는 Grokipedia 본문의 프레이밍을 따릅니다. 예:
 
-## 의도적으로 단독 사용하지 않은 것
+- 벤처를 **지속 가능 에너지 / 다행성 문명 / 진실 추구 AGI / 신경 인터페이스** 통합 미션으로 묶음
+- SpaceX: **재사용 로켓 개척**, 민간 궤도·NASA 파트너, 화성 정착 목표
+- Tesla: **제품 아키텍트·양산 리더십**, Model S/3 등 핵심 제품, production hell 속 회복력
+- X: **자유 발언 우선 플랫폼**, everything app 비전
+- 지지층 서술: **innovation and risk-taking** 찬사 (Views 문서)
 
-- 팬 제작 타임라인, 유튜브 요약, 출처 없는 블로그
-- 순자산 실시간 위젯 (시장 변동)
-- 미래 Mars 일정 예측
+평가는 사실 요약과 **시각적으로 분리**되어 있으며, 투자 권유나 중립 백과 주장이 아닙니다.
 
-## 알려진 출처 차이 (카드에 caution 표기)
+## Wealth series
 
-1. **캐나다 이주 연도:** Britannica 1988(여권·출국) vs Wikipedia 등 1989 이주 → `1988–89`
-2. **Zip2 인수가:** $305M vs $307M → Britannica `$307M` 채택, 차이 고지
-3. **Tesla “창업”:** 법인 설립자 ≠ Series A 리드/CEO — 역할 분리 표기
-4. **SpaceX IPO·순자산:** Britannica 2026 기사 시점 기준, 시가 변동
+순자산 스냅샷은 Grokipedia 본문의 wealth milestone 서술 및 공개 시장 추정치 밴드를 참고합니다. 시장 연동·비확정.
+
+## Last pass
+
+- Grokipedia Elon Musk page retrieved for framing: 2026-08
+- Timeline lastVerified: 2026-08-04

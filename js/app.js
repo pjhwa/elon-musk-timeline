@@ -598,6 +598,18 @@
     const bullets = deep && deep.bullets ? deep.bullets : null;
     const bodyText = deep && deep.body ? deep.body : L.detail;
     const contextText = deep && deep.context ? deep.context : null;
+    const assessmentText =
+      (ev.assessment && (ev.assessment[state.lang] || ev.assessment.en || ev.assessment.ko)) ||
+      (deep && deep.assessment) ||
+      null;
+
+    const assessmentHtml = assessmentText
+      ? `<div class="drawer-section assessment-box">
+          <h3 class="sources-title">${escapeHtml(I.t(state.lang, "assessment"))}</h3>
+          <p class="assessment-note">${escapeHtml(I.t(state.lang, "assessmentNote"))}</p>
+          <p class="drawer-detail assessment-body">${escapeHtml(assessmentText)}</p>
+        </div>`
+      : "";
 
     const factsHtml = bullets
       ? `<div class="drawer-section">
@@ -658,6 +670,7 @@
       </div>
       ${wealthHtml}
       <p class="drawer-summary">${escapeHtml(L.summary)}</p>
+      ${assessmentHtml}
       ${factsHtml}
       ${contextHtml}
       <div class="drawer-section">
@@ -674,6 +687,7 @@
       ${cautionHtml}
       <h3 class="sources-title">${escapeHtml(I.t(state.lang, "sources"))}</h3>
       <ul class="source-list">${sourcesHtml}</ul>
+      <p class="source-provider"><a href="https://grokipedia.com/page/Elon_Musk" target="_blank" rel="noopener noreferrer">Grokipedia.com</a></p>
       <div class="drawer-nav">
         <button type="button" class="btn" id="nav-prev" ${hasPrev ? "" : "disabled"}>${I.t(state.lang, "prev")}</button>
         <button type="button" class="btn" id="nav-next" ${hasNext ? "" : "disabled"}>${I.t(state.lang, "next")}</button>

@@ -1344,3 +1344,33 @@ html[data-theme="light"] .method-box {
   font-weight: 500;
   line-height: 1.5;
 }
+
+/* Grokipedia assessment block */
+.assessment-box {
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  background: color-mix(in srgb, var(--accent) 10%, var(--bg-card));
+}
+.assessment-note {
+  margin: 0 0 0.5rem;
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--text-dim);
+}
+.assessment-body {
+  margin: 0 !important;
+  color: var(--text) !important;
+  font-size: 0.9rem !important;
+  line-height: 1.6 !important;
+}
+.source-provider {
+  margin: 0.5rem 0 1rem;
+  font-size: 0.78rem;
+}
+.source-provider a {
+  font-weight: 600;
+}
+.tier-badge.tier-a {
+  /* Grokipedia primary */
+}
