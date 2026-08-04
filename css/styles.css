@@ -7,7 +7,7 @@
     system-ui, sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
   --max: 1100px;
-  --drawer-w: min(420px, 100vw);
+  --drawer-w: min(480px, 100vw);
   color-scheme: light dark;
 }
 
@@ -1088,4 +1088,259 @@ html[data-theme="light"] .stat,
 html[data-theme="light"] .wealth-panel,
 html[data-theme="light"] .method-box {
   box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+}
+
+/* —— Wealth chart v2 (linear magnitude) —— */
+.wealth-chart {
+  display: block;
+  min-height: auto;
+  overflow: visible;
+}
+.wealth-scale-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.65rem;
+}
+.wealth-scale-label {
+  font-size: 0.72rem;
+  font-family: var(--mono);
+  color: var(--text-dim);
+}
+.wealth-scale-btns {
+  display: flex;
+  gap: 0.35rem;
+}
+.wealth-scale-btns .chip.active {
+  background: var(--accent);
+  color: var(--chip-on-fg);
+}
+.wealth-plot {
+  position: relative;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 0.35rem;
+  min-height: 200px;
+}
+.wealth-yaxis {
+  position: relative;
+  height: 160px;
+  margin-top: 1.4rem;
+}
+.wealth-tick {
+  position: absolute;
+  left: 0;
+  right: 0;
+  border-top: 1px dashed var(--border);
+  transform: translateY(50%);
+}
+.wealth-tick span {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  color: var(--text-dim);
+  position: absolute;
+  top: -0.7rem;
+  left: 0;
+}
+.wealth-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.3rem;
+  height: 200px;
+  padding-top: 1.4rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.wealth-bars::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 50%;
+  border-top: 1px dashed var(--border);
+  pointer-events: none;
+  opacity: 0.6;
+}
+.wealth-bar {
+  flex: 1 1 0;
+  min-width: 48px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.15rem;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  padding: 0.15rem;
+  border-radius: 8px;
+}
+.wealth-bar:hover,
+.wealth-bar:focus-visible {
+  background: var(--accent-soft);
+  outline: none;
+}
+.wealth-mult {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  color: var(--accent);
+  min-height: 0.85rem;
+  line-height: 1;
+}
+.wealth-col-wrap {
+  flex: 1 1 auto;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  min-height: 120px;
+  max-height: 140px;
+}
+.wealth-col {
+  width: 72%;
+  max-width: 32px;
+  border-radius: 5px 5px 2px 2px;
+  background: var(--wealth-grad);
+  min-height: 2px;
+  transition: height 0.25s ease;
+  align-self: flex-end;
+}
+.wealth-col.is-zero {
+  background: var(--text-dim);
+  opacity: 0.45;
+  min-height: 3px !important;
+  height: 3px !important;
+}
+.wealth-col.is-hairline {
+  min-width: 4px;
+  box-shadow: 0 0 0 1px var(--accent);
+}
+.wealth-val {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+}
+.wealth-share {
+  font-family: var(--mono);
+  font-size: 0.55rem;
+  color: var(--text-dim);
+}
+.wealth-year {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  color: var(--text-dim);
+}
+.wealth-growth-note {
+  margin: 0.55rem 0 0;
+  font-size: 0.7rem;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* —— Rich drawer —— */
+.drawer-section {
+  margin: 0 0 1.1rem;
+}
+.drawer-facts {
+  margin: 0;
+  padding-left: 1.15rem;
+  color: var(--text-muted);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.drawer-facts li {
+  margin-bottom: 0.35rem;
+}
+.drawer-facts strong {
+  color: var(--text);
+  font-family: var(--mono);
+}
+.context-box {
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  border: 1px solid var(--border);
+}
+.drawer-detail-secondary {
+  margin-top: 0.65rem;
+  padding-top: 0.65rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.82rem;
+}
+.related-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.related-link {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  text-align: left;
+  font: inherit;
+  font-size: 0.82rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+}
+.related-link:hover,
+.related-link:focus-visible {
+  border-color: var(--accent);
+  outline: none;
+}
+.related-link .year {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  flex-shrink: 0;
+}
+.related-link .rtitle {
+  flex: 1;
+  min-width: 0;
+}
+.related-era-link {
+  display: inline-block;
+  margin-top: 0.45rem;
+  font-size: 0.8rem;
+  color: var(--accent);
+}
+.drawer-wealth.big .wealth-big-num {
+  display: block;
+  font-size: 1.75rem;
+  font-family: var(--mono);
+  color: var(--company);
+  margin: 0.35rem 0;
+}
+.drawer-wealth-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+.wealth-meta-line {
+  margin: 0.35rem 0 0 !important;
+  font-family: var(--mono);
+  font-size: 0.75rem !important;
+  color: var(--accent) !important;
+}
+.drawer-summary {
+  font-size: 1.02rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
