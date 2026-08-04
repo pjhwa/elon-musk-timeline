@@ -15,6 +15,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/styles.css" />
+    <script>
+      /* Prevent FOUC: apply theme before paint */
+      (function () {
+        try {
+          var t = localStorage.getItem("musk-timeline-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header">
@@ -24,6 +38,16 @@
           <span class="sub" data-i18n="brandSub">사실 검증 인터랙티브 인포그래픽</span>
         </div>
         <div class="header-actions">
+          <button
+            type="button"
+            class="btn btn-theme"
+            id="btn-theme"
+            data-i18n-title="themeBtnTitle"
+            title="Toggle light/dark"
+            aria-label="Toggle theme"
+          >
+            ◐
+          </button>
           <button
             type="button"
             class="btn"

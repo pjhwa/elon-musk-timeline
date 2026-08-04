@@ -5,8 +5,32 @@
   const events = window.TIMELINE_EVENTS || [];
   const wealth = window.WEALTH_SERIES || [];
 
+  function getTheme() {
+    const attr = document.documentElement.getAttribute("data-theme");
+    if (attr === "light" || attr === "dark") return attr;
+    try {
+      const s = localStorage.getItem("musk-timeline-theme");
+      if (s === "light" || s === "dark") return s;
+    } catch (_) {}
+    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    try {
+      localStorage.setItem("musk-timeline-theme", theme);
+    } catch (_) {}
+    const btn = document.getElementById("btn-theme");
+    if (btn && I) {
+      btn.textContent = theme === "dark" ? I.t(state.lang, "themeLight") : I.t(state.lang, "themeDark");
+      btn.setAttribute("title", I.t(state.lang, "themeBtnTitle"));
+      btn.setAttribute("aria-label", I.t(state.lang, "themeBtnTitle"));
+    }
+  }
+
   const state = {
     lang: I ? I.getLang() : "ko",
+    theme: getTheme(),
     era: "all",
     category: "all",
     // auto | headline | detail — auto: headline when all, detail when focused
@@ -122,6 +146,8 @@
       langBtn.textContent = I.t(lang, "langBtn");
       langBtn.title = I.t(lang, "langBtnTitle");
     }
+
+    setTheme(state.theme);
 
     if (els.wealthDisclaimer && window.WEALTH_DISCLAIMER) {
       els.wealthDisclaimer.textContent =
@@ -480,6 +506,14 @@
         applyStaticI18n();
         renderTimeline();
         if (state.selectedId) openDrawer(state.selectedId);
+      });
+    }
+
+    const themeBtn = document.getElementById("btn-theme");
+    if (themeBtn) {
+      themeBtn.addEventListener("click", () => {
+        state.theme = state.theme === "dark" ? "light" : "dark";
+        setTheme(state.theme);
       });
     }
 

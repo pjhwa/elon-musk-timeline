@@ -40,6 +40,9 @@ elon-musk-timeline/
 
 ### 메인 타임라인 (`index.html`)
 - **언어 토글** EN / 한 (localStorage + `?lang=en|ko`)
+- **라이트 / 다크 테마** (시스템 선호 기본, 수동 토글, localStorage)
+  - 다크: soft category accents (Tesla rose, not harsh pure red on navy)
+  - 라이트: modern product UI (slate text, white cards, sky accent)
 - **드릴다운 깊이**
   - 기본(Auto): **핵심 P0만** (~34)
   - 시대 또는 분야 클릭: **P0+P1+P2 상세** (Optimus, Colossus, 로보택시 등)

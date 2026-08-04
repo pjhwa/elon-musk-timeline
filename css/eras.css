@@ -1,14 +1,39 @@
-/* Era deep-dive pages — extends base design tokens */
+/* Era deep-dive — shares dual-theme tokens with main timeline */
+
 :root {
-  --bg: #0b0f14;
-  --card: #161d27;
-  --text: #e8edf4;
-  --muted: #8b97a8;
-  --border: rgba(255, 255, 255, 0.08);
-  --accent: #6ec1e4;
+  --radius: 12px;
   --font: "IBM Plex Sans", system-ui, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, monospace;
   --max: 900px;
+}
+
+html[data-theme="light"],
+html:not([data-theme]) {
+  color-scheme: light;
+  --bg: #f4f6f9;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #475569;
+  --border: rgba(15, 23, 42, 0.08);
+  --accent: #0284c7;
+  --header-bg: rgba(244, 246, 249, 0.88);
+  --glow: rgba(2, 132, 199, 0.08);
+  --lede-a: rgba(2, 132, 199, 0.08);
+  --lede-b: rgba(220, 38, 38, 0.05);
+}
+
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0e12;
+  --card: #181c26;
+  --text: #f1f5f9;
+  --muted: #a8b3c4;
+  --border: rgba(226, 232, 240, 0.09);
+  --accent: #7dd3fc;
+  --header-bg: rgba(12, 14, 18, 0.88);
+  --glow: rgba(125, 211, 252, 0.1);
+  --lede-a: rgba(125, 211, 252, 0.1);
+  --lede-b: rgba(251, 113, 133, 0.07);
 }
 
 * {
@@ -20,13 +45,14 @@ body {
   color: var(--text);
   font-family: var(--font);
   line-height: 1.55;
+  transition: background-color 0.2s ease, color 0.15s ease;
 }
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   pointer-events: none;
-  background: radial-gradient(ellipse 60% 40% at 50% -10%, rgba(110, 193, 228, 0.1), transparent);
+  background: radial-gradient(ellipse 60% 40% at 50% -10%, var(--glow), transparent);
 }
 
 .topnav {
@@ -34,7 +60,7 @@ body::before {
   top: 0;
   z-index: 20;
   backdrop-filter: blur(12px);
-  background: rgba(11, 15, 20, 0.88);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
   padding: 0.75rem 1.25rem;
   display: flex;
@@ -112,7 +138,7 @@ body::before {
   color: var(--text);
   margin: 0 0 1.25rem;
   padding: 1rem 1.1rem;
-  background: linear-gradient(135deg, rgba(110, 193, 228, 0.08), rgba(227, 25, 55, 0.05));
+  background: linear-gradient(135deg, var(--lede-a), var(--lede-b));
   border: 1px solid var(--border);
   border-radius: 12px;
 }
@@ -201,4 +227,9 @@ body::before {
   letter-spacing: 0.1em;
   color: var(--muted);
   margin: 0 0 0.75rem;
+}
+
+html[data-theme="light"] .event-list li,
+html[data-theme="light"] .era-picker button {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }

@@ -1,35 +1,123 @@
-/* Elon Musk Interactive Timeline — dark infographic system */
+/* Elon Musk Interactive Timeline — dual theme (readable dark + modern light) */
+
+/* Shared */
 :root {
-  --bg: #0b0f14;
-  --bg-elevated: #121820;
-  --bg-card: #161d27;
-  --bg-card-hover: #1c2533;
-  --border: rgba(255, 255, 255, 0.08);
-  --border-strong: rgba(255, 255, 255, 0.14);
-  --text: #e8edf4;
-  --text-muted: #8b97a8;
-  --text-dim: #5c6a7c;
-  --spine: #2a3544;
-  --accent: #6ec1e4;
-  --life: #e8d5b7;
-  --edu: #c4b5a0;
-  --company: #f5a623;
-  --spacex: #6ec1e4;
-  --tesla: #e31937;
-  --ai: #8b5cf6;
-  --media: #e7e9ea;
-  --politics: #c9a227;
-  --personal: #d4a5a5;
-  --tier-a: #34d399;
-  --tier-b: #60a5fa;
-  --caution: #fbbf24;
   --radius: 14px;
-  --shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
   --font: "IBM Plex Sans", "Pretendard", "Apple SD Gothic Neo", "Noto Sans KR",
     system-ui, sans-serif;
   --mono: "IBM Plex Mono", "SF Mono", ui-monospace, monospace;
   --max: 1100px;
   --drawer-w: min(420px, 100vw);
+  color-scheme: light dark;
+}
+
+/* —— Light (default / modern product UI) —— */
+html[data-theme="light"],
+html:not([data-theme]) {
+  color-scheme: light;
+  --bg: #f4f6f9;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f0f4f8;
+  --border: rgba(15, 23, 42, 0.08);
+  --border-strong: rgba(15, 23, 42, 0.14);
+  --text: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --spine: #cbd5e1;
+  --accent: #0284c7;
+  --accent-soft: rgba(2, 132, 199, 0.1);
+  --header-bg: rgba(244, 246, 249, 0.82);
+  --glow-1: rgba(2, 132, 199, 0.08);
+  --glow-2: rgba(220, 38, 38, 0.05);
+  --glow-3: rgba(124, 58, 237, 0.05);
+  --spine-grad-a: rgba(2, 132, 199, 0.08);
+  --spine-grad-b: rgba(220, 38, 38, 0.05);
+  --shadow: 0 1px 2px rgba(15, 23, 42, 0.04), 0 12px 32px rgba(15, 23, 42, 0.06);
+  --shadow-drawer: -16px 0 48px rgba(15, 23, 42, 0.12);
+  /* Category accents — tuned for light surfaces */
+  --life: #b45309;
+  --edu: #78716c;
+  --company: #d97706;
+  --spacex: #0284c7;
+  --tesla: #dc2626;
+  --ai: #7c3aed;
+  --media: #334155;
+  --politics: #a16207;
+  --personal: #be185d;
+  --tier-a: #059669;
+  --tier-b: #2563eb;
+  --caution: #d97706;
+  --chip-on-fg: #ffffff;
+  --wealth-grad: linear-gradient(180deg, #38bdf8, #f43f5e 92%);
+  --depth-bg: rgba(2, 132, 199, 0.06);
+  --depth-border: rgba(2, 132, 199, 0.18);
+  --depth-detail-bg: rgba(124, 58, 237, 0.07);
+  --depth-detail-border: rgba(124, 58, 237, 0.2);
+  --overlay: rgba(15, 23, 42, 0.4);
+  --card-selected-ring: rgba(2, 132, 199, 0.35);
+  --p2-pill-bg: rgba(124, 58, 237, 0.12);
+  --p2-pill-fg: #6d28d9;
+  --wealth-card-bg: linear-gradient(135deg, rgba(217, 119, 6, 0.08), #ffffff);
+  --wealth-card-border: rgba(217, 119, 6, 0.28);
+  --drawer-wealth-bg: rgba(217, 119, 6, 0.08);
+  --drawer-wealth-border: rgba(217, 119, 6, 0.25);
+  --btn-active-bg: rgba(2, 132, 199, 0.1);
+  --tesla-chip-fg: #ffffff;
+}
+
+/* —— Dark (high-readability, soft category accents) —— */
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0c0e12;
+  --bg-elevated: #141820;
+  --bg-card: #181c26;
+  --bg-card-hover: #1f2533;
+  --border: rgba(226, 232, 240, 0.09);
+  --border-strong: rgba(226, 232, 240, 0.16);
+  --text: #f1f5f9;
+  --text-muted: #a8b3c4;
+  --text-dim: #6b7a90;
+  --spine: #2d3748;
+  --accent: #7dd3fc;
+  --accent-soft: rgba(125, 211, 252, 0.12);
+  --header-bg: rgba(12, 14, 18, 0.8);
+  --glow-1: rgba(125, 211, 252, 0.1);
+  --glow-2: rgba(251, 113, 133, 0.07);
+  --glow-3: rgba(167, 139, 250, 0.07);
+  --spine-grad-a: rgba(125, 211, 252, 0.1);
+  --spine-grad-b: rgba(251, 113, 133, 0.07);
+  --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  --shadow-drawer: -20px 0 60px rgba(0, 0, 0, 0.45);
+  /* Softer on dark: avoid harsh pure Tesla red on navy */
+  --life: #f0d5a8;
+  --edu: #c9b8a6;
+  --company: #fbbf24;
+  --spacex: #7dd3fc;
+  --tesla: #fb7185; /* rose-400: readable, still “Tesla-family” red */
+  --ai: #a78bfa;
+  --media: #e2e8f0;
+  --politics: #eab308;
+  --personal: #f9a8d4;
+  --tier-a: #34d399;
+  --tier-b: #60a5fa;
+  --caution: #fbbf24;
+  --chip-on-fg: #0c0e12;
+  --wealth-grad: linear-gradient(180deg, #7dd3fc, #fb7185 92%);
+  --depth-bg: rgba(125, 211, 252, 0.08);
+  --depth-border: rgba(125, 211, 252, 0.22);
+  --depth-detail-bg: rgba(167, 139, 250, 0.1);
+  --depth-detail-border: rgba(167, 139, 250, 0.28);
+  --overlay: rgba(0, 0, 0, 0.55);
+  --card-selected-ring: rgba(125, 211, 252, 0.45);
+  --p2-pill-bg: rgba(167, 139, 250, 0.2);
+  --p2-pill-fg: #ddd6fe;
+  --wealth-card-bg: linear-gradient(135deg, rgba(251, 191, 36, 0.1), #181c26);
+  --wealth-card-border: rgba(251, 191, 36, 0.35);
+  --drawer-wealth-bg: rgba(251, 191, 36, 0.1);
+  --drawer-wealth-border: rgba(251, 191, 36, 0.3);
+  --btn-active-bg: rgba(125, 211, 252, 0.14);
+  --tesla-chip-fg: #0c0e12;
 }
 
 *,
@@ -62,6 +150,7 @@ body {
   color: var(--text);
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s ease, color 0.15s ease;
 }
 
 body::before {
@@ -70,9 +159,9 @@ body::before {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse 80% 50% at 50% -20%, rgba(110, 193, 228, 0.12), transparent),
-    radial-gradient(ellipse 40% 30% at 90% 60%, rgba(227, 25, 55, 0.06), transparent),
-    radial-gradient(ellipse 30% 25% at 10% 80%, rgba(139, 92, 246, 0.06), transparent);
+    radial-gradient(ellipse 80% 50% at 50% -20%, var(--glow-1), transparent),
+    radial-gradient(ellipse 40% 30% at 90% 60%, var(--glow-2), transparent),
+    radial-gradient(ellipse 30% 25% at 10% 80%, var(--glow-3), transparent);
   z-index: 0;
 }
 
@@ -89,8 +178,9 @@ a:hover {
   position: sticky;
   top: 0;
   z-index: 40;
-  backdrop-filter: blur(16px);
-  background: rgba(11, 15, 20, 0.85);
+  backdrop-filter: blur(16px) saturate(1.2);
+  -webkit-backdrop-filter: blur(16px) saturate(1.2);
+  background: var(--header-bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -147,12 +237,19 @@ a:hover {
   outline: none;
 }
 .btn.active {
-  background: rgba(110, 193, 228, 0.15);
+  background: var(--btn-active-bg);
   border-color: var(--accent);
   color: var(--accent);
 }
 .btn-ghost {
   background: transparent;
+}
+.btn-theme {
+  min-width: 2.5rem;
+  font-size: 1rem;
+  line-height: 1;
+  padding-left: 0.65rem;
+  padding-right: 0.65rem;
 }
 
 /* —— Hero —— */
@@ -184,7 +281,7 @@ a:hover {
 .spine {
   margin: 0 0 1.5rem;
   padding: 1rem 1.15rem;
-  background: linear-gradient(135deg, rgba(110, 193, 228, 0.08), rgba(227, 25, 55, 0.06));
+  background: linear-gradient(135deg, var(--spine-grad-a), var(--spine-grad-b));
   border: 1px solid var(--border);
   border-radius: var(--radius);
   font-size: 0.95rem;
@@ -305,47 +402,47 @@ a:hover {
   color: var(--text);
 }
 .chip.active {
-  color: var(--bg);
   border-color: transparent;
   font-weight: 600;
+  color: var(--chip-on-fg);
 }
 .chip[data-era="formative"].active,
 .chip[data-cat="life"].active {
   background: var(--life);
-  color: #1a1410;
+  color: var(--chip-on-fg);
 }
 .chip[data-era="internet"].active,
 .chip[data-cat="company"].active {
   background: var(--company);
-  color: #1a1200;
+  color: var(--chip-on-fg);
 }
 .chip[data-era="dual-bet"].active {
   background: linear-gradient(90deg, var(--spacex), var(--tesla));
-  color: #fff;
+  color: var(--chip-on-fg);
 }
 .chip[data-era="scale"].active {
-  background: #3d5a80;
+  background: #475569;
   color: #fff;
 }
 .chip[data-era="platform"].active {
   background: var(--politics);
-  color: #1a1400;
+  color: var(--chip-on-fg);
 }
 .chip[data-era="now"].active {
   background: var(--accent);
-  color: #0b0f14;
+  color: var(--chip-on-fg);
 }
 .chip[data-cat="edu"].active {
   background: var(--edu);
-  color: #1a1410;
+  color: var(--chip-on-fg);
 }
 .chip[data-cat="spacex"].active {
   background: var(--spacex);
-  color: #0b0f14;
+  color: var(--chip-on-fg);
 }
 .chip[data-cat="tesla"].active {
   background: var(--tesla);
-  color: #fff;
+  color: var(--tesla-chip-fg);
 }
 .chip[data-cat="ai"].active {
   background: var(--ai);
@@ -353,15 +450,18 @@ a:hover {
 }
 .chip[data-cat="media"].active {
   background: var(--media);
-  color: #0b0f14;
+  color: var(--chip-on-fg);
+}
+html[data-theme="light"] .chip[data-cat="media"].active {
+  color: #fff;
 }
 .chip[data-cat="politics"].active {
   background: var(--politics);
-  color: #1a1400;
+  color: var(--chip-on-fg);
 }
 .chip[data-cat="personal"].active {
   background: var(--personal);
-  color: #1a1010;
+  color: var(--chip-on-fg);
 }
 
 .result-count {
@@ -507,7 +607,7 @@ a:hover {
 }
 .card.selected {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent), var(--shadow);
+  box-shadow: 0 0 0 2px var(--card-selected-ring), var(--shadow);
 }
 
 .card-meta {
@@ -600,7 +700,7 @@ a:hover {
 .drawer-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.55);
+  background: var(--overlay);
   z-index: 50;
   opacity: 0;
   pointer-events: none;
@@ -624,7 +724,7 @@ a:hover {
   transition: transform 0.25s ease;
   display: flex;
   flex-direction: column;
-  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.4);
+  box-shadow: var(--shadow-drawer);
 }
 .drawer.open {
   transform: translateX(0);
@@ -840,8 +940,8 @@ a:hover {
   margin: 0 0 0.85rem;
   padding: 0.7rem 1rem;
   border-radius: 12px;
-  background: rgba(110, 193, 228, 0.08);
-  border: 1px solid rgba(110, 193, 228, 0.22);
+  background: var(--depth-bg);
+  border: 1px solid var(--depth-border);
   font-size: 0.82rem;
   color: var(--text-muted);
   line-height: 1.45;
@@ -850,11 +950,11 @@ a:hover {
   color: var(--accent);
 }
 .depth-banner.is-detail {
-  background: rgba(139, 92, 246, 0.1);
-  border-color: rgba(139, 92, 246, 0.28);
+  background: var(--depth-detail-bg);
+  border-color: var(--depth-detail-border);
 }
 .depth-banner.is-detail strong {
-  color: #c4b5fd;
+  color: var(--ai);
 }
 
 /* —— Wealth panel —— */
@@ -917,8 +1017,8 @@ a:hover {
   width: 70%;
   max-width: 28px;
   border-radius: 6px 6px 2px 2px;
-  background: linear-gradient(180deg, #6ec1e4, #e31937 90%);
-  opacity: 0.9;
+  background: var(--wealth-grad);
+  opacity: 0.95;
   min-height: 8px;
   transition: height 0.2s;
 }
@@ -943,16 +1043,16 @@ a:hover {
 
 /* —— Detail priority styling —— */
 .pri-pill-p2 {
-  background: rgba(139, 92, 246, 0.2) !important;
-  color: #c4b5fd !important;
+  background: var(--p2-pill-bg) !important;
+  color: var(--p2-pill-fg) !important;
 }
 .event-item.pri-p2 .card {
   border-style: dashed;
   opacity: 0.98;
 }
 .wealth-card {
-  border-color: rgba(245, 166, 35, 0.35) !important;
-  background: linear-gradient(135deg, rgba(245, 166, 35, 0.08), var(--bg-card)) !important;
+  border-color: var(--wealth-card-border) !important;
+  background: var(--wealth-card-bg) !important;
   cursor: default;
   text-align: inherit;
   width: 100%;
@@ -965,8 +1065,8 @@ a:hover {
   margin: 0 0 1rem;
   padding: 0.75rem 0.85rem;
   border-radius: 10px;
-  background: rgba(245, 166, 35, 0.1);
-  border: 1px solid rgba(245, 166, 35, 0.3);
+  background: var(--drawer-wealth-bg);
+  border: 1px solid var(--drawer-wealth-border);
   font-size: 0.85rem;
 }
 .drawer-wealth p {
@@ -978,4 +1078,14 @@ a:hover {
   margin-left: 0.35rem;
   color: var(--company);
   font-family: var(--mono);
+}
+
+/* Light-mode card polish */
+html[data-theme="light"] .card {
+  box-shadow: var(--shadow);
+}
+html[data-theme="light"] .stat,
+html[data-theme="light"] .wealth-panel,
+html[data-theme="light"] .method-box {
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
 }

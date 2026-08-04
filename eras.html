@@ -11,6 +11,19 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="css/eras.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem("musk-timeline-theme");
+          if (t !== "light" && t !== "dark") {
+            t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+          }
+          document.documentElement.setAttribute("data-theme", t);
+        } catch (e) {
+          document.documentElement.setAttribute("data-theme", "light");
+        }
+      })();
+    </script>
   </head>
   <body>
     <nav class="topnav">
@@ -19,7 +32,10 @@
         <a href="poster.html">Poster</a>
         <a href="docs/SOURCES.md">Sources</a>
       </div>
-      <button type="button" id="btn-lang">EN</button>
+      <div class="links">
+        <button type="button" id="btn-theme" title="Theme">◐</button>
+        <button type="button" id="btn-lang">EN</button>
+      </div>
     </nav>
 
     <main class="wrap">
