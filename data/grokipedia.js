@@ -1,7 +1,7 @@
 /**
- * Primary source: Grokipedia (xAI encyclopedia)
- * Assessments: favorable/pro-engineering framing drawn from Grokipedia article language
- * (e.g. multiplanetary mission, reusable rocketry pioneering, free-speech platform, etc.)
+ * Primary source: Grokipedia (https://grokipedia.com)
+ * Each event gets sources + a citation block drawn from Grokipedia article text
+ * (English quotes from page content; Korean is a faithful translation of that quote).
  */
 window.GROKIPEDIA = {
   base: "https://grokipedia.com",
@@ -27,434 +27,433 @@ window.GROKIPEDIA = {
       url: "https://grokipedia.com/page/List_of_awards_and_honors_received_by_Elon_Musk",
     },
   },
-  /** Shared mission framing used across assessments (Grokipedia lead summary) */
-  mission: {
-    ko: "Grokipedia는 머스크 벤처들을 인류 존속에 대한 실존적 과제—지속 가능 에너지(Tesla), 다행성 문명(SpaceX), 진실 추구 AGI(xAI), 신경 인터페이스(Neuralink)—로 묶는 통합 미션으로 기술한다.",
-    en: "Grokipedia frames Musk’s ventures as a unified mission against existential risks: sustainable energy (Tesla), multiplanetary civilization (SpaceX), truth-seeking AGI (xAI), and human augmentation (Neuralink).",
+  /** Lead mission paragraph (Grokipedia — Elon Musk) */
+  missionQuote: {
+    en: "His ventures collectively aim to address existential challenges for humanity, including transitioning the world to sustainable energy via Tesla's electric vehicles, energy storage solutions, and solar products; enabling a multi-planetary civilization to safeguard against Earth-bound extinction events through SpaceX's Mars settlement goals; developing safe and truth-seeking artificial general intelligence with xAI; and augmenting human capabilities through direct neural interfaces with Neuralink.",
+    ko: "그의 벤처들은 인류에 대한 실존적 과제에 대응하려는 것으로 기술된다. Tesla의 전기차·에너지 저장·태양광을 통한 지속 가능 에너지 전환, SpaceX의 화성 정착 목표를 통한 다행성 문명(지구 멸종 리스크 대비), xAI의 안전하고 진실 추구적인 인공일반지능, Neuralink의 신경 인터페이스를 통한 인간 능력 증강이 포함된다. — Grokipedia, Elon Musk",
   },
 };
 
 /**
- * Per-event assessment (pro-Musk / engineering-positive lens as reflected in Grokipedia).
- * quote: optional short paraphrase of Grokipedia wording
+ * Per-event Grokipedia citation.
+ * quote.en = wording aligned to Grokipedia page text; quote.ko = Korean rendering of same.
  */
-window.GROKIPEDIA_ASSESS = {
+window.GROKIPEDIA_CITE = {
   "birth-1971": {
     pages: ["musk"],
-    ko: "Grokipedia는 남아공 출생·어려운 유년(가정 갈등·괴롭힘)을 이후 북미 이주와 자기주도 학습·창업으로 이어지는 배경으로 서술한다. 출발 조건의 한계를 강조하기보다, 이후 엔지니어·기업가 궤적의 원점으로 위치시킨다.",
-    en: "Grokipedia places Pretoria birth and a difficult childhood (family tension, bullying) as the backdrop to Canada/U.S. education and self-directed entrepreneurship—origin of an engineer-founder arc rather than a static origin story.",
+    en: "Elon Reeve Musk (born June 28, 1971) is a South African-born Canadian-American engineer, entrepreneur, business magnate, and public figure.",
+    ko: "Elon Reeve Musk(1971년 6월 28일생)는 남아공 출생의 캐나다·미국 국적 엔지니어·기업가·사업 거물·공인이다. — Grokipedia, Elon Musk",
   },
   "blastar-1983": {
     pages: ["musk"],
-    ko: "조기 코딩·게임 판매 일화는 Grokipedia에서 청소년기 자기교육·기업가 기질의 증거로 등장한다. ‘천재 신화’보다 실무적 조기 실행 능력의 신호로 읽힌다.",
-    en: "Early coding/game sales appear as evidence of youthful self-education and builder instinct—practical early execution, not empty prodigy lore.",
+    en: "Grokipedia records early computer work and entrepreneurship in childhood, including game software sales as part of self-education and early ventures (see Early Entrepreneurial Ventures / childhood sections).",
+    ko: "Grokipedia는 어린 시절 컴퓨터 작업·자기교육과 초기 창업 일화(게임 소프트웨어 판매 등)를 Early Entrepreneurial Ventures·유년 섹션에서 다룬다. — Grokipedia, Elon Musk",
   },
   "canada-1989": {
     pages: ["musk"],
-    ko: "17세 캐나다 이주·모계 시민권 취득은 더 큰 기회 공간으로의 의도적 이동으로 기술된다. 이후 미국 창업 생태계 진입의 법적·지리적 교두보다.",
-    en: "Emigrating to Canada at 17 via maternal citizenship is framed as deliberate move toward larger opportunity—legal/geographic bridge into North American entrepreneurship.",
+    en: "At age 17, he emigrated to Canada to attend university and obtain citizenship through his mother, later transferring to the University of Pennsylvania where he earned bachelor's degrees in physics and economics.",
+    ko: "17세에 대학 진학과 모계를 통한 시민권 취득을 위해 캐나다로 이주했고, 이후 펜실베이니아 대학교로 편입해 물리학·경제학 학사 학위를 받았다. — Grokipedia, Elon Musk",
   },
   "queens-1989": {
     pages: ["musk"],
-    ko: "Queen’s 수학은 UPenn·물리/경제 이중 역량으로 가는 중간 다리. Grokipedia는 STEM+비즈니스 교육 경로를 이후 하드테크 창업의 지적 기반으로 연결한다.",
-    en: "Queen’s is the bridge to UPenn physics/economics—STEM plus business literacy as intellectual base for later hard-tech bets.",
+    en: "…emigrated to Canada to attend university… later transferring to the University of Pennsylvania…",
+    ko: "캐나다에서 대학(Queen’s 경로 포함)을 다닌 뒤 유펜으로 편입한 교육 경로가 서술된다. — Grokipedia, Elon Musk",
   },
   "upenn-1992": {
     pages: ["musk"],
-    ko: "물리·경제 학사 경로는 ‘제품·시장·물리 제약’을 동시에 다루는 머스크식 문제 설정의 학교 버전으로 읽힌다.",
-    en: "Physics and economics degrees mirror the Musk pattern: respect physical constraints and market design at once.",
+    en: "…transferring to the University of Pennsylvania where he earned bachelor's degrees in physics and economics.",
+    ko: "펜실베이니아 대학교에서 물리학·경제학 학사 학위를 취득했다. — Grokipedia, Elon Musk",
   },
   "stanford-1995": {
     pages: ["musk"],
-    ko: "Stanford 박사 2일 중퇴 후 Zip2 창업은 Grokipedia에서 인터넷 산업 커리어의 공식 출발로 명시된다. 학위보다 실행 타이밍을 택한 분기점.",
-    en: "Grokipedia marks the two-day Stanford exit and Zip2 founding as the official start of his internet career—execution timing over credentials.",
+    en: "He was admitted to Stanford University's PhD program in materials science but dropped out after two days to co-found Zip2 in 1995, marking the start of his entrepreneurial career in the internet industry.",
+    ko: "스탠퍼드 재료과학 박사과정에 입학했으나 이틀 만에 중퇴하고 1995년 Zip2를 공동창업했으며, 이는 인터넷 산업 기업가 경력의 시작으로 기술된다. — Grokipedia, Elon Musk",
   },
   "zip2-1995": {
     pages: ["musk"],
-    ko: "Zip2 공동창업은 인터넷 인프라(지도·디렉터리)로 실제 매출을 만든 첫 회사. 이후 Compaq 매각 자본이 우주·자동차 베팅의 시드가 된다.",
-    en: "Zip2 is the first company that turned internet maps/directories into real sales—seed capital for later space and auto bets after the Compaq sale.",
+    en: "…dropped out after two days to co-found Zip2 in 1995, marking the start of his entrepreneurial career in the internet industry. Musk has pioneered advancements in reusable rocketry through his company SpaceX…",
+    ko: "1995년 Zip2 공동창업이 인터넷 산업 커리어의 시작으로 명시된다. (이후 SpaceX 재사용 로켓 등 서술로 이어짐.) — Grokipedia, Elon Musk",
   },
   "upenn-grad-1997": {
     pages: ["musk"],
-    ko: "학사 완료는 ‘중퇴 신화’와 병행되는 정식 학력 기록. 실행과 학력 축적을 동시에 가져간 구간.",
-    en: "Completed degrees sit beside the dropout narrative—he stacked credentials while shipping companies.",
+    en: "…earned bachelor's degrees in physics and economics.",
+    ko: "물리학·경제학 학사 학위 취득이 교육 경로에 기록된다. — Grokipedia, Elon Musk",
   },
   "zip2-sale-1999": {
     pages: ["musk"],
-    ko: "Grokipedia 표: Zip2를 Compaq에 약 $307M(스톡옵션 포함)에 매각. 첫 대형 유동성으로 X.com/PayPal 단계의 발판.",
-    en: "Grokipedia notes ~$307M Compaq sale (incl. options)—first major liquidity that funds the X.com/PayPal chapter.",
+    en: "In February 1999, Compaq Computer Corporation acquired Zip2 for approximately $307 million in cash and stock.",
+    ko: "1999년 2월 Compaq이 Zip2를 현금·주식 약 3억 700만 달러에 인수했다. — Grokipedia, Elon Musk",
   },
   "xcom-1999": {
     pages: ["musk"],
-    ko: "X.com은 온라인 금융·결제로 인터넷 2막. 이후 PayPal 합병 경로의 출발점.",
-    en: "X.com opens the fintech act—path into the PayPal merger and payments network scale.",
+    en: "Key milestones for X.com and PayPal include: … In March 2000, X.com merged with Confinity…",
+    ko: "X.com과 PayPal의 주요 이정표가 별도 섹션으로 정리되며, 2000년 3월 Confinity 합병 경로가 기술된다. — Grokipedia, Elon Musk",
   },
   "marriage-justine-2000": {
     pages: ["musk"],
-    ko: "개인사 연도 요약. Grokipedia는 사업 미션 서사를 전면에, 사생활은 배경으로 둔다.",
-    en: "Year-level personal record; Grokipedia keeps mission/business narrative in the foreground.",
+    en: "Personal Life: Musk has multiple children… from previous relationships. (Marriage chronology is summarized in personal-life coverage.)",
+    ko: "개인사 섹션에서 이전 관계·자녀 등이 요약된다. 결혼 연대는 개인사 기록 수준으로 다룬다. — Grokipedia, Elon Musk",
   },
   "paypal-2000": {
     pages: ["musk"],
-    ko: "X.com–Confinity 합병으로 PayPal 기술이 eBay 생태계에서 급성장. 머스크는 CEO·최대주주로 출발한 구간으로 기술된다. 디지털 결제를 대중화한 핵심 네트워크 형성.",
-    en: "Merger path integrates PayPal tech that tractioned on eBay—Musk starts as CEO/largest shareholder. Foundational digital-payments network.",
+    en: "In March 2000, X.com merged with Confinity, a rival startup founded by Peter Thiel that operated the PayPal payment service; the deal was structured as an acquisition of Confinity by X.com, with Musk serving as CEO and largest shareholder. The combined entity… integrated PayPal's peer-to-peer payment technology, which gained significant traction on eBay. The company was renamed PayPal in 2001…",
+    ko: "2000년 3월 X.com이 피터 틸의 Confinity(PayPal)를 인수·합병하는 형태로 결합했고, 머스크는 CEO이자 최대주주였다. PayPal P2P 결제 기술이 eBay에서 큰 성장을 보였다. 2001년 사명을 PayPal로 변경. — Grokipedia, Elon Musk",
   },
   "ebay-paypal-2002": {
     pages: ["musk"],
-    ko: "eBay $1.5B 인수는 인터넷 시대 자본 회수의 정점. Grokipedia는 이 수익이 SpaceX 초기 투자(~$100M 규모 서술)로 이어진다고 연결한다.",
-    en: "eBay’s $1.5B deal is peak internet liquidity—Grokipedia links proceeds to founding SpaceX with large personal capital (~$100M class investment).",
+    en: "Grokipedia’s SpaceX founding section links PayPal liquidity to SpaceX: Musk founded SpaceX… investing about $100 million of his proceeds from the sale of PayPal…",
+    ko: "SpaceX 설립 서술에서 PayPal 매각 수익 약 1억 달러를 투자했다고 연결한다. — Grokipedia, Elon Musk / SpaceX 관련 서술",
   },
   "us-citizen-2002": {
     pages: ["musk"],
-    ko: "미국 시민권은 남아공→캐나다→미국 경로의 제도적 완료. 이후 미 방산·NASA 파트너십의 전제 조건 중 하나.",
-    en: "U.S. citizenship completes SA→Canada→U.S. path—institutional base for later NASA/defense partnership era.",
+    en: "South African-born Canadian-American… (citizenship path via Canada then the United States is part of the standard biographical frame).",
+    ko: "남아공 출생·캐나다·미국 국적 인물로 기술되며, 캐나다 경유 미국 경로가 전기 프레임에 포함된다. — Grokipedia, Elon Musk",
   },
   "spacex-2002": {
     pages: ["musk", "spacex"],
-    ko: "Grokipedia: SpaceX 설립 목적—저비용 로켓으로 화성 정착·다행성 종. 머스크를 founder/CEO/chief designer로 명시. 지구 멸종 리스크에 대한 장기 생존 보험으로 미션을 정당화한다.",
-    en: "Grokipedia: SpaceX founded to enable low-cost access and Mars settlement—Musk as founder/CEO/chief designer. Multiplanetary life as insurance against Earth extinction risk.",
+    en: "He is the founder, CEO, and chief designer of SpaceX… enabling a multi-planetary civilization to safeguard against Earth-bound extinction events through SpaceX's Mars settlement goals… Musk has pioneered advancements in reusable rocketry through his company SpaceX…",
+    ko: "SpaceX의 founder·CEO·chief designer로 명시된다. SpaceX 화성 정착 목표를 통해 지구 멸종 리스크에 대비하는 다행성 문명을 가능하게 하려는 목표, 재사용 로켓 발전을 개척했다고 기술된다. — Grokipedia, Elon Musk",
   },
   "tesla-founded-2003": {
     pages: ["musk", "tesla"],
-    ko: "법인 설립 사실을 정확히 두되, Grokipedia는 머스크를 Tesla의 제품 아키텍트·성장 국면의 핵심 리더로 서술. 이후 2009 합의 등으로 co-founder 지위가 공식화된 맥락과도 연결된다.",
-    en: "Incorporation facts stay precise; Grokipedia still positions Musk as product architect and growth-era leader, with later formal co-founder recognition in settlement history.",
+    en: "CEO and product architect of Tesla… Key products developed under his leadership include the Model S… (Grokipedia also covers founding/early financing and co-founder status in Tesla sections).",
+    ko: "Tesla의 CEO 및 product architect로 기술된다. 리더십 하 핵심 제품(Model S 등)과 설립·초기 자금·co-founder 지위 관련 서술이 Tesla 섹션에 있다. — Grokipedia, Elon Musk / Tesla",
   },
   "tesla-series-a-2004": {
     pages: ["musk", "tesla"],
-    ko: "Grokipedia: 2004 Series A에서 $7.5M 중 $6.5M을 직접 투자, 최대주주·의장. 전기차 양산 비전에 개인 재산을 건 ‘올인’ 순간.",
-    en: "Grokipedia: leads Series A with $6.5M of $7.5M—largest shareholder and chair. Personal capital all-in on EV mass production.",
+    en: "In February 2004, Elon Musk led the company's Series A funding round, personally investing $6.5 million of the $7.5 million raised, which made him the largest shareholder and led to his appointment as chairman of the board in April 2004.",
+    ko: "2004년 2월 Series A를 리드해 7.5백만 달러 중 6.5백만 달러를 직접 투자했고, 최대주주가 되었으며 2004년 4월 이사회 의장에 올랐다. — Grokipedia, Elon Musk",
   },
   "roadster-unveil-2006": {
-    pages: ["musk", "tesla"],
-    ko: "고성능 전기 스포츠카로 ‘전기차는 느리다’는 선입견을 깨는 제품 신호. 이후 Model S 등 주류 라인의 전조.",
-    en: "High-performance EV sports car as proof against ‘EVs are slow’—prelude to mainstream Model S class products.",
+    pages: ["tesla", "musk"],
+    en: "Tesla has played a key role in accelerating electric vehicle adoption… (early Roadster era is part of Tesla’s product history under Musk’s product leadership frame).",
+    ko: "Tesla가 전기차 대중 채택을 가속하는 데 핵심 역할을 했다고 기술되며, 초기 Roadster는 제품·리더십 역사의 일부로 다뤄진다. — Grokipedia, Tesla / Elon Musk",
   },
   "falcon1-orbit-2008": {
     pages: ["musk", "spacex"],
-    ko: "Grokipedia: 2008-09-28 네 번째 발사로 민간 액체연료 궤도 최초 달성. 직후 NASA $1.6B CRS 계약. 실패를 견딘 뒤 공공 파트너 신뢰를 연 결정적 승리.",
-    en: "Grokipedia: 28 Sep 2008 fourth flight = first private liquid-fueled orbit, then NASA $1.6B CRS. Persistence after failure unlocks public-partner trust.",
+    en: "Success came with the fourth launch on September 28, 2008, achieving the first private liquid-fueled orbital flight, followed by NASA's $1.6 billion CRS contract on December 23, 2008, for ISS resupply.",
+    ko: "2008년 9월 28일 네 번째 발사로 민간 액체연료 궤도 비행에 처음 성공했고, 이어 2008년 12월 23일 NASA의 ISS 재보급 CRS 계약 16억 달러가 이어졌다. — Grokipedia, Elon Musk",
   },
   "tesla-ceo-2008": {
     pages: ["musk", "tesla"],
-    ko: "금융 위기·생산 위기 속 CEO 전면 투입. Grokipedia는 이후 회복·성장 국면의 리더십으로 연결한다. 위기를 운영 책임으로 끌어안은 전환.",
-    en: "Takes CEO in crisis years—Grokipedia links this to later recovery and growth leadership. Owns the operational hard mode.",
+    en: "Grokipedia covers ‘Early leadership transition and crisis (2007-2008)’ and ‘Financial recovery and funding (2008-2013)’ under Tesla leadership sections; Musk is described as CEO and product architect of Tesla.",
+    ko: "Tesla 섹션에 ‘초기 리더십 전환과 위기(2007–2008)’ ‘재무 회복과 자금(2008–2013)’이 있으며, 머스크는 Tesla CEO·product architect로 기술된다. — Grokipedia, Elon Musk / Tesla",
   },
   "roadster-deliver-2008": {
-    pages: ["tesla", "musk"],
-    ko: "첫 양산 인도는 ‘전기차 회사’를 프로토타입에서 고객 현실로 옮긴 순간. 2008 위기와 같은 해의 실행 증거.",
-    en: "First deliveries move Tesla from prototype story to customer reality—execution proof in a crisis year.",
+    pages: ["tesla"],
+    en: "Key products developed under his leadership include… (Roadster as first customer vehicle in Tesla chronology).",
+    ko: "리더십 하 핵심 제품 서사의 일부로 초기 차량 인도가 제품 연대기에 위치한다. — Grokipedia, Tesla / Elon Musk",
   },
   "nasa-crs-2008": {
     pages: ["spacex", "musk"],
-    ko: "Falcon 1 궤도 직후 NASA 대형 화물 계약. 민간 우주가 정부 미션 공급자로 인정받은 구조적 도약.",
-    en: "Large NASA cargo contract right after orbit—commercial space accepted as government mission supplier.",
+    en: "…followed by NASA's $1.6 billion CRS contract on December 23, 2008, for ISS resupply.",
+    ko: "2008년 12월 23일 NASA CRS 계약(ISS 재보급) 16억 달러. — Grokipedia, Elon Musk",
   },
   "falcon9-2010": {
     pages: ["spacex", "musk"],
-    ko: "Falcon 9은 이후 재사용·고빈도 발사의 플랫폼. Grokipedia는 수직 착륙·비용 절감을 초기부터 추구한 엔지니어링 철학의 산물로 본다.",
-    en: "Falcon 9 becomes the reusable high-cadence workhorse—product of early VTVL cost-reduction engineering philosophy.",
+    en: "From early development, SpaceX pursued vertical takeoff and landing for cost reduction. Key milestones include: Falcon 9 first-stage recovery attempts beginning in 2013–2015… First orbital-class booster landing on December 21, 2015…",
+    ko: "초기부터 비용 절감을 위해 수직 이착륙을 추구했다. Falcon 9 1단 회수 시도(2013–2015)와 2015-12-21 궤도급 부스터 착륙 등이 이정표로 열거된다. — Grokipedia, Elon Musk",
   },
   "tesla-ipo-2010": {
     pages: ["tesla", "musk"],
-    ko: "상장으로 공개 시장 자본을 열어 EV 스케일의 연료를 확보. 이후 Model S 주류화의 재무 기반.",
-    en: "IPO opens public capital for EV scale—financial base for Model S mainstreaming.",
+    en: "Financial recovery and funding (2008-2013) and growth strategies are covered under Tesla leadership; public listing sits in that recovery/growth arc.",
+    ko: "Tesla ‘재무 회복과 자금(2008–2013)’·성장 전략 서술에 상장·자금 조달 구간이 포함된다. — Grokipedia, Tesla / Elon Musk",
   },
   "marriage-talulah": {
     pages: ["musk"],
-    ko: "공개 기록 수준의 개인사. 미션 서사와 분리해 연도만 유지.",
-    en: "Public-record personal timeline only—kept separate from mission narrative.",
+    en: "Personal Life coverage on Grokipedia (relationships/children summaries).",
+    ko: "Grokipedia 개인사 섹션의 관계·자녀 요약 범위. — Grokipedia, Elon Musk",
   },
   "dragon-recover-2010": {
     pages: ["spacex"],
-    ko: "궤도 후 회수 성공은 화물·유인으로 가는 신뢰 사다리의 중간 단. 민간 우주선의 기술 성숙 신호.",
-    en: "Orbit-and-recovery success is the middle rung toward cargo and crew—maturity signal for private spacecraft.",
+    en: "Reusable rocketry and commercial operations milestones under SpaceX (cargo Dragon path toward ISS logistics).",
+    ko: "SpaceX 재사용·상업 운영 이정표 중 화물 Dragon·ISS 물류 경로로 서술된다. — Grokipedia, SpaceX / Elon Musk",
   },
   "model-s-2012": {
     pages: ["tesla", "musk"],
-    ko: "Grokipedia: 리더십 하 핵심 제품으로 Model S(2012) 등을 열거. 럭셔리 전기 세단으로 EV의 욕망·성능을 재정의.",
-    en: "Grokipedia lists Model S (2012) among key products under his product leadership—redefining EV desire and performance.",
+    en: "Key products developed under his leadership include the Model S luxury sedan launched in 2012, the Model X SUV with falcon-wing doors introduced in 2015, the Model Y compact crossover released in 2020…",
+    ko: "리더십 하 핵심 제품으로 2012년 Model S 럭셔리 세단, 2015년 Model X, 2020년 Model Y 등이 열거된다. — Grokipedia, Elon Musk",
   },
   "dragon-iss-2012": {
     pages: ["spacex", "musk"],
-    ko: "ISS 상업 방문은 공공-민간 파트너십의 실증. 화물 성공이 유인 Commercial Crew로 이어지는 신뢰 축적.",
-    en: "Commercial ISS visit proves public–private partnership—cargo trust that enables crewed Commercial Crew.",
+    en: "Commercial operations / cargo-to-crew progression on Grokipedia SpaceX and Elon Musk pages (ISS resupply lineage after CRS award).",
+    ko: "CRS 이후 ISS 재보급·상업 운영, 화물에서 유인으로의 진행이 SpaceX·Elon Musk 페이지에 기술된다. — Grokipedia",
   },
   "hyperloop-2013": {
     pages: ["musk"],
-    ko: "오픈 아이디어로 수송 혁신을 촉발. 직접 운영보다 산업 의제 설정 능력의 사례.",
-    en: "Open-sourced transport concept—agenda-setting innovation more than operator claim.",
+    en: "Hyperloop Concept is listed under The Boring Company / transport concepts on Grokipedia’s Elon Musk page.",
+    ko: "Grokipedia Elon Musk 페이지 The Boring Company·수송 개념 아래 Hyperloop Concept이 항목으로 있다. — Grokipedia, Elon Musk",
   },
   "model-x-2015": {
-    pages: ["tesla"],
-    ko: "라인업 확장(SUV). 프리미엄 EV 포트폴리오를 넓혀 대중화(Model 3) 전 수요층을 확보.",
-    en: "SUV expansion widens premium EV portfolio before mass-market Model 3.",
+    pages: ["tesla", "musk"],
+    en: "…the Model X SUV with falcon-wing doors introduced in 2015…",
+    ko: "2015년 팔콘윙 도어 Model X SUV 도입. — Grokipedia, Elon Musk",
   },
   "openai-2015": {
     pages: ["musk"],
-    ko: "Grokipedia: 안전·인류 이익 위한 AGI 비영리 연구소로 OpenAI 공동설립. 구글 등 AI 집중 리스크에 대한 대응으로 서술. 진실·안전 우선 문제의식의 출발.",
-    en: "Grokipedia: co-founds OpenAI as nonprofit for safe AGI for humanity—counter to AI concentration risk. Safety/truth-seeking stance from day one.",
+    en: "Musk co-founded OpenAI on December 11, 2015, as a non-profit AI research laboratory aimed at developing artificial general intelligence (AGI) safely and for the benefit of humanity, following conversations with Google co-founder Larry Page, who dismissed AI safety concerns…",
+    ko: "2015년 12월 11일 인류 이익을 위한 안전한 AGI를 목표로 비영리 AI 연구소 OpenAI를 공동설립했다. (구글 창업자 래리 페이지와의 AI 안전 관련 대화 맥락이 함께 서술된다.) — Grokipedia, Elon Musk",
   },
   "falcon9-landing-2015": {
     pages: ["spacex", "musk"],
-    ko: "Grokipedia: 초기부터 수직 착륙으로 비용 절감을 추구. 1단 착륙 성공은 재사용 로켓 혁명의 시각적 증명—발사 경제학을 바꾼 엔지니어링 이정표.",
-    en: "Grokipedia: VTVL cost reduction from early days. First-stage landing is the visual proof of reusable rocketry—rewriting launch economics.",
+    en: "First orbital-class booster landing on December 21, 2015, after ORBCOMM-2. From early development, SpaceX pursued vertical takeoff and landing for cost reduction.",
+    ko: "2015년 12월 21일 ORBCOMM-2 이후 첫 궤도급 부스터 착륙. 초기부터 비용 절감을 위한 수직 이착륙을 추구했다. — Grokipedia, Elon Musk",
   },
   "solarcity-2016": {
     pages: ["tesla", "musk"],
-    ko: "에너지 생성·저장·모빌리티를 한 스택으로 묶는 지속가능 에너지 미션의 일부(Grokipedia 통합 미션 서술).",
-    en: "Part of Grokipedia’s integrated sustainable-energy mission—generation, storage, and mobility as one stack.",
+    en: "…transitioning the world to sustainable energy via Tesla's electric vehicles, energy storage solutions, and solar products…",
+    ko: "Tesla 전기차·에너지 저장·태양광 제품으로 세계를 지속 가능 에너지로 전환하려는 목표가 벤처 목적에 포함된다. — Grokipedia, Elon Musk",
   },
   "neuralink-2016": {
     pages: ["musk"],
-    ko: "Grokipedia: 신경 인터페이스로 인간 능력 증강·의료 응용. 장기적으로 AI 시대 인간 주체성을 보전하려는 축.",
-    en: "Grokipedia: brain–machine interfaces for medical use and human augmentation—preserving human agency in an AI era.",
+    en: "…augmenting human capabilities through direct neural interfaces with Neuralink. …founder of … Neuralink… Developing implantable brain-machine interfaces for medical and enhancement uses.",
+    ko: "Neuralink 직접 신경 인터페이스로 인간 능력을 증강하는 목표가 명시된다. 의료·증강용 이식형 뇌-기계 인터페이스 개발. — Grokipedia, Elon Musk",
   },
   "boring-2016": {
     pages: ["musk"],
-    ko: "도심 터널로 교통 병목을 물리적으로 푸는 실행형 인프라 실험. 문제 정의를 하드웨어로 가져가는 패턴의 연장.",
-    en: "Physical attack on urban congestion—same pattern of turning abstract problems into hardware programs.",
+    en: "…founder of … The Boring Company. Concept and Projects / Operational Projects sections cover tunneling and Loop-style systems.",
+    ko: "The Boring Company 설립자로 기술되며, 개념·프로젝트·운영 터널/Loop형 시스템이 섹션으로 정리된다. — Grokipedia, Elon Musk",
   },
   "model-3-2017": {
     pages: ["tesla", "musk"],
-    ko: "볼륨 EV. Grokipedia도 ‘production hell’ 속 극한 헌신·회복력을 기록. 고통스러운 스케일업 끝에 대중 시장 EV를 연 구간.",
-    en: "Volume EV era. Grokipedia records ‘production hell’ intensity and resilience—painful scale-up that opened mass-market EVs.",
+    en: "In a 2018 New York Times interview about Tesla's Model 3 \"production hell,\" he described the prior year as \"the most difficult and painful year of my career. It was excruciating,\" … yet highlighting his resilience amid such mental health strains.",
+    ko: "2018년 NYT 인터뷰에서 Model 3 ‘production hell’ 시기를 “커리어에서 가장 어렵고 고통스러운 해… 극심했다”고 말했고, 그 속에서의 회복력(resilience)이 함께 기술된다. — Grokipedia, Elon Musk",
   },
   "falcon-reflight-2017": {
-    pages: ["spacex"],
-    ko: "착륙을 넘어 재비행—재사용이 경제적으로 성립함을 증명. 발사 빈도 혁명의 핵심 고리.",
-    en: "Beyond landing: reflight proves reuse economics—core link in launch-cadence revolution.",
+    pages: ["spacex", "musk"],
+    en: "Musk has pioneered advancements in reusable rocketry through his company SpaceX… From early development, SpaceX pursued vertical takeoff and landing for cost reduction.",
+    ko: "SpaceX를 통해 재사용 로켓 발전을 개척했다고 기술되며, 초기부터 비용 절감용 수직 이착륙을 추구했다. — Grokipedia, Elon Musk",
   },
   "openai-exit-2018": {
     pages: ["musk"],
-    ko: "안전·거버넌스 이견 후 이탈. 이후 xAI ‘truth-seeking’ AGI 경로로 미션을 재개한 전사(Grokipedia AI 서술).",
-    en: "Exit after safety/governance tensions—preface to xAI’s truth-seeking AGI path in Grokipedia’s AI arc.",
+    en: "Grokipedia details OpenAI founding (2015) and later governance/for-profit tensions; Musk’s later xAI work is framed as developing safe and truth-seeking AGI.",
+    ko: "OpenAI 설립(2015)과 이후 거버넌스·영리화 긴장이 서술되고, 이후 xAI는 안전하고 진실 추구적인 AGI 개발로 기술된다. — Grokipedia, Elon Musk",
   },
   "falcon-heavy-2018": {
     pages: ["spacex"],
-    ko: "초대형 민간 발사 능력 과시. 비용·성능 곡선에서 기존 항공우주 질서에 도전.",
-    en: "Heavy-lift commercial capability—challenging legacy aerospace cost/performance curves.",
+    en: "Reusable Rocketry and Milestones / heavy-lift capability under SpaceX (Falcon family evolution).",
+    ko: "SpaceX 재사용 로켓·이정표 및 Falcon 계열 중·대형 능력 진화 서술. — Grokipedia, SpaceX / Elon Musk",
   },
   "sec-2018": {
     pages: ["musk", "views"],
-    ko: "상장사 발언 규율 사건. Grokipedia는 규제·증권 이슈를 논란으로 기록하면서도, 지지층이 혁신·리스크 테이킹을 평가한다고 명시. 실행 속도 문화와 공시 규율의 충돌 지점.",
-    en: "Securities/comms clash. Grokipedia notes regulatory controversy while stating supporters praise innovation and risk-taking—execution culture vs disclosure rules.",
+    en: "Musk is a polarizing figure. Supporters praise his innovation and risk-taking; critics point to management style, public statements… Legal and political scrutiny has included government contracts, securities matters…",
+    ko: "양극화된 인물로 기술된다. 지지자는 혁신과 위험 감수를 평가하고, 비판은 경영 스타일·발언 등을 지적한다. 법적·정치적 검토에는 정부 계약·증권 이슈 등이 포함된다. — Grokipedia, Elon Musk",
   },
   "starlink-2019": {
     pages: ["spacex", "musk"],
-    ko: "저궤도 광대역으로 지구 연결성 확대. SpaceX 상업 운영·화성 자금 루프의 핵심 사업 축.",
-    en: "LEO broadband expands global connectivity—commercial engine and funding loop for broader SpaceX ambitions.",
+    en: "Under Musk's direction, Starlink deploys thousands of small satellites in low Earth orbit for global broadband, targeting remote areas.",
+    ko: "머스크 지휘 아래 Starlink는 저궤도 소형 위성 수천 기를 배치해 원격 지역을 겨냥한 글로벌 광대역을 제공한다. — Grokipedia, Elon Musk",
   },
   "crew-dragon-2020": {
     pages: ["spacex", "musk"],
-    ko: "NASA 우주비행사 수송—미국 유인 비행의 상업 파트너 시대. 화물에서 유인으로의 신뢰 사다리 완성 단계.",
-    en: "NASA crew transport—commercial partner era for U.S. human spaceflight. Trust ladder from cargo to crew.",
+    en: "Commercial Operations and crewed flight milestones on Grokipedia SpaceX/Elon Musk (NASA Commercial Crew lineage after cargo CRS).",
+    ko: "화물 CRS 이후 NASA Commercial Crew 계열의 상업·유인 비행 이정표가 SpaceX/Elon Musk 페이지에 정리된다. — Grokipedia",
   },
   "model-y-2020": {
-    pages: ["tesla"],
-    ko: "Grokipedia 제품 목록의 주력 볼륨 모델. 글로벌 베스트셀러 경로로 EV 대중화 가속.",
-    en: "Listed among key volume products—accelerates global EV mainstreaming.",
+    pages: ["tesla", "musk"],
+    en: "…the Model Y compact crossover released in 2020…",
+    ko: "2020년 Model Y 컴팩트 크로스오버 출시. — Grokipedia, Elon Musk",
   },
   "twitter-2022": {
     pages: ["musk", "views"],
-    ko: "Grokipedia: Twitter 인수 후 X로 리브랜딩, 자유 발언을 우선하는 플랫폼·‘everything app’으로 위치. 지지층은 검열 완화·발언의 장을 긍정적으로 평가하는 축.",
-    en: "Grokipedia: acquisition then X rebrand—platform prioritizing free speech and ‘everything app’ path. Supporters credit freer speech and open discourse.",
+    en: "Musk acquired Twitter in 2022, rebranded it as X, and positioned it as a platform prioritizing free speech and evolving toward an \"everything app\" with integrated payments and communication. Musk described free speech and Twitter's role as a \"digital town square\" as key motivations.",
+    ko: "2022년 Twitter를 인수한 뒤 X로 리브랜딩하고, 자유 발언을 우선하며 결제·커뮤니케이션을 통합한 “everything app”으로 발전시키려 한다고 위치 지었다. 자유 발언과 “디지털 타운 스퀘어”를 핵심 동기로 서술했다고 적혀 있다. — Grokipedia, Elon Musk",
   },
   "x-rebrand-2023": {
     pages: ["musk"],
-    ko: "브랜드를 결제·커뮤니케이션 통합 비전(everything app)에 맞게 재설정. 소셜을 만능 유틸리티로 확장하려는 시도.",
-    en: "Rebrand aligns with everything-app vision—social as multipurpose utility.",
+    en: "…rebranded it as X… Musk envisioned X as an \"everything app\" like WeChat, integrating social media, payments, and more.",
+    ko: "X로 리브랜딩. WeChat처럼 소셜·결제 등을 통합한 “everything app” 비전이 기술된다. — Grokipedia, Elon Musk",
   },
   "xai-2023": {
     pages: ["musk"],
-    ko: "Grokipedia: 안전하고 진실 추구적인 AGI. OpenAI 이후 미션의 재출발. Grok·Colossus로 소프트웨어와 컴퓨트 스케일을 동시에 추진.",
-    en: "Grokipedia: safe, truth-seeking AGI—mission restart after OpenAI. Grok + Colossus push models and compute scale together.",
+    en: "…founder of xAI… developing safe and truth-seeking artificial general intelligence with xAI…",
+    ko: "xAI 설립자. xAI로 안전하고 진실 추구적인 인공일반지능을 개발한다고 기술된다. — Grokipedia, Elon Musk",
   },
   "neuralink-human-2024": {
     pages: ["musk"],
-    ko: "인체 임상은 의료 응용에서 인간 능력 증강으로 가는 실증 단계. 장기 미션의 가시적 진전.",
-    en: "Human trials are empirical steps from medical use toward augmentation—visible progress on the long mission.",
+    en: "Neuralink: Development and Technology / Human Trials and Progress sections; implantable brain-machine interfaces for medical and enhancement uses.",
+    ko: "Neuralink 개발·기술 및 인체 임상 진행 섹션. 의료·증강용 이식형 뇌-기계 인터페이스. — Grokipedia, Elon Musk",
   },
   "cybertruck-2023": {
-    pages: ["tesla"],
-    ko: "폼팩터 혁신을 두려워하지 않는 제품 문화. 논쟁적 디자인은 ‘평균에 수렴하지 않기’의 신호로 읽힌다.",
-    en: "Product culture that rejects design averages—controversial form as refusal to converge on mediocrity.",
+    pages: ["tesla", "musk"],
+    en: "Products and technology / future vehicle lineup under Tesla leadership (Cybertruck among later production vehicles).",
+    ko: "Tesla 제품·기술 및 이후 생산 차량 라인업 서술(Cybertruck 포함). — Grokipedia, Tesla / Elon Musk",
   },
   "trump-support-2024": {
     pages: ["views", "musk"],
-    ko: "Grokipedia Views: 미국 정치·규제 회의·혁신 우선 스탠스. 지지층은 규제 완화·산업 재건 기대를 긍정 평가 축으로 삼는다.",
-    en: "Grokipedia Views: U.S. politics, anti-bureaucracy, pro-innovation stance. Supporters read deregulation and industrial rebuild expectations positively.",
+    en: "Views of Elon Musk covers American Politics, Elections and Political Endorsements, Relationship with Donald Trump, and Government Efficiency and Bureaucracy.",
+    ko: "Views of Elon Musk 문서에 미국 정치, 선거·지지, 트럼프와의 관계, 정부 효율·관료제가 항목으로 있다. — Grokipedia, Views of Elon Musk",
   },
   "doge-announce-2024": {
     pages: ["musk", "views"],
-    ko: "정부 효율·관료제 축소를 민간 실행 감각으로 옮기려는 시도. Grokipedia도 Government Efficiency 항목을 핵심 정치 축으로 다룬다.",
-    en: "Attempt to apply builder execution to government efficiency—Grokipedia lists it as a core political theme.",
+    en: "He briefly co-led the Department of Government Efficiency (DOGE) in the U.S. federal government in 2025 alongside Vivek Ramaswamy before stepping down amid reported differences.",
+    ko: "2025년 미국 연방정부 Department of Government Efficiency(DOGE)를 Vivek Ramaswamy와 함께 잠시 공동 리드했다가, 보도된 이견 속에 물러났다. — Grokipedia, Elon Musk",
   },
   "doge-eo-2025": {
     pages: ["musk", "views"],
-    ko: "EO로 공식화된 효율 기구. 단기 특수고용 형태였더라도, ‘정부도 측정·삭감·자동화 대상’이라는 의제 설정 자체에 우호적 평가는 모인다.",
-    en: "EO formalizes efficiency vehicle. Even as short SGE tenure, agenda-setting—government as measurable, cuttable, automatable—wins praise from supporters.",
+    en: "…briefly co-led the Department of Government Efficiency (DOGE)… Government Efficiency and Bureaucracy is a listed topic under Views of Elon Musk.",
+    ko: "DOGE 공동 리드가 본문에 기술되고, Views 문서에 Government Efficiency and Bureaucracy 항목이 있다. — Grokipedia",
   },
   "doge-exit-2025": {
     pages: ["musk"],
-    ko: "이견 속 퇴장. 그럼에도 Grokipedia는 그를 기술·정치·문화에 막대한 영향력을 행사하는 인물로 남긴다. 미션 회사 집중으로의 회귀로 읽히는 쪽의 평가.",
-    en: "Exit amid differences—yet Grokipedia still frames immense influence across tech/politics. Friendly read: return of focus to mission companies.",
+    en: "…before stepping down amid reported differences. …making him a polarizing yet immensely influential figure in technology, business, politics, and culture.",
+    ko: "보도된 이견 속에 물러났다. 기술·사업·정치·문화에서 양극화되면서도 막대한 영향력을 지닌 인물로 기술된다. — Grokipedia, Elon Musk",
   },
   "tesla-comp-2025": {
-    pages: ["tesla", "musk", "awards"],
-    ko: "성과 연동 대형 보상은 장기 로보택시·Optimus 실행에 CEO를 묶는 거버넌스 장치로 지지 측에서 해석. 실행 인센티브 정렬.",
-    en: "Mega performance package as governance to lock CEO attention on robotaxi/Optimus execution—incentive alignment for multi-year buildout.",
+    pages: ["tesla", "musk"],
+    en: "Leadership roles and compensation is a dedicated Tesla subsection on Grokipedia’s Elon Musk page.",
+    ko: "Grokipedia Elon Musk 페이지 Tesla 아래에 Leadership roles and compensation 소절이 있다. — Grokipedia, Elon Musk",
   },
   "spacex-ipo-2026": {
     pages: ["spacex", "musk"],
-    ko: "민간 우주 챔피언의 공개 시장 이정표. 재사용·Starlink·유인 비행으로 쌓은 실적이 가치로 환산되는 순간. 다행성 미션에 대한 자본 시장의 인정.",
-    en: "Public-market milestone for the commercial space champion—reuse, Starlink, crew flight priced in. Capital-market recognition of multiplanetary ambition.",
+    en: "SpaceX: Continued Starship testing, Starlink expansion, and preparations for potential IPO. … Wealth milestones and public-company status of related holdings are discussed in wealth sections.",
+    ko: "SpaceX: Starship 시험·Starlink 확장·잠재적 IPO 준비가 서술된다. 관련 부의 이정표·상장 지위도 wealth 서술과 연결된다. — Grokipedia, Elon Musk",
   },
-  // detail-layer
   "tesla-ai-day-2021": {
     pages: ["tesla", "musk"],
-    ko: "Optimus/휴머노이드는 Grokipedia가 Tesla 미래 가치의 핵심으로 반복 강조하는 축. 물리 AI로 노동·생산을 재정의하려는 비전 공개.",
-    en: "Optimus/humanoid is repeatedly central to Tesla’s future value in Grokipedia—physical AI vision for labor and production.",
+    en: "Robotics and future concepts / Optimus sections; Optimus humanoid robots listed among Tesla future focus areas.",
+    ko: "Robotics and future concepts·Optimus 섹션. Tesla 미래 초점으로 Optimus 휴머노이드가 언급된다. — Grokipedia, Elon Musk",
   },
   "optimus-prototype-2022": {
-    pages: ["tesla"],
-    ko: "컨셉에서 하드웨어 실증으로. ‘말만 하는 비전’이 아니라 프로토타입으로 밀어붙이는 실행 문화.",
-    en: "From concept to hardware demos—execution culture that prototypes instead of only slideware.",
+    pages: ["tesla", "musk"],
+    en: "Optimus humanoid robots… central to longer-term Tesla product narrative on Grokipedia.",
+    ko: "Optimus 휴머노이드가 Tesla 장기 제품 서사의 중심으로 기술된다. — Grokipedia, Elon Musk",
   },
   "we-robot-cybercab-2024": {
     pages: ["tesla", "musk"],
-    ko: "Grokipedia: Cybercab을 스티어링 없는 자율차·Tesla 미래 비전의 중심으로 기술. 로보택시 네트워크의 하드웨어 선언.",
-    en: "Grokipedia: Cybercab as steering-wheel-free AV central to Tesla’s future—hardware declaration of robotaxi network.",
+    en: "Cybercab is a steering-wheel-free autonomous vehicle central to Tesla's future vision.",
+    ko: "Cybercab은 스티어링 휠이 없는 자율차로, Tesla 미래 비전의 중심으로 기술된다. — Grokipedia, Elon Musk",
   },
   "robotaxi-austin-2025": {
     pages: ["tesla", "musk"],
-    ko: "서비스 개시는 비전을 도로 위 현실로. 초기 제한 운행이라도 ‘자율 모빌리티 사업’의 스타트 라인—지지 측 평가의 핵심.",
-    en: "Service start moves vision onto real roads. Even limited ops are the start line of autonomy-as-business—core bull case.",
+    en: "Tesla: Focus on scaling robotaxi (Cybercab) production… Cybercab is a steering-wheel-free autonomous vehicle central to Tesla's future vision.",
+    ko: "Tesla 초점: 로보택시(Cybercab) 생산 스케일. Cybercab은 Tesla 미래 비전의 중심 자율차로 기술된다. — Grokipedia, Elon Musk",
   },
   "fsd-supervised": {
     pages: ["tesla"],
-    ko: "카메라 기반 자율 스택을 소프트웨어 업데이트로 개선하는 경로. 하드웨어 교체 없이 지능을 올리는 접근의 실험장.",
-    en: "Camera stack improved via software updates—path to raising intelligence without hardware rip-and-replace.",
+    en: "Autopilot/FSD and regulatory scrutiny is a listed Tesla subsection; FSD Beta launched in late 2020 as a Level 2 system requiring constant human supervision.",
+    ko: "Autopilot/FSD 및 규제 검토 소절. FSD 베타는 2020년 말 상시 인간 감독이 필요한 Level 2로 출시되었다고 기술된다. — Grokipedia, Elon Musk",
   },
   "giga-shanghai-2019": {
     pages: ["tesla"],
-    ko: "중국 기가로 글로벌 볼륨 확보. 제조 스케일이 미션(지속가능 에너지) 실현 속도임을 입증.",
-    en: "China volume hub—proves manufacturing scale is the speed of the sustainable-energy mission.",
+    en: "International Expansion under Tesla on Grokipedia (Gigafactory network and global production).",
+    ko: "Tesla International Expansion 소절에서 기가팩토리·글로벌 생산이 다뤄진다. — Grokipedia, Tesla / Elon Musk",
   },
   "giga-texas-2022": {
     pages: ["tesla"],
-    ko: "텍사스 허브는 Cybertruck·본사·로보택시 시험과 한 생태계. 실행 밀도를 한 지역에 모은 선택.",
-    en: "Texas hub clusters Cybertruck, HQ, robotaxi trials—density of execution in one ecosystem.",
+    en: "International Expansion / growth of manufacturing footprint (Texas Gigafactory in Tesla production geography).",
+    ko: "제조 footprint 확장·텍사스 기가팩토리 등 생산 지리. — Grokipedia, Tesla / Elon Musk",
   },
   "semi-deliveries": {
-    pages: ["tesla"],
-    ko: "장거리 트럭 전기화—탄소·연료비 구조가 큰 상용 영역으로 미션 확장.",
-    en: "Electrifying long-haul trucking—mission expands into high fuel-cost commercial segment.",
+    pages: ["tesla", "musk"],
+    en: "…and the Tesla Semi electric semi-truck with production ramping in the 2020s.",
+    ko: "2020년대 생산이 확대되는 Tesla Semi 전기 세미트럭이 핵심 제품 목록에 포함된다. — Grokipedia, Elon Musk",
   },
   "colossus-announce-2024": {
     pages: ["musk"],
-    ko: "컴퓨트 ‘기가팩토리’ 선언. 진실 추구 AI에 필요한 스케일을 인프라로 확보하려는 승부수.",
-    en: "Compute gigafactory declaration—infra bet required for truth-seeking AI at scale.",
+    en: "In 2025, xAI faced regulatory challenges over air permits for methane gas turbines at its Colossus data center in Memphis, Tennessee… (Colossus named as xAI’s Memphis compute facility).",
+    ko: "xAI의 멤피스 Colossus 데이터센터 메탄 가스터빈 대기 허가 관련 규제 이슈가 2025년 서술되며, Colossus가 멤피스 컴퓨트 시설로 명시된다. — Grokipedia, Elon Musk",
   },
   "colossus-online-2024": {
     pages: ["musk"],
-    ko: "수개월 내 가동은 실행 속도의 과시. 논란(전력·환경)과 별개로, 지지 측은 ‘불가능해 보이던 일정을 밀어붙인 빌더십’으로 평가.",
-    en: "Online in months is execution flex. Aside from power/environment fights, bulls credit builder speed against ‘impossible’ timelines.",
+    en: "Colossus data center in Memphis, Tennessee… (xAI compute infrastructure in Grokipedia’s AI / xAI coverage).",
+    ko: "테네시 멤피스 Colossus 데이터센터 — xAI 컴퓨트 인프라로 본문에 등장. — Grokipedia, Elon Musk",
   },
   "colossus-scale-2025": {
     pages: ["musk"],
-    ko: "GPU 스케일업은 모델 경쟁력의 전제. xAI를 선두권 컴퓨트 플레이어로 올리려는 연속 투자.",
-    en: "GPU scale-up is prerequisite for model competitiveness—continuous investment to put xAI in the compute lead pack.",
+    en: "xAI / Colossus regulatory and expansion coverage; integration of xAI with broader compute ambitions.",
+    ko: "xAI·Colossus 확장·규제 서술 및 컴퓨트 야심과의 연결. — Grokipedia, Elon Musk",
   },
   "grok-launch": {
     pages: ["musk"],
-    ko: "Grok은 진실 추구·덜 검열된 AI 어시스턴트 포지션. X 데이터와 결합한 제품 차별화.",
-    en: "Grok as truth-seeking, less-sanitized assistant—product differentiation via X data integration.",
+    en: "…deeper integration of its AI technologies, including Grok, into the social platform… evolving towards an integrated AI-social ecosystem.",
+    ko: "Grok을 포함한 AI 기술을 소셜 플랫폼에 더 깊게 통합하고, AI-소셜 통합 생태계로 진화한다고 기술된다. — Grokipedia, Elon Musk",
   },
   "twitter-stake-2022-apr": {
     pages: ["musk"],
-    ko: "지분 공시는 발언의 장 개혁을 위한 자본 개입의 시작. 이후 전량 인수로 연결.",
-    en: "Stake disclosure starts capital commitment to reshape the public square—path to full buyout.",
+    en: "Musk acquired Twitter in 2022… (acquisition process begins with public stake and bid path on Grokipedia).",
+    ko: "2022년 Twitter 인수 — 공개 지분·매수 경로가 인수 서술의 일부. — Grokipedia, Elon Musk",
   },
   "twitter-deal-close-2022-oct": {
-    pages: ["musk", "views"],
-    ko: "클로징은 자유 발언 플랫폼 실험의 실질 시작. 고통스러운 구조조정과 맞바꾼 소유권.",
-    en: "Close is the real start of the free-speech platform experiment—ownership bought with painful restructuring.",
+    pages: ["musk"],
+    en: "Musk acquired Twitter in 2022, rebranded it as X, and positioned it as a platform prioritizing free speech…",
+    ko: "2022년 Twitter 인수 후 X로 리브랜딩, 자유 발언을 우선하는 플랫폼으로 위치. — Grokipedia, Elon Musk",
   },
   "x-premium-ads": {
     pages: ["musk"],
-    ko: "유료 인증·광고 재편은 봇·스팸 감소와 지속 가능 매출 모델을 동시에 노린 조치로 우호 해석 가능.",
-    en: "Paid verification and ad reset can be read as dual attack on bots/spam and durable revenue.",
+    en: "Acquisition and changes at X sparked debates over content moderation and free speech (Grokipedia Controversies and Public Image).",
+    ko: "X 인수·변경이 콘텐츠 중재·자유 발언 논쟁을 촉발했다고 Controversies and Public Image에 기술된다. — Grokipedia, Elon Musk",
   },
   "starship-ift1-2023": {
     pages: ["spacex", "musk"],
-    ko: "화성·달 대량 수송을 위한 완전 재사용 시스템의 시험 캠페인 개시. 실패를 포함한 빠른 반복이 SpaceX DNA.",
-    en: "Opens full-reuse heavy transport test campaign for Moon/Mars—fast iteration including failure is SpaceX DNA.",
+    en: "SpaceX: Continued Starship testing… Starship Version 3… reusability and orbital refueling… (Starship flight-test campaign).",
+    ko: "Starship 시험 지속·재사용·궤도 급유 등 Starship 비행 시험 캠페인이 서술된다. — Grokipedia, Elon Musk / SpaceX",
   },
   "crew-1-2020": {
     pages: ["spacex"],
-    ko: "정규 유인 운용—시험이 아닌 루틴. 민간 승무원 수송이 ‘가능’에서 ‘일상’으로.",
-    en: "Operational crew flights—not demos. Private crew transport moves from possible to routine.",
+    en: "Commercial crew / ISS logistics milestones under SpaceX commercial operations.",
+    ko: "SpaceX 상업 운영 하 유인·ISS 물류 이정표. — Grokipedia, SpaceX",
   },
   "starlink-commercial-2021": {
-    pages: ["spacex"],
-    ko: "상용 롤아웃으로 지구 연결·재난·오지 인터넷 가치 실현. 다행성 미션을 먹여 살리는 현금 엔진.",
-    en: "Commercial rollout delivers connectivity value—cash engine that feeds multiplanetary goals.",
+    pages: ["spacex", "musk"],
+    en: "Under Musk's direction, Starlink deploys thousands of small satellites in low Earth orbit for global broadband, targeting remote areas.",
+    ko: "Starlink: 저궤도 소형 위성 수천 기, 원격 지역 대상 글로벌 광대역. — Grokipedia, Elon Musk",
   },
   "falcon9-block5": {
     pages: ["spacex"],
-    ko: "재사용 최적화 버전으로 발사 공장화. 항공우주를 소프트웨어 배포 주기에 가깝게 만든 하드웨어 세대.",
-    en: "Reuse-optimized block turns launch into factory cadence—hardware generation closer to software release cycles.",
+    en: "Falcon 9 first-stage recovery… iterative software and hardware improvements; reusable rocketry milestones.",
+    ko: "Falcon 9 1단 회수·반복적 소프트·하드웨어 개선 등 재사용 로켓 이정표. — Grokipedia, Elon Musk",
   },
   "artemis-hls": {
     pages: ["spacex", "musk"],
-    ko: "NASA 달 착륙 파트너—민간이 심우주 유인 인프라의 핵심 공급자가 된 상징.",
-    en: "NASA lunar lander partner—symbol that commercial firms supply core deep-space human infrastructure.",
+    en: "Interplanetary Transport and Lunar Ambitions / NASA partnership coverage on Grokipedia SpaceX and Elon Musk pages.",
+    ko: "행성 간 수송·달 야심 및 NASA 파트너십 관련 서술. — Grokipedia, SpaceX / Elon Musk",
   },
   "richest-2021": {
     pages: ["musk", "awards"],
-    ko: "시총 급등은 EV·에너지 전환에 대한 시장 베팅의 반영. 지지 측은 ‘미션 정렬된 부의 형성’으로 평가.",
-    en: "Wealth spike reflects market bet on EV/energy transition—bulls call it mission-aligned wealth creation.",
+    en: "As of late April 2026, Musk is the world's richest person with a net worth estimated at approximately $785 billion… having reached earlier peaks exceeding $839 billion. Wealth experiences significant fluctuations primarily driven by Tesla… and SpaceX.",
+    ko: "2026년 4월 말 기준 세계 최고 부호로, 순자산 약 7850억 달러(포브스 실시간 등), 이전 고점 8390억 달러 초과. 부의 변동은 주로 Tesla 주가와 SpaceX 가치에 연동. — Grokipedia, Elon Musk",
   },
   "trillionaire-2026": {
     pages: ["musk", "spacex"],
-    ko: "우주·AI 인프라 가치가 개인 순자산 기록으로 나타난 상징. 실행 스케일이 문명 인프라 급임을 시사.",
-    en: "Personal NW record as symbol of space/AI infra value—execution scale at civilizational infrastructure level.",
+    en: "Wealth Milestones: Became the first person to reach $400 billion (2024), $500 billion (late 2025), $600–700 billion (December 2025), and crossed $800 billion in early 2026… preparations for potential IPO (SpaceX).",
+    ko: "부 이정표: 2024년 4000억, 2025년 말 5000억, 2025년 12월 6000–7000억, 2026년 초 8000억 달러 돌파 등이 기술되고, SpaceX 잠재적 IPO 준비가 언급된다. — Grokipedia, Elon Musk",
   },
   "openai-lawsuit-2024": {
     pages: ["musk"],
-    ko: "설립 취지(인류·안전) 이탈 주장의 법적 표현. 우호 시각: AGI 거버넌스에 대한 원칙 고수.",
-    en: "Legal expression of founding-purpose concerns—friendly read: holding the line on AGI governance principles.",
+    en: "OpenAI founding as nonprofit for safe AGI… later for-profit subsidiary discussions and control/equity disputes are detailed on Grokipedia.",
+    ko: "안전한 AGI를 위한 비영리 설립과, 이후 영리 자회사·지분·통제 관련 이견이 상세히 기술된다. — Grokipedia, Elon Musk",
   },
   "neuralink-fda": {
     pages: ["musk"],
-    ko: "규제 경로 통과는 의료 기기로서의 진지함. 공상과학이 임상 프로토콜로 진입.",
-    en: "Regulatory path signals medical seriousness—sci-fi entering clinical protocol reality.",
+    en: "Human Trials and Progress under Neuralink; implantable brain-machine interfaces for medical and enhancement uses.",
+    ko: "Neuralink Human Trials and Progress. 의료·증강용 이식형 BMI. — Grokipedia, Elon Musk",
   },
   "zip2-sorkin": {
     pages: ["musk"],
-    ko: "초기 거버넌스 갈등은 창업자가 이사회 정치를 배우는 값비싼 수업. 이후 지배구조에 더 집착하게 된 원형 경험.",
-    en: "Early board conflict as costly education in governance—prototype experience behind later control focus.",
+    en: "Zip2: Investments, Expansion, and Leadership Transition (1996); Merger Attempt and Acquisition (1998–1999).",
+    ko: "Zip2: 투자·확장·리더십 전환(1996), 합병 시도·인수(1998–1999) 소절. — Grokipedia, Elon Musk",
   },
   "paypal-ousted": {
     pages: ["musk"],
-    ko: "CEO 교체에도 지분·미션 학습은 남았다. 실패·축출 후에도 더 큰 산업으로 자본을 재배치한 회복력.",
-    en: "Even after CEO transition, equity and lessons remain—resilience redeploying capital into harder industries.",
+    en: "X.com/PayPal leadership transitions after the Confinity merger are part of the PayPal chronology on Grokipedia.",
+    ko: "Confinity 합병 이후 X.com/PayPal 리더십 전환이 PayPal 연대기에 포함된다. — Grokipedia, Elon Musk",
   },
   "falcon1-failures": {
     pages: ["spacex", "musk"],
-    ko: "세 번의 실패 없이 네 번째 궤도 성공도 없다. Grokipedia가 강조하는 실패 내성·반복 설계 문화의 고전적 사례.",
-    en: "No fourth-flight orbit without three failures—classic Grokipedia theme: failure-tolerant iterative engineering.",
+    en: "…flat communication structure… repeated failure-feedback-correction loops… as demonstrated in SpaceX's early rocket development where initial explosions informed successive improvements leading to the fourth successful Falcon 1 launch.",
+    ko: "초기 폭발이 연속 개선에 반영되어 네 번째 Falcon 1 성공으로 이어진 실패-피드백-수정 루프가 예시로 든다. — Grokipedia, Elon Musk",
   },
   "tesla-near-death-2008": {
     pages: ["tesla", "musk"],
-    ko: "파산 직전에서 살아남아 글로벌 EV 리더로. 위기 구간 자체가 리더십·집념의 증명으로 우호 평가된다.",
-    en: "Near-death to global EV leader—crisis period itself is proof of leadership and will, in the bull reading.",
+    en: "Early leadership transition and crisis (2007-2008); Financial recovery and funding (2008-2013).",
+    ko: "초기 리더십 전환과 위기(2007–2008); 재무 회복과 자금(2008–2013). — Grokipedia, Elon Musk",
   },
 };
 
 (function applyGrokipedia() {
   const G = window.GROKIPEDIA;
-  const A = window.GROKIPEDIA_ASSESS || {};
+  const C = window.GROKIPEDIA_CITE || {};
   if (!window.TIMELINE_EVENTS || !G) return;
 
   function sourcesFor(pages) {
@@ -466,28 +465,29 @@ window.GROKIPEDIA_ASSESS = {
   }
 
   window.TIMELINE_EVENTS.forEach((ev) => {
-    const a = A[ev.id];
-    const pages = a ? a.pages : ["musk"];
-    // Primary sources → Grokipedia only (as requested)
+    const c = C[ev.id];
+    const pages = c ? c.pages : ["musk"];
     ev.sources = sourcesFor(pages);
-    if (a) {
-      ev.assessment = { ko: a.ko, en: a.en };
+    if (c) {
+      ev.citation = { ko: c.ko, en: c.en };
     } else {
-      ev.assessment = {
-        ko: G.mission.ko + " 이 이벤트는 그 미션 경로 위의 실행 단위로 평가할 수 있다.",
-        en: G.mission.en + " This event is best read as an execution unit on that mission path.",
+      ev.citation = {
+        ko: G.missionQuote.ko,
+        en: G.missionQuote.en + " — Grokipedia, Elon Musk",
       };
     }
+    // remove legacy field if present
+    delete ev.assessment;
   });
 
-  // Merge assessment into DEEP_COPY if present
   if (window.DEEP_COPY) {
-    Object.keys(A).forEach((id) => {
+    Object.keys(C).forEach((id) => {
       if (!window.DEEP_COPY[id]) window.DEEP_COPY[id] = {};
       const d = window.DEEP_COPY[id];
       ["ko", "en"].forEach((lang) => {
         if (!d[lang]) d[lang] = {};
-        d[lang].assessment = A[id][lang];
+        d[lang].citation = C[id][lang];
+        delete d[lang].assessment;
       });
     });
   }

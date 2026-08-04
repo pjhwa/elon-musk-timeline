@@ -598,16 +598,16 @@
     const bullets = deep && deep.bullets ? deep.bullets : null;
     const bodyText = deep && deep.body ? deep.body : L.detail;
     const contextText = deep && deep.context ? deep.context : null;
-    const assessmentText =
-      (ev.assessment && (ev.assessment[state.lang] || ev.assessment.en || ev.assessment.ko)) ||
-      (deep && deep.assessment) ||
+    const citationText =
+      (ev.citation && (ev.citation[state.lang] || ev.citation.en || ev.citation.ko)) ||
+      (deep && deep.citation) ||
       null;
 
-    const assessmentHtml = assessmentText
-      ? `<div class="drawer-section assessment-box">
-          <h3 class="sources-title">${escapeHtml(I.t(state.lang, "assessment"))}</h3>
-          <p class="assessment-note">${escapeHtml(I.t(state.lang, "assessmentNote"))}</p>
-          <p class="drawer-detail assessment-body">${escapeHtml(assessmentText)}</p>
+    const citationHtml = citationText
+      ? `<div class="drawer-section citation-box">
+          <h3 class="sources-title">${escapeHtml(I.t(state.lang, "citation"))}</h3>
+          <p class="citation-note">${escapeHtml(I.t(state.lang, "citationNote"))}</p>
+          <blockquote class="citation-body">${escapeHtml(citationText)}</blockquote>
         </div>`
       : "";
 
@@ -670,7 +670,7 @@
       </div>
       ${wealthHtml}
       <p class="drawer-summary">${escapeHtml(L.summary)}</p>
-      ${assessmentHtml}
+      ${citationHtml}
       ${factsHtml}
       ${contextHtml}
       <div class="drawer-section">

@@ -4,11 +4,11 @@
 window.TIMELINE_EN = {
   meta: {
     title: "Elon Musk: A Life Timeline",
-    subtitle: "Grokipedia-based timeline · facts + favorable assessments",
+    subtitle: "Grokipedia-based timeline · facts + citations",
     spine:
       "Migration & education → Internet capital → Space + EVs in parallel → Industrial scale → Platform, AI & politics",
     methodology:
-      "Primary source is Grokipedia (xAI encyclopedia). Dates/acts follow Grokipedia and public records; each card’s Assessment is a favorable reading in Grokipedia’s framing—engineering breakthroughs, multiplanetary survival, sustainable energy, free speech, and truth-seeking AI.",
+      "Primary source is Grokipedia (https://grokipedia.com). Fact summaries are paired with Grokipedia citations (English page wording or a Korean rendering of the same passages).",
   },
   events: {
     "birth-1971": {

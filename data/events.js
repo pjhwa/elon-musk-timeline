@@ -6,12 +6,12 @@
  */
 window.TIMELINE_META = {
   title: "일론 머스크 일대기",
-  subtitle: "Grokipedia 기반 타임라인 · 사실 + 우호적 평가",
+  subtitle: "Grokipedia 기반 타임라인 · 사실 + 인용",
   spine:
     "이주·교육 → 인터넷 자본 → 우주·전기차 병행 → 산업 스케일 → 플랫폼·AI·정치",
   lastVerified: "2026-08-04",
   methodology:
-    "1차 출처는 Grokipedia(xAI 백과)입니다. 날짜·행위는 Grokipedia 서술과 공개 기록에 맞추고, 각 카드의 「평가」는 Grokipedia가 제시하는 엔지니어링·다행성·지속가능 에너지·자유 발언 프레이밍에 따른 우호적 해석입니다.",
+    "1차 출처는 Grokipedia(https://grokipedia.com)입니다. 날짜·행위 요약과 함께, 각 카드에 Grokipedia 본문 인용(또는 동일 내용의 한국어 요지)을 둡니다.",
 };
 
 window.TIMELINE_EVENTS = [

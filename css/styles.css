@@ -1345,24 +1345,27 @@ html[data-theme="light"] .method-box {
   line-height: 1.5;
 }
 
-/* Grokipedia assessment block */
-.assessment-box {
+/* Grokipedia citation block */
+.citation-box {
   padding: 0.85rem 1rem;
   border-radius: 12px;
   border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
   background: color-mix(in srgb, var(--accent) 10%, var(--bg-card));
 }
-.assessment-note {
+.citation-note {
   margin: 0 0 0.5rem;
   font-size: 0.72rem;
   font-family: var(--mono);
   color: var(--text-dim);
 }
-.assessment-body {
-  margin: 0 !important;
-  color: var(--text) !important;
-  font-size: 0.9rem !important;
-  line-height: 1.6 !important;
+.citation-body {
+  margin: 0;
+  padding: 0 0 0 0.75rem;
+  border-left: 3px solid var(--accent);
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.65;
+  font-style: normal;
 }
 .source-provider {
   margin: 0.5rem 0 1rem;
