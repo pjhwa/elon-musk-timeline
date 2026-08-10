@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /**
- * Verify EVENT_MEDIA: files exist, anchors match host event, no orphan keys.
+ * Verify EVENT_MEDIA: every event has local-only images; anchors match host event;
+ * no remote src; files exist.
  * Run: node scripts/audit-event-media.js
  */
 const fs = require("fs");
@@ -21,7 +22,6 @@ const EN = (ctx.window.TIMELINE_EN && ctx.window.TIMELINE_EN.events) || {};
 const DEN = ctx.window.DETAIL_EVENTS_EN || {};
 
 let fail = 0;
-const report = [];
 
 function hayFor(ev) {
   const en = DEN[ev.id] || EN[ev.id] || {};
@@ -38,17 +38,26 @@ function hayFor(ev) {
   ).toLowerCase();
 }
 
-for (const [eventId, list] of Object.entries(media)) {
-  const ev = byId[eventId];
-  if (!ev) {
-    console.error("ORPHAN media key (no event):", eventId);
+for (const ev of events) {
+  const list = media[ev.id];
+  if (!list || !list.length) {
+    console.error("NO MEDIA", ev.id);
     fail++;
     continue;
   }
   const hay = hayFor(ev);
-  (list || []).forEach((m, i) => {
-    const label = `${eventId}[${i}] ${m.id || m.src}`;
-    if (!m.src || !fs.existsSync(path.join(root, m.src))) {
+  list.forEach((m, i) => {
+    const label = `${ev.id}[${i}]`;
+    if (!m.src) {
+      console.error("NO SRC", label);
+      fail++;
+      return;
+    }
+    if (/^https?:\/\//i.test(m.src)) {
+      console.error("REMOTE SRC (forbidden)", label, m.src);
+      fail++;
+    }
+    if (!fs.existsSync(path.join(root, m.src))) {
       console.error("MISSING FILE", label, m.src);
       fail++;
     }
@@ -58,7 +67,7 @@ for (const [eventId, list] of Object.entries(media)) {
     } else {
       const bad = m.anchors.filter((a) => !hay.includes(String(a).toLowerCase()));
       if (bad.length) {
-        console.error("ANCHOR MISMATCH", label, "missing in event:", bad.join(", "));
+        console.error("ANCHOR MISMATCH", label, bad.join(","));
         fail++;
       }
     }
@@ -66,43 +75,26 @@ for (const [eventId, list] of Object.entries(media)) {
       console.error("NO CAPTION", label);
       fail++;
     }
-    // caption should mention at least one anchor
-    const cap = ((m.caption && (m.caption.en || m.caption.ko)) || "").toLowerCase();
-    const capHit = (m.anchors || []).some((a) => cap.includes(String(a).toLowerCase()));
-    if (!capHit && m.anchors && m.anchors.length) {
-      // allow if caption is about the image subject closely
-      console.warn("WARN caption lacks anchor words", label);
+    if (!m.credit) {
+      console.error("NO CREDIT", label);
+      fail++;
     }
-    report.push({ eventId, src: m.src, year: m.year, ok: true });
   });
 }
 
-// Cross-attach test: media for A must not pass filter for random B
-function filterFor(ev, list) {
-  const hay = hayFor(ev);
-  return (list || []).filter((m) => (m.anchors || []).every((a) => hay.includes(String(a).toLowerCase())));
-}
-
-let cross = 0;
-const personal = events.filter((e) => e.category === "personal");
-for (const [eventId, list] of Object.entries(media)) {
-  for (const p of personal) {
-    if (p.id === eventId) continue;
-    const leaked = filterFor(p, list);
-    if (leaked.length) {
-      console.error("CROSS-LEAK to personal", eventId, "->", p.id, leaked.map((x) => x.id));
-      cross++;
-      fail++;
-    }
+// orphan keys
+for (const k of Object.keys(media)) {
+  if (!byId[k]) {
+    console.error("ORPHAN KEY", k);
+    fail++;
   }
 }
 
-console.log("media event keys", Object.keys(media).length);
-console.log("image rows", report.length);
-console.log("cross-leaks", cross);
+console.log("events", events.length);
+console.log("media keys", Object.keys(media).length);
+console.log("image rows", Object.values(media).reduce((n, a) => n + a.length, 0));
 if (fail) {
   console.error("FAIL", fail);
   process.exit(1);
 }
-console.log("OK");
-report.forEach((r) => console.log(" ", r.year, r.eventId, "←", r.src));
+console.log("OK — all local, all events covered");

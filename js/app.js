@@ -569,17 +569,23 @@
         const cap = (m.caption && (m.caption[state.lang] || m.caption.en || m.caption.ko)) || "";
         const credit = m.credit || "";
         const year = m.year ? `<span class="media-year">${m.year}</span>` : "";
-        const link = m.sourceUrl
-          ? `<a class="media-credit" href="${escapeHtml(m.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(credit || (ko ? "출처" : "Source"))}</a>`
-          : credit
-            ? `<span class="media-credit">${escapeHtml(credit)}</span>`
-            : "";
+        const creditLine = credit
+          ? m.sourceUrl
+            ? `<p class="media-credit"><span>${ko ? "출처" : "Source"}:</span> ${escapeHtml(credit)}${
+                m.license ? ` · ${escapeHtml(m.license)}` : ""
+              } · <a href="${escapeHtml(m.sourceUrl)}" target="_blank" rel="noopener noreferrer">${
+                ko ? "원본 기록" : "original record"
+              }</a></p>`
+            : `<p class="media-credit"><span>${ko ? "출처" : "Source"}:</span> ${escapeHtml(credit)}${
+                m.license ? ` · ${escapeHtml(m.license)}` : ""
+              }</p>`
+          : "";
         return `<figure class="event-media-figure">
           <img src="${escapeHtml(m.src)}" alt="${escapeHtml(cap.slice(0, 120))}" loading="lazy" decoding="async" />
           <figcaption>
             ${year}
             <p class="media-caption">${escapeHtml(cap)}</p>
-            ${link}
+            ${creditLine}
           </figcaption>
         </figure>`;
       })
