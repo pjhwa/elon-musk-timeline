@@ -46,6 +46,7 @@ elon-musk-timeline/
 - **드릴다운 깊이**
   - 기본(Auto): **핵심 P0만** (~34)
   - 시대 또는 분야 클릭: **P0+P1+P2 상세** (X 첫 게시~바이럴·철학 발언, 연애·결혼, Trump·정치 아크, Optimus/Colossus 등)
+  - **이벤트 연동 밈/아이콘 이미지** (`assets/memes` + `data/event-media.js`) — 해당 카드에만 표시, 앵커 검증
   - 수동 override: Headline / Detail
 - **시기별 순자산 추정** 차트 (Forbes 등 공개 스냅샷, 로그형 막대)
 - 카드 클릭 → 상세 + Tier A/B 출처 + 해당 연도 자산 힌트

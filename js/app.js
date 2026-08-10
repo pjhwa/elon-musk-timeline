@@ -494,7 +494,26 @@
       const p = document.createElement("p");
       p.textContent = L.summary;
 
-      btn.append(metaRow, h3, p);
+      const media = getEventMedia(ev);
+      if (media[0]) {
+        const thumb = document.createElement("div");
+        thumb.className = "card-media-thumb";
+        const img = document.createElement("img");
+        img.src = media[0].src;
+        img.alt = "";
+        img.loading = "lazy";
+        img.decoding = "async";
+        thumb.appendChild(img);
+        if (media.length > 1) {
+          const more = document.createElement("span");
+          more.className = "card-media-count";
+          more.textContent = "+" + (media.length - 1);
+          thumb.appendChild(more);
+        }
+        btn.append(metaRow, h3, thumb, p);
+      } else {
+        btn.append(metaRow, h3, p);
+      }
       btn.addEventListener("click", () => openDrawer(ev.id));
 
       li.append(dot, btn);
@@ -522,23 +541,304 @@
     return pack[state.lang] || pack.en || pack.ko || null;
   }
 
+  /**
+   * Images bound to this event only. Rejects assets whose anchors don't match
+   * the event id/title (prevents Starman on Amber Heard, etc.).
+   */
+  function getEventMedia(ev) {
+    const list = (window.EVENT_MEDIA && window.EVENT_MEDIA[ev.id]) || [];
+    if (!list.length) return [];
+    const L = I.localizeEvent(ev, "en");
+    const hay = (ev.id + " " + (L.title || "") + " " + (L.summary || "") + " " + (ev.title || "")).toLowerCase();
+    return list.filter((m) => {
+      if (!m || !m.src) return false;
+      const anchors = m.anchors || [];
+      if (!anchors.length) return false;
+      // every anchor should appear in event identity (not just caption)
+      const ok = anchors.every((a) => hay.includes(String(a).toLowerCase()));
+      return ok;
+    });
+  }
+
+  function mediaGalleryHtml(ev) {
+    const items = getEventMedia(ev);
+    if (!items.length) return "";
+    const ko = state.lang === "ko";
+    const figures = items
+      .map((m) => {
+        const cap = (m.caption && (m.caption[state.lang] || m.caption.en || m.caption.ko)) || "";
+        const credit = m.credit || "";
+        const year = m.year ? `<span class="media-year">${m.year}</span>` : "";
+        const link = m.sourceUrl
+          ? `<a class="media-credit" href="${escapeHtml(m.sourceUrl)}" target="_blank" rel="noopener noreferrer">${escapeHtml(credit || (ko ? "출처" : "Source"))}</a>`
+          : credit
+            ? `<span class="media-credit">${escapeHtml(credit)}</span>`
+            : "";
+        return `<figure class="event-media-figure">
+          <img src="${escapeHtml(m.src)}" alt="${escapeHtml(cap.slice(0, 120))}" loading="lazy" decoding="async" />
+          <figcaption>
+            ${year}
+            <p class="media-caption">${escapeHtml(cap)}</p>
+            ${link}
+          </figcaption>
+        </figure>`;
+      })
+      .join("");
+    return `<div class="drawer-section event-media-section">
+      <h3 class="sources-title">${ko ? "관련 이미지·밈" : "Related image / meme"}</h3>
+      <div class="event-media-gallery">${figures}</div>
+    </div>`;
+  }
+
+  /**
+   * Event presentation kinds — each kind controls which drawer modules appear.
+   * Prevents industrial/wealth/era noise on personal, speech, edu cards.
+   */
+  function getEventKind(ev) {
+    const cat = ev.category;
+    if (cat === "personal") return "personal";
+    if (cat === "life") return "life";
+    if (cat === "edu") return "edu";
+    if (cat === "politics") return "politics";
+    if (cat === "media") {
+      // Platform ownership / product vs speech-meme-philosophy posts
+      const platformIds =
+        /^(twitter-2022|x-rebrand-2023|twitter-stake|twitter-deal-close|x-premium)/i;
+      if (platformIds.test(ev.id)) return "media-platform";
+      return "media-speech";
+    }
+    // tesla / spacex / company / ai
+    return "venture";
+  }
+
+  function getDrawerProfile(kind) {
+    const ko = state.lang === "ko";
+    const profiles = {
+      personal: {
+        kindLabel: ko ? "개인사" : "Personal",
+        showWealth: false,
+        showEra: false,
+        showCitation: true, // only if relevant (gate below)
+        showContext: true,
+        contextTitle: ko ? "관계 맥락" : "Relationship context",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 개인사" : "Related personal",
+        relatedLimit: 5,
+        showSecondaryDetail: false,
+      },
+      life: {
+        kindLabel: ko ? "생애" : "Life",
+        showWealth: false,
+        showEra: false,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "생애 맥락" : "Life context",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 생애" : "Related life",
+        relatedLimit: 5,
+        showSecondaryDetail: false,
+      },
+      edu: {
+        kindLabel: ko ? "교육" : "Education",
+        showWealth: false,
+        showEra: false,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "교육 경로" : "Education path",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 교육·이주" : "Related education",
+        relatedLimit: 5,
+        showSecondaryDetail: false,
+      },
+      politics: {
+        kindLabel: ko ? "정치" : "Politics",
+        showWealth: false,
+        showEra: true,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "정치 아크" : "Political arc",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 정치·미디어" : "Related politics",
+        relatedLimit: 6,
+        showSecondaryDetail: true,
+      },
+      "media-speech": {
+        kindLabel: ko ? "발언·밈" : "Speech / meme",
+        showWealth: false,
+        showEra: false,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "발언 맥락" : "Speech context",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 발언·미디어" : "Related posts",
+        relatedLimit: 6,
+        showSecondaryDetail: false,
+      },
+      "media-platform": {
+        kindLabel: ko ? "플랫폼" : "Platform",
+        showWealth: true,
+        showEra: true,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "플랫폼 맥락" : "Platform context",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세" : "Detail",
+        relatedTitle: ko ? "관련 미디어" : "Related media",
+        relatedLimit: 6,
+        showSecondaryDetail: true,
+      },
+      venture: {
+        kindLabel: ko ? "사업·기술" : "Venture",
+        showWealth: true,
+        showEra: true,
+        showCitation: true,
+        showContext: true,
+        contextTitle: ko ? "구조적 맥락" : "Structural context",
+        factsTitle: ko ? "핵심 사실" : "Key facts",
+        detailTitle: ko ? "상세 설명" : "In depth",
+        relatedTitle: ko ? "관련 이벤트" : "Related events",
+        relatedLimit: 6,
+        showSecondaryDetail: true,
+      },
+    };
+    return profiles[kind] || profiles.venture;
+  }
+
+  /** Suppress citations that don't share topical anchors with the card. */
+  function isCitationRelevant(ev, citeText) {
+    if (!citeText || !String(citeText).trim()) return false;
+    const hay = String(citeText).toLowerCase();
+
+    // Global mission blurb is only valid for a few portfolio-overview cards
+    if (/existential challenges for humanity/i.test(hay)) {
+      return ev.id === "spacex-2002" || ev.id === "xai-2023";
+    }
+
+    // Strong pass: any non-numeric id token appears in the citation
+    const idTokens = String(ev.id)
+      .split(/[-_]/)
+      .filter((p) => p.length >= 3 && !/^\d+$/.test(p))
+      .map((p) => p.toLowerCase());
+    if (idTokens.some((t) => hay.includes(t))) return true;
+
+    const anchors = new Set(idTokens);
+    const EXTRA = {
+      personal: [
+        "marriage",
+        "wife",
+        "divorce",
+        "grimes",
+        "heard",
+        "riley",
+        "justine",
+        "zilis",
+        "child",
+        "wilson",
+        "married",
+      ],
+      "sec-2018": ["sec", "securities", "funding", "tweet", "chair"],
+      "xcom-1999": ["x.com", "paypal", "financial", "founded"],
+      "x-premium-ads": ["advertis", "verification", "revenue", "monetiz", "premium"],
+      "doge-exit-2025": ["doge", "efficiency", "stepping", "government"],
+      "doge-eo-2025": ["doge", "efficiency", "government"],
+      "ebay-paypal-2002": ["ebay", "paypal", "acquisit"],
+      "tesla-founded-2003": ["eberhard", "tarpenning", "founded", "incorporat", "2003"],
+    };
+    (EXTRA[ev.id] || []).forEach((a) => anchors.add(a.toLowerCase()));
+    if (ev.category === "personal") EXTRA.personal.forEach((a) => anchors.add(a));
+
+    const L = I.localizeEvent(ev, "en");
+    (L.title + " " + L.summary)
+      .toLowerCase()
+      .replace(/[^a-z0-9가-힣\s]/g, " ")
+      .split(/\s+/)
+      .filter((w) => w.length >= 4)
+      .forEach((w) => anchors.add(w));
+
+    ["elon", "musk", "with", "from", "that", "this", "after", "before", "public", "first", "year", "years", "about"].forEach(
+      (s) => anchors.delete(s)
+    );
+
+    let hits = 0;
+    anchors.forEach((a) => {
+      if (a.length >= 3 && hay.includes(a)) hits++;
+    });
+    if (citeText.length < 160) return hits >= 1;
+    return hits >= 2;
+  }
+
   function relatedEvents(ev, limit) {
     const n = limit || 5;
+    const affinity = {
+      edu: ["edu", "life"],
+      life: ["life", "edu"],
+      personal: ["personal"],
+      politics: ["politics", "media"],
+      media: ["media", "politics"],
+      ai: ["ai"],
+      spacex: ["spacex"],
+      tesla: ["tesla"],
+      company: ["company"],
+    };
+    const strict = new Set(["personal", "politics", "edu", "life"]);
+    const allowed = new Set(affinity[ev.category] || [ev.category]);
+    const kind = getEventKind(ev);
+
     return events
-      .filter(
-        (e) =>
-          e.id !== ev.id &&
-          (e.era === ev.era || e.category === ev.category) &&
-          Math.abs(e.year - ev.year) <= 4
-      )
-      .sort((a, b) => {
-        const da = Math.abs(a.year - ev.year);
-        const db = Math.abs(b.year - ev.year);
-        if (da !== db) return da - db;
-        const po = { P0: 0, P1: 1, P2: 2 };
-        return po[a.priority] - po[b.priority];
+      .filter((e) => e.id !== ev.id)
+      .map((e) => {
+        const yd = Math.abs((e.year || 0) - (ev.year || 0));
+        const sameCat = e.category === ev.category;
+        const aff = allowed.has(e.category);
+        let score = 0;
+
+        if (sameCat) score += 16;
+        else if (aff) score += 7;
+        else score -= 10;
+
+        if (e.category === "personal" && ev.category !== "personal") score -= 50;
+        if (ev.category === "personal" && e.category !== "personal") score -= 50;
+
+        // media-speech should prefer other speech cards over pure politics
+        if (kind === "media-speech") {
+          const otherKind = getEventKind(e);
+          if (otherKind === "media-speech") score += 5;
+          if (otherKind === "media-platform") score += 2;
+          if (e.category === "politics") score -= 2;
+        }
+        if (kind === "media-platform") {
+          const otherKind = getEventKind(e);
+          if (otherKind === "media-platform") score += 5;
+        }
+
+        if (strict.has(ev.category) && !aff) score -= 20;
+
+        if (e.era === ev.era) score += 2;
+        if (yd <= 2) score += 6;
+        else if (yd <= 4) score += 4;
+        else if (yd <= 8) score += 2;
+        else if (sameCat && yd <= 25) {
+          const sparse = ev.category === "life" || ev.category === "edu" || ev.category === "personal";
+          score += sparse ? 4 : -8;
+        } else if (!sameCat) score -= 4;
+
+        if (e.priority === ev.priority) score += 1;
+        return { e, score, yd };
       })
-      .slice(0, n);
+      .filter((x) => x.score >= 10)
+      .sort((a, b) => {
+        if (b.score !== a.score) return b.score - a.score;
+        if (a.yd !== b.yd) return a.yd - b.yd;
+        const po = { P0: 0, P1: 1, P2: 2 };
+        return po[a.e.priority] - po[b.e.priority];
+      })
+      .slice(0, n)
+      .map((x) => x.e);
   }
 
   function openDrawer(id) {
@@ -553,6 +853,8 @@
 
     const L = I.localizeEvent(ev, state.lang);
     const deep = getDeep(ev);
+    const kind = getEventKind(ev);
+    const profile = getDrawerProfile(kind);
     els.drawerTitle.textContent = L.title;
 
     const sourcesHtml = (ev.sources || [])
@@ -573,12 +875,13 @@
     const hasPrev = idx > 0;
     const hasNext = idx >= 0 && idx < state.filtered.length - 1;
 
+    // —— Wealth: only venture / media-platform ——
     const maxW = Math.max(...wealth.map((x) => x.valueUsd), 1);
     const w =
       wealth.find((x) => x.year === ev.year) ||
       wealth.filter((x) => x.year <= ev.year).sort((a, b) => b.year - a.year)[0];
     let wealthHtml = "";
-    if (w) {
+    if (profile.showWealth && w) {
       const peakShare = pctOfPeak(w.valueUsd, maxW);
       const baseline = wealth.find((x) => x.year === 2002)?.valueUsd || 1;
       const vs = formatMultiple(baseline, w.valueUsd);
@@ -597,11 +900,17 @@
 
     const bullets = deep && deep.bullets ? deep.bullets : null;
     const bodyText = deep && deep.body ? deep.body : L.detail;
-    const contextText = deep && deep.context ? deep.context : null;
-    const citationText =
-      (ev.citation && (ev.citation[state.lang] || ev.citation.en || ev.citation.ko)) ||
-      (deep && deep.citation) ||
-      null;
+    const contextText = profile.showContext && deep && deep.context ? deep.context : null;
+
+    // —— Citation: profile + topical relevance gate ——
+    let citationText = null;
+    if (profile.showCitation) {
+      const raw =
+        (ev.citation && (ev.citation[state.lang] || ev.citation.en || ev.citation.ko)) ||
+        (deep && deep.citation) ||
+        null;
+      if (raw && isCitationRelevant(ev, raw)) citationText = raw;
+    }
 
     const citationHtml = citationText
       ? `<div class="drawer-section citation-box">
@@ -613,22 +922,22 @@
 
     const factsHtml = bullets
       ? `<div class="drawer-section">
-          <h3 class="sources-title">${state.lang === "ko" ? "핵심 사실" : "Key facts"}</h3>
+          <h3 class="sources-title">${escapeHtml(profile.factsTitle)}</h3>
           <ul class="drawer-facts">${bullets.map((b) => `<li>${escapeHtml(b)}</li>`).join("")}</ul>
         </div>`
       : "";
 
     const contextHtml = contextText
       ? `<div class="drawer-section context-box">
-          <h3 class="sources-title">${state.lang === "ko" ? "구조적 맥락" : "Structural context"}</h3>
+          <h3 class="sources-title">${escapeHtml(profile.contextTitle)}</h3>
           <p class="drawer-detail">${escapeHtml(contextText)}</p>
         </div>`
       : "";
 
-    const related = relatedEvents(ev, 6);
+    const related = relatedEvents(ev, profile.relatedLimit);
     const relatedHtml = related.length
       ? `<div class="drawer-section">
-          <h3 class="sources-title">${state.lang === "ko" ? "관련 이벤트" : "Related events"}</h3>
+          <h3 class="sources-title">${escapeHtml(profile.relatedTitle)}</h3>
           <ul class="related-list">
             ${related
               .map((e) => {
@@ -644,40 +953,60 @@
         </div>`
       : "";
 
-    // era essay lede if available
+    // —— Era lede: only kinds where industrial/platform era prose fits ——
     let eraHtml = "";
-    const essay =
-      window.ERA_ESSAYS &&
-      window.ERA_ESSAYS[ev.era] &&
-      (window.ERA_ESSAYS[ev.era][state.lang] || window.ERA_ESSAYS[ev.era].en);
-    if (essay && essay.lede) {
-      const lede = essay.lede.replace(/\*\*(.+?)\*\*/g, "$1");
-      eraHtml = `<div class="drawer-section">
-        <h3 class="sources-title">${state.lang === "ko" ? "시대 한 줄" : "Era in one line"}</h3>
-        <p class="drawer-detail">${escapeHtml(lede)}</p>
-        <a class="related-era-link" href="eras.html?era=${encodeURIComponent(ev.era)}&lang=${state.lang}">${
-          state.lang === "ko" ? "시대 확대 읽기 →" : "Read era deep-dive →"
-        }</a>
-      </div>`;
+    if (profile.showEra) {
+      const essay =
+        window.ERA_ESSAYS &&
+        window.ERA_ESSAYS[ev.era] &&
+        (window.ERA_ESSAYS[ev.era][state.lang] || window.ERA_ESSAYS[ev.era].en);
+      if (essay && essay.lede) {
+        const lede = essay.lede.replace(/\*\*(.+?)\*\*/g, "$1");
+        eraHtml = `<div class="drawer-section">
+          <h3 class="sources-title">${state.lang === "ko" ? "시대 한 줄" : "Era in one line"}</h3>
+          <p class="drawer-detail">${escapeHtml(lede)}</p>
+          <a class="related-era-link" href="eras.html?era=${encodeURIComponent(ev.era)}&lang=${state.lang}">${
+            state.lang === "ko" ? "시대 확대 읽기 →" : "Read era deep-dive →"
+          }</a>
+        </div>`;
+      }
     }
+
+    const showSecondary =
+      profile.showSecondaryDetail &&
+      deep &&
+      deep.body &&
+      L.detail &&
+      deep.body !== L.detail;
+
+    const hasGrokSource = (ev.sources || []).some(
+      (s) => s.provider === "grokipedia" || /grokipedia\.com/i.test(s.url || "")
+    );
+    const sourcesTitle = hasGrokSource
+      ? I.t(state.lang, "sources")
+      : state.lang === "ko"
+        ? "출처"
+        : "Sources";
 
     els.drawerBody.innerHTML = `
       <p class="drawer-date">${escapeHtml(ev.date)}</p>
       <div class="drawer-pills">
+        <span class="pill pill-kind">${escapeHtml(profile.kindLabel)}</span>
         <span class="pill">${escapeHtml(I.catLabel(state.lang, ev.category))}</span>
         <span class="pill">${escapeHtml(I.eraLabel(state.lang, ev.era))}</span>
         <span class="pill">${escapeHtml(ev.priority)}</span>
       </div>
       ${wealthHtml}
       <p class="drawer-summary">${escapeHtml(L.summary)}</p>
+      ${mediaGalleryHtml(ev)}
       ${citationHtml}
       ${factsHtml}
       ${contextHtml}
       <div class="drawer-section">
-        <h3 class="sources-title">${state.lang === "ko" ? "상세 설명" : "In depth"}</h3>
+        <h3 class="sources-title">${escapeHtml(profile.detailTitle)}</h3>
         <p class="drawer-detail">${escapeHtml(bodyText)}</p>
         ${
-          deep && deep.body && L.detail && deep.body !== L.detail
+          showSecondary
             ? `<p class="drawer-detail drawer-detail-secondary">${escapeHtml(L.detail)}</p>`
             : ""
         }
@@ -685,9 +1014,13 @@
       ${eraHtml}
       ${relatedHtml}
       ${cautionHtml}
-      <h3 class="sources-title">${escapeHtml(I.t(state.lang, "sources"))}</h3>
+      <h3 class="sources-title">${escapeHtml(sourcesTitle)}</h3>
       <ul class="source-list">${sourcesHtml}</ul>
-      <p class="source-provider"><a href="https://grokipedia.com/page/Elon_Musk" target="_blank" rel="noopener noreferrer">Grokipedia.com</a></p>
+      ${
+        hasGrokSource
+          ? `<p class="source-provider"><a href="https://grokipedia.com/page/Elon_Musk" target="_blank" rel="noopener noreferrer">Grokipedia.com</a></p>`
+          : ""
+      }
       <div class="drawer-nav">
         <button type="button" class="btn" id="nav-prev" ${hasPrev ? "" : "disabled"}>${I.t(state.lang, "prev")}</button>
         <button type="button" class="btn" id="nav-next" ${hasNext ? "" : "disabled"}>${I.t(state.lang, "next")}</button>
@@ -699,7 +1032,7 @@
     if (prevBtn && hasPrev) prevBtn.addEventListener("click", () => openDrawer(state.filtered[idx - 1].id));
     if (nextBtn && hasNext) nextBtn.addEventListener("click", () => openDrawer(state.filtered[idx + 1].id));
     const wBtn = document.getElementById("open-wealth-from-event");
-    if (wBtn && w) wBtn.addEventListener("click", () => openWealthDrawer(w));
+    if (wBtn && profile.showWealth && w) wBtn.addEventListener("click", () => openWealthDrawer(w));
     els.drawerBody.querySelectorAll(".related-link").forEach((b) => {
       b.addEventListener("click", () => openDrawer(b.dataset.id));
     });

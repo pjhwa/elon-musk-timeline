@@ -766,6 +766,46 @@ window.DEEP_COPY = {
       body: "Pairs with stock-too-high (2020) as speech tightly coupled to capital-markets acts.",
     },
   },
+  "amber-heard-2016": {
+    ko: {
+      context: "Talulah 재이혼 이후·Grimes 이전의 공개 연애 구간 마커.",
+      bullets: [
+        "약 2016–2017 공개 연애 보도 (People 등)",
+        "배우 Amber Heard",
+        "이후 Depp–Heard 재판 보도에 2차로 등장",
+      ],
+      body: "연도 요약 개인사 카드입니다. 사업·로켓·AI 미션 서술과 섞지 않습니다. 관련 카드는 같은 personal 축(Justine·Talulah·Grimes 등)을 우선합니다.",
+    },
+    en: {
+      context: "Public-romance marker after second Talulah divorce and before Grimes.",
+      bullets: [
+        "Public relationship coverage ~2016–2017 (People et al.)",
+        "Actor Amber Heard",
+        "Later secondary mentions in Depp–Heard trial coverage",
+      ],
+      body: "Year-level personal card only—not mission prose about cars, rockets, or AI. Related links prefer the same personal axis (Justine, Talulah, Grimes).",
+    },
+  },
+  "grimes-2018": {
+    ko: {
+      context: "2018 이후 가장 오래 보도된 파트너십 축 중 하나.",
+      bullets: [
+        "약 2018 공개 연애 시작",
+        "이후 자녀 관련 보도는 별도 카드",
+        "관계 상태 표기는 시기·매체마다 다름",
+      ],
+      body: "이름 전부 나열 없이 파트너십 시작점만 고정합니다. grimes-child-x·zilis 카드와 연계.",
+    },
+    en: {
+      context: "One of the longest-covered partnership arcs from 2018.",
+      bullets: [
+        "Public relationship from ~2018",
+        "Children coverage on separate cards",
+        "Status labels vary by period and outlet",
+      ],
+      body: "Anchors partnership start without listing every name. Links to grimes-child-x and zilis cards.",
+    },
+  },
   "twitter-first-2010": {
     ko: {
       context: "X 발언 아크의 원점 — 사칭 계정 이후 본인 인증 첫 게시.",

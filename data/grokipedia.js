@@ -86,13 +86,13 @@ window.GROKIPEDIA_CITE = {
   },
   "xcom-1999": {
     pages: ["musk"],
-    en: "Key milestones for X.com and PayPal include: … In March 2000, X.com merged with Confinity…",
-    ko: "X.com과 PayPal의 주요 이정표가 별도 섹션으로 정리되며, 2000년 3월 Confinity 합병 경로가 기술된다. — Grokipedia, Elon Musk",
+    en: "After Zip2, Musk founded X.com in 1999 as an online financial services / payments company—the venture that later merged toward PayPal.",
+    ko: "Zip2 이후 1999년 온라인 금융·결제 회사 X.com을 창업했고, 이 벤처가 이후 PayPal 경로로 이어진다. — Grokipedia, Elon Musk",
   },
   "marriage-justine-2000": {
     pages: ["musk"],
-    en: "Personal Life: Musk has multiple children… from previous relationships. (Marriage chronology is summarized in personal-life coverage.)",
-    ko: "개인사 섹션에서 이전 관계·자녀 등이 요약된다. 결혼 연대는 개인사 기록 수준으로 다룬다. — Grokipedia, Elon Musk",
+    en: "Personal Life: Musk married author Justine Wilson in 2000; the marriage ended in divorce in 2008 (relationship chronology summarized in personal-life coverage).",
+    ko: "개인사: 2000년 작가 Justine Wilson과 결혼, 2008년 이혼으로 기록된다(관계 연대기 요약). — Grokipedia, Elon Musk",
   },
   "paypal-2000": {
     pages: ["musk"],
@@ -101,8 +101,8 @@ window.GROKIPEDIA_CITE = {
   },
   "ebay-paypal-2002": {
     pages: ["musk"],
-    en: "Grokipedia’s SpaceX founding section links PayPal liquidity to SpaceX: Musk founded SpaceX… investing about $100 million of his proceeds from the sale of PayPal…",
-    ko: "SpaceX 설립 서술에서 PayPal 매각 수익 약 1억 달러를 투자했다고 연결한다. — Grokipedia, Elon Musk / SpaceX 관련 서술",
+    en: "eBay acquired PayPal in 2002 (about $1.5B in standard biographical framing). Grokipedia links the liquidity from that sale to later capital for SpaceX, but the card event itself is the PayPal acquisition close.",
+    ko: "2002년 eBay의 PayPal 인수(통상기 ~$1.5B)가 전기 프레임에 기록된다. 매각 유동성은 이후 SpaceX 자본과 연결 서술되나, 이 카드 사건은 PayPal 인수 종결 자체다. — Grokipedia, Elon Musk",
   },
   "us-citizen-2002": {
     pages: ["musk"],
@@ -116,8 +116,8 @@ window.GROKIPEDIA_CITE = {
   },
   "tesla-founded-2003": {
     pages: ["musk", "tesla"],
-    en: "CEO and product architect of Tesla… Key products developed under his leadership include the Model S… (Grokipedia also covers founding/early financing and co-founder status in Tesla sections).",
-    ko: "Tesla의 CEO 및 product architect로 기술된다. 리더십 하 핵심 제품(Model S 등)과 설립·초기 자금·co-founder 지위 관련 서술이 Tesla 섹션에 있다. — Grokipedia, Elon Musk / Tesla",
+    en: "Tesla sections cover founding and early financing: the company was incorporated by Martin Eberhard and Marc Tarpenning in 2003; Musk’s co-founder/chair path and Series A leadership follow in 2004 (distinct from sole-founder slogans).",
+    ko: "Tesla 섹션은 설립·초기 자금을 다룬다: 2003년 Martin Eberhard·Marc Tarpenning이 법인 설립, 머스크의 co-founder/의장 경로와 Series A 리드는 2004년(단독 창업 구호와 구분). — Grokipedia, Elon Musk / Tesla",
   },
   "tesla-series-a-2004": {
     pages: ["musk", "tesla"],
@@ -161,8 +161,8 @@ window.GROKIPEDIA_CITE = {
   },
   "marriage-talulah": {
     pages: ["musk"],
-    en: "Personal Life coverage on Grokipedia (relationships/children summaries).",
-    ko: "Grokipedia 개인사 섹션의 관계·자녀 요약 범위. — Grokipedia, Elon Musk",
+    en: "Personal Life: Musk married actress Talulah Riley in 2010, divorced, remarried her in 2013, and divorced again in 2016 (relationship chronology in personal-life coverage).",
+    ko: "개인사: 배우 Talulah Riley와 2010 결혼 → 이혼 → 2013 재혼 → 2016 재이혼으로 정리된다. — Grokipedia, Elon Musk",
   },
   "dragon-recover-2010": {
     pages: ["spacex"],
@@ -235,9 +235,9 @@ window.GROKIPEDIA_CITE = {
     ko: "SpaceX 재사용 로켓·이정표 및 Falcon 계열 중·대형 능력 진화 서술. — Grokipedia, SpaceX / Elon Musk",
   },
   "sec-2018": {
-    pages: ["musk", "views"],
-    en: "Musk is a polarizing figure. Supporters praise his innovation and risk-taking; critics point to management style, public statements… Legal and political scrutiny has included government contracts, securities matters…",
-    ko: "양극화된 인물로 기술된다. 지지자는 혁신과 위험 감수를 평가하고, 비판은 경영 스타일·발언 등을 지적한다. 법적·정치적 검토에는 정부 계약·증권 이슈 등이 포함된다. — Grokipedia, Elon Musk",
+    pages: ["musk", "views", "tesla"],
+    en: "Legal and political scrutiny has included… securities matters. Public coverage of the 2018 going-private (“funding secured”) tweets led to an SEC case and settlement affecting Tesla chair duties and tweet pre-approval conditions.",
+    ko: "법적·정치적 검토에 증권 이슈가 포함된다. 2018년 비공개화(‘funding secured’) 트윗 관련 SEC 사건·합의, 의장직·트윗 사전 승인 조건 등이 공개 기록에 연결된다. — Grokipedia, Elon Musk / Tesla",
   },
   "starlink-2019": {
     pages: ["spacex", "musk"],
@@ -295,9 +295,9 @@ window.GROKIPEDIA_CITE = {
     ko: "DOGE 공동 리드가 본문에 기술되고, Views 문서에 Government Efficiency and Bureaucracy 항목이 있다. — Grokipedia",
   },
   "doge-exit-2025": {
-    pages: ["musk"],
-    en: "…before stepping down amid reported differences. …making him a polarizing yet immensely influential figure in technology, business, politics, and culture.",
-    ko: "보도된 이견 속에 물러났다. 기술·사업·정치·문화에서 양극화되면서도 막대한 영향력을 지닌 인물로 기술된다. — Grokipedia, Elon Musk",
+    pages: ["musk", "views"],
+    en: "Musk briefly co-led the Department of Government Efficiency (DOGE) before stepping down amid reported differences with the administration—ending the special-government-employee / DOGE role arc in 2025.",
+    ko: "DOGE를 잠시 공동 리드한 뒤 행정부와 보도된 이견 속에 물러났고, 2025년 특수고용·DOGE 역할 아크가 종료된 것으로 기술된다. — Grokipedia, Elon Musk",
   },
   "tesla-comp-2025": {
     pages: ["tesla", "musk"],
@@ -381,8 +381,8 @@ window.GROKIPEDIA_CITE = {
   },
   "x-premium-ads": {
     pages: ["musk"],
-    en: "Acquisition and changes at X sparked debates over content moderation and free speech (Grokipedia Controversies and Public Image).",
-    ko: "X 인수·변경이 콘텐츠 중재·자유 발언 논쟁을 촉발했다고 Controversies and Public Image에 기술된다. — Grokipedia, Elon Musk",
+    en: "After the Twitter/X acquisition, product and monetization changes—including paid verification—were accompanied by reported advertiser pullbacks and revenue swings (Controversies and Public Image / business coverage on Grokipedia).",
+    ko: "Twitter/X 인수 후 유료 인증 등 제품·수익화 변경과 함께 광고주 이탈·광고 수익 변동이 보도·서술된다(Controversies and Public Image 등). — Grokipedia, Elon Musk",
   },
   "starship-ift1-2023": {
     pages: ["spacex", "musk"],
@@ -416,8 +416,8 @@ window.GROKIPEDIA_CITE = {
   },
   "trillionaire-2026": {
     pages: ["musk", "spacex"],
-    en: "Wealth Milestones: Became the first person to reach $400 billion (2024), $500 billion (late 2025), $600–700 billion (December 2025), and crossed $800 billion in early 2026… preparations for potential IPO (SpaceX).",
-    ko: "부 이정표: 2024년 4000억, 2025년 말 5000억, 2025년 12월 6000–7000억, 2026년 초 8000억 달러 돌파 등이 기술되고, SpaceX 잠재적 IPO 준비가 언급된다. — Grokipedia, Elon Musk",
+    en: "Wealth Milestones link SpaceX IPO preparations to net-worth bands through 2024–2026 ($400B→$800B+ reporting); public coverage frames a USD-trillionaire threshold as market-sensitive.",
+    ko: "부 이정표는 SpaceX IPO 준비와 2024–2026 순자산 밴드($400B→$800B+ 보도)를 연결하며, 달러 트리플리오네어 문턱은 시장 연동 추정치로 기술된다. — Grokipedia, Elon Musk",
   },
   "openai-lawsuit-2024": {
     pages: ["musk"],
@@ -464,17 +464,32 @@ window.GROKIPEDIA_CITE = {
     });
   }
 
+  function mergeSources(gSources, orig) {
+    const seen = new Set();
+    const out = [];
+    [...gSources, ...orig].forEach((s) => {
+      if (!s || !s.url || seen.has(s.url)) return;
+      seen.add(s.url);
+      out.push(s);
+    });
+    return out;
+  }
+
   window.TIMELINE_EVENTS.forEach((ev) => {
     const c = C[ev.id];
-    const pages = c ? c.pages : ["musk"];
-    ev.sources = sourcesFor(pages);
+    // Preserve card-authored sources (People, Reuters, etc.). Never wipe them.
+    const orig = (ev.sources || []).filter((s) => s.provider !== "grokipedia");
+
     if (c) {
+      // Event-specific Grokipedia passage: lead with those pages, keep originals.
+      ev.sources = mergeSources(sourcesFor(c.pages || ["musk"]), orig);
       ev.citation = { ko: c.ko, en: c.en };
     } else {
-      ev.citation = {
-        ko: G.missionQuote.ko,
-        en: G.missionQuote.en + " — Grokipedia, Elon Musk",
-      };
+      // No per-event cite → keep original sources only.
+      // Do NOT inject missionQuote (Tesla/SpaceX/xAI blurb) — it is unrelated to
+      // personal/speech/detail cards and confused drawers (e.g. Amber Heard).
+      ev.sources = orig.length ? orig : sourcesFor(["musk"]);
+      delete ev.citation;
     }
     // remove legacy field if present
     delete ev.assessment;
