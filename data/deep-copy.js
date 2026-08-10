@@ -584,6 +584,188 @@ window.DEEP_COPY = {
       body: "Cards split hardware roadmap from service/operations roadmap on purpose.",
     },
   },
+
+  // —— Famous X/Twitter statements (detail drawer depth) ——
+  "unsworth-tweet-2018": {
+    ko: {
+      context: "SNS 발언 → 민사 소송 → 배심 판결로 이어진 공개 기록. 2018 트윗 리스크 클러스터.",
+      bullets: [
+        "2018-07 태국 동굴 구조 관련 비하 트윗",
+        "Vernon Unsworth 명예훼손 제소",
+        "2019-12 배심: 머스크 측 승소(Reuters 등)",
+      ],
+      body: "funding secured(SEC)·JRE 출연과 같은 해. 도덕 평가는 하지 않고, 소송 경과와 판결만 고정합니다.",
+    },
+    en: {
+      context: "Public path: social post → civil suit → jury verdict. Part of 2018 tweet-risk cluster.",
+      bullets: [
+        "Jul 2018 cave-rescue-related insult tweets",
+        "Defamation suit by Vernon Unsworth",
+        "Dec 2019 jury: verdict for Musk (Reuters et al.)",
+      ],
+      body: "Same year as funding-secured (SEC) and JRE. No moral scorecard—litigation path and outcome only.",
+    },
+  },
+  "stock-too-high-2020": {
+    ko: {
+      context: "상장사 CEO 1줄 트윗이 당일 시총을 흔든 교과서 사례.",
+      bullets: [
+        "고정 인용: “Tesla stock price is too high imo”",
+        "CNBC: 종가 약 −10%",
+        "BBC: 시총 약 $14B 증발 보도",
+      ],
+      body: "2018 SEC 합의(트윗 사전 승인) 이후에도 반복되는 ‘발언=시장’ 구조. 원인 단정 없이 보도된 동시 하락을 기록합니다.",
+    },
+    en: {
+      context: "Textbook same-day market move from a one-line CEO tweet.",
+      bullets: [
+        "Fixed quote: “Tesla stock price is too high imo”",
+        "CNBC: close ~−10%",
+        "BBC: ~$14B market-cap wipe reported",
+      ],
+      body: "Post-2018 SEC tweet-approval era still shows speech↔market structure. Records co-movement as reported—not sole-cause proof.",
+    },
+  },
+  "bitcoin-tesla-2021": {
+    ko: {
+      context: "기업 재무 정책 + CEO 트윗 + 암호화폐 시세가 한 뉴스 사이클에 묶인 구간.",
+      bullets: [
+        "2021-02 비트코인 결제 수용 보도",
+        "2021-05 에너지 이유로 중단 시사 트윗",
+        "BTC 시세 급변 동반 보도",
+      ],
+      body: "도지코인 밈 트윗 카드와 구분: 여기는 Tesla 공식 결제 정책 축입니다.",
+    },
+    en: {
+      context: "Corporate finance policy + CEO tweet + crypto prices in one news cycle.",
+      bullets: [
+        "Feb 2021 Bitcoin payments acceptance coverage",
+        "May 2021 pause tweet (energy framing)",
+        "BTC price swings co-reported",
+      ],
+      body: "Separate from Dogecoin meme-tweet card: this axis is Tesla’s official payments policy.",
+    },
+  },
+  "bird-is-freed-2022": {
+    ko: {
+      context: "P0 인수 카드의 ‘순간 캡션’ — 가장 많이 재인용된 종결 문구.",
+      bullets: [
+        "2022-10-27 거래 클로징",
+        "“the bird is freed” 게시",
+        "당일·주간 경영진 교체·감원 보도",
+      ],
+      body: "가격·소송 과정은 twitter-2022 / twitter-deal-close 카드. 이 카드는 플랫폼 소유 순간의 언어 표지입니다.",
+    },
+    en: {
+      context: "Caption layer for the P0 acquisition card—most re-cited close line.",
+      bullets: [
+        "27 Oct 2022 deal close",
+        "“the bird is freed” post",
+        "Same day/week: exec ousters and layoff coverage",
+      ],
+      body: "Price and legal path live on twitter-2022 / deal-close cards. This card is the linguistic marker of taking the platform private.",
+    },
+  },
+  "twitter-files-2022": {
+    ko: {
+      context: "플랫폼 소유 후 ‘내부 모더레이션 아카이브’를 외부 연재로 공개한 행위.",
+      bullets: [
+        "2022-12 연재 개시",
+        "선정 저널리스트 경유 스레드 공개",
+        "이후 광고·정치 논쟁에서 반복 인용",
+      ],
+      body: "선별 공개이므로 완전 기록이 아닙니다. 타임라인은 행위·시기만 고정하고 내용 진위 재판은 하지 않습니다.",
+    },
+    en: {
+      context: "Post-ownership act: selective internal moderation archive released via outside serials.",
+      bullets: [
+        "Serial starts Dec 2022",
+        "Thread releases via chosen journalists",
+        "Later ad/politics debates cite the series",
+      ],
+      body: "Selective ≠ complete. Timeline fixes act and timing—does not retry content claims.",
+    },
+  },
+  "dealbook-gfy-2023": {
+    ko: {
+      context: "X 광고 수익 모델 갈등의 가장 재인용된 영상 발언.",
+      bullets: [
+        "2023-11-29 NYT DealBook Summit",
+        "광고 철회를 blackmail로 규정",
+        "“Go f*** yourself” 반복 (CNBC/Axios 등)",
+      ],
+      body: "x-premium-ads 카드(수익 변동 현상)와 짝. 발언 평가 없이 공개 행사 기록만.",
+    },
+    en: {
+      context: "Most re-shared video quote of the X ad-revenue conflict.",
+      bullets: [
+        "29 Nov 2023 NYT DealBook Summit",
+        "Frames ad pullouts as blackmail",
+        "Repeated “Go f*** yourself” (CNBC/Axios et al.)",
+      ],
+      body: "Pairs with x-premium-ads (revenue-shift phenomenon). Public remarks only—no scorecard.",
+    },
+  },
+  "trump-fist-post-2024": {
+    ko: {
+      context: "정치 지지 아크 위의 X 바이럴 정점 — 최다 좋아요 목록 등재.",
+      bullets: [
+        "2024-07 피격 직후 Vucci 사진 공유",
+        "Wikipedia 최다 좋아요 목록 상위권",
+        "P1 Trump 지지 카드와 동일 선거 사이클",
+      ],
+      body: "지지 동기·선거 효과 해석은 제외. 공개 게시·고인기 사실만.",
+    },
+    en: {
+      context: "Viral peak on X within the political-support arc—most-liked list territory.",
+      bullets: [
+        "Jul 2024 share of Vucci photo after rally shooting",
+        "Top-tier Wikipedia most-liked listing",
+        "Same cycle as P1 Trump-support card",
+      ],
+      body: "No motive or election-effect reading—public post and engagement facts only.",
+    },
+  },
+  "free-speech-critics-2022": {
+    ko: {
+      context: "인수 직전 ‘표현의 자유’ 프레이밍을 한 줄로 압축한 고인기 트윗.",
+      bullets: [
+        "2022-04-25 전후",
+        "worst critics remain… free speech 요지",
+        "최다 좋아요 목록 등재",
+      ],
+      body: "bird is freed·Twitter Files·DealBook 발언으로 이어지는 미디어 소유 구간의 언어 출발점 중 하나.",
+    },
+    en: {
+      context: "Pre-close free-speech framing compressed into one high-engagement line.",
+      bullets: [
+        "~25 Apr 2022",
+        "worst critics remain… free speech gist",
+        "On most-liked lists",
+      ],
+      body: "One linguistic start point for the media-ownership arc that continues through bird-is-freed, Twitter Files, and DealBook.",
+    },
+  },
+  "tesla-stock-poll-2021": {
+    ko: {
+      context: "플랫폼 투표 → 대주주 매도로 이어진 이례적 커뮤니케이션.",
+      bullets: [
+        "2021-11 10% 매도 여부 폴",
+        "찬성 다수 후 대규모 매도 보도",
+        "세금·SEC 관련 후속 보도",
+      ],
+      body: "stock-too-high(2020)와 함께 ‘트윗이 자본 시장 행위와 직결’된 사례로 대비됩니다.",
+    },
+    en: {
+      context: "Unusual path: platform poll → controlling-shareholder sales.",
+      bullets: [
+        "Nov 2021 poll on selling 10%",
+        "Majority yes, then large sales reported",
+        "Follow-on tax/SEC-related coverage",
+      ],
+      body: "Pairs with stock-too-high (2020) as speech tightly coupled to capital-markets acts.",
+    },
+  },
 };
 
 window.DEEP_COPY_EN_NOTE = true;

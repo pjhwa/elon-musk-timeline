@@ -75,9 +75,10 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX: 2015 1단 지상 착륙, 2017 재비행, 2018 Falcon Heavy, 2019 Starlink 배치, 2020 Crew Dragon 유인 비행. 재사용은 비용 구조 변화의 증거로 공식 기록됩니다.",
         "Tesla: Model X·3·Y, SolarCity 인수, 2018 SEC 합의(‘funding secured’). 규제 사건도 사실이면 포함합니다—평가 없이.",
+        "Detail 레이어: 2018 Unsworth 소송·JRE 출연, 2020 “stock too high imo”·Fremont 재가동 트윗 등 — X(당시 Twitter) 발언이 시장·소송과 맞닿은 구간.",
         "신규 축: OpenAI(2015 공동설립·2018 이탈), Neuralink·Boring Company(2016~). 이후 플랫폼·AI 시대의 씨앗입니다.",
       ],
-      takeaway: "구조 요약: 프로토타입 → 재사용/양산 → 규제·거버넌스 → 다각화.",
+      takeaway: "구조 요약: 프로토타입 → 재사용/양산 → 규제·거버넌스·공개 발언 → 다각화.",
     },
     en: {
       title: "Scale: reusable rockets and volume EVs",
@@ -85,9 +86,10 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX: 2015 land landing, 2017 reflight, 2018 Falcon Heavy, 2019 Starlink batch, 2020 crewed Dragon. Reuse is recorded as a cost-structure shift.",
         "Tesla: Models X/3/Y, SolarCity acquisition, 2018 SEC settlement (“funding secured”). Regulatory events are included as facts—without moral coloring.",
+        "Detail layer: 2018 Unsworth suit & JRE, 2020 “stock too high imo” and Fremont reopen tweets—where Twitter speech met markets and litigation.",
         "New axes: OpenAI (co-founded 2015; exit 2018), Neuralink and Boring Company (~2016). Seeds of the later platform/AI era.",
       ],
-      takeaway: "Structure: prototype → reuse/volume → regulation/governance → diversification.",
+      takeaway: "Structure: prototype → reuse/volume → regulation/governance/public speech → diversification.",
     },
   },
   platform: {
@@ -96,20 +98,22 @@ window.ERA_ESSAYS = {
       lede: "2021–2025는 **유통 채널(소셜) + AI + 정부 효율 기구**가 겹치는 구간입니다. 정치 평가는 넣지 않고 행위 연표만 둡니다.",
       body: [
         "2022 Twitter $44B 인수 완료 → 2023 X 리브랜딩 → xAI·Grok. 미디어 소유와 AI 제품이 한 인물 포트폴리오 안에서 연결됩니다.",
+        "Detail: “the bird is freed”, Twitter Files, DealBook 광고주 발언, 최다 좋아요급 게시 등 — 소유 후 플랫폼 언어·바이럴 마커.",
         "Neuralink 인체 임상 보고, Cybertruck 인도 시작 등 기존 하드웨어 축도 병행됩니다.",
         "정치 아크(사실만): 2024 Trump 지지·정치 자금 → DOGE 리드 발표 → 2025-01-20 EO → 2025-05 역할 종료. 성패 평론 없음.",
       ],
-      takeaway: "구조 요약: 플랫폼 인수 → 브랜드·AI → 공공 역할 진입·종료.",
+      takeaway: "구조 요약: 플랫폼 인수 → 브랜드·발언·AI → 공공 역할 진입·종료.",
     },
     en: {
       title: "Platform & politics: X, xAI, DOGE",
       lede: "2021–2025 stacks **distribution (social) + AI + a government-efficiency vehicle**. No political verdicts—only an act chronology.",
       body: [
         "2022 Twitter close at ~$44B → 2023 X rebrand → xAI/Grok. Media ownership and AI product sit in one portfolio.",
+        "Detail: “the bird is freed,” Twitter Files, DealBook advertiser line, top most-liked posts—ownership-era speech and viral markers.",
         "Hardware threads continue: Neuralink human-trial reports, Cybertruck deliveries.",
         "Politics arc (acts only): 2024 Trump support/spending → DOGE lead announcement → 20 Jan 2025 EO → May 2025 role end. No win/loss essay.",
       ],
-      takeaway: "Structure: platform acquisition → brand/AI → public-role entry and exit.",
+      takeaway: "Structure: platform acquisition → brand/speech/AI → public-role entry and exit.",
     },
   },
   now: {
