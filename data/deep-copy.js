@@ -766,6 +766,146 @@ window.DEEP_COPY = {
       body: "Pairs with stock-too-high (2020) as speech tightly coupled to capital-markets acts.",
     },
   },
+  "twitter-first-2010": {
+    ko: {
+      context: "X 발언 아크의 원점 — 사칭 계정 이후 본인 인증 첫 게시.",
+      bullets: [
+        "2010-06-04 “This is actually me.”",
+        "이후 ~1.5년 저조 활동",
+        "2012–13경부터 고빈도 구간",
+      ],
+      body: "플랫폼 사용자에서 2022 소유자로 이어지는 13년+ 서사의 시작점입니다.",
+    },
+    en: {
+      context: "Origin of the X speech arc—first authenticated post after impersonation.",
+      bullets: [
+        "4 Jun 2010 “This is actually me.”",
+        "Sparse activity ~18 months after",
+        "High-volume era from ~2012–13",
+      ],
+      body: "Start of a 13+ year path from power user to 2022 platform owner.",
+    },
+  },
+  "paris-councils-2017": {
+    ko: {
+      context: "1차 Trump 협력 아크의 종료 — 기후 정책 트윗으로 자문 이탈.",
+      bullets: [
+        "2016-12 자문위 합류",
+        "2017-06 파리 탈퇴 후 사퇴 트윗",
+        "2022 설전·2024 동맹과 비선형 대비",
+      ],
+      body: "정치 관계는 단일 우호/적대가 아니라 구간별로 뒤집힙니다. 카드는 공개 행위만 고정합니다.",
+    },
+    en: {
+      context: "End of first Trump cooperation arc—climate-policy tweet exits councils.",
+      bullets: [
+        "Dec 2016 joins advisory councils",
+        "Jun 2017 exit tweet after Paris pullout",
+        "Contrasts 2022 feud and 2024 alliance",
+      ],
+      body: "Political ties are non-linear. Cards fix public acts only.",
+    },
+  },
+  "vote-republican-2022": {
+    ko: {
+      context: "정당 정체성 공개 전환 — 2024 Trump 지지 전 피벗.",
+      bullets: [
+        "2022-05 공화 투표 선언 트윗",
+        "Biden·EV·캘리포니아 마찰 맥락",
+        "Twitter 인수 국면과 동시",
+      ],
+      body: "투표 의사 표명과 실제 기표는 구분합니다. 공개 선언만 기록.",
+    },
+    en: {
+      context: "Public party-identity pivot before 2024 Trump endorsement.",
+      bullets: [
+        "May 2022 will-vote-Republican tweet",
+        "Biden/EV/California friction context",
+        "Overlaps Twitter acquisition arc",
+      ],
+      body: "Separates stated intent from private ballots—records the public declaration only.",
+    },
+  },
+  "trump-endorse-2024": {
+    ko: {
+      context: "2024 동맹의 기점 — 피격 직후 전면 지지 게시.",
+      bullets: [
+        "2024-07-13 fully endorse 게시",
+        "주먹 사진 바이럴 카드와 짝",
+        "PAC·DOGE로 연결",
+      ],
+      body: "2025-06 설전 카드와 한 아크. 승패·동기 평론 없음.",
+    },
+    en: {
+      context: "Start of 2024 alliance—full endorsement minutes after Butler attempt.",
+      bullets: [
+        "13 Jul 2024 fully endorse post",
+        "Pairs with fist-photo viral card",
+        "Links to PAC spending and DOGE",
+      ],
+      body: "One arc with Jun 2025 feud card. No win/loss or motive essay.",
+    },
+  },
+  "trump-musk-feud-2025": {
+    ko: {
+      context: "동맹 붕괴의 공개 정점 — DOGE 종료 직후.",
+      bullets: [
+        "2025-05 DOGE 역할 종료",
+        "2025-06 예산안·상호 비난",
+        "ABC/CNBC 등 타임라인 일치",
+      ],
+      body: "doge-exit P0와 짝. 이후 화해 여부는 보도 갱신 대상.",
+    },
+    en: {
+      context: "Public peak of alliance collapse—right after DOGE exit.",
+      bullets: [
+        "May 2025 DOGE role ends",
+        "Jun 2025 bill fight and mutual attacks",
+        "ABC/CNBC timelines align",
+      ],
+      body: "Pairs with doge-exit P0. Any later thaw is a later reporting update.",
+    },
+  },
+  "starman-roadster-2018": {
+    ko: {
+      context: "로켓 성공 + 인터넷 밈이 겹친 2018 문화 정점.",
+      bullets: [
+        "Falcon Heavy 시험 페이로드",
+        "Roadster + Starman",
+        "전 세계 밈·라이브 중계",
+      ],
+      body: "P0 Heavy 비행 카드는 공학, 이 카드는 페이로드 연출·밈 층입니다.",
+    },
+    en: {
+      context: "2018 cultural peak where rocket success met internet meme.",
+      bullets: [
+        "Falcon Heavy demo payload",
+        "Roadster + Starman",
+        "Global memes and livestream",
+      ],
+      body: "P0 Heavy card is engineering; this card is payload staging and meme layer.",
+    },
+  },
+  "ai-existential-2014": {
+    ko: {
+      context: "AI 위험 발언 → OpenAI → 이탈 → xAI로 이어지는 철학 축.",
+      bullets: [
+        "2014 MIT급 공개 경고",
+        "2017 주지사 회의 반복",
+        "OpenAI 2015/2018과 동일 축",
+      ],
+      body: "재난 일정이 아니라 위험 프레이밍. 2023 pause 서한·xAI와 후속 연결.",
+    },
+    en: {
+      context: "Philosophy axis: AI risk speech → OpenAI → exit → xAI.",
+      bullets: [
+        "2014 MIT-era public warning",
+        "2017 governors reprise",
+        "Same axis as OpenAI 2015/2018",
+      ],
+      body: "Risk framing, not a dated apocalypse. Links forward to 2023 pause letter and xAI.",
+    },
+  },
 };
 
 window.DEEP_COPY_EN_NOTE = true;

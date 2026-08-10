@@ -835,6 +835,549 @@ window.DETAIL_EVENTS = [
     ],
     caution: "농담 게시 — 실제 인수 의사 없음이 전제.",
   },
+
+  // —— Expanded: X timeline, philosophy/future speech, relationships, Trump/politics ——
+  {
+    id: "twitter-first-2010",
+    date: "2010-06-04",
+    year: 2010,
+    era: "dual-bet",
+    category: "media",
+    priority: "P2",
+    title: "Twitter 첫 본인 게시 (@elonmusk)",
+    summary:
+      "2010-06-04 첫 본인 확인 트윗: 이전 게시 무시·사칭이었다며 “This is actually me.”",
+    detail:
+      "계정은 그 전에도 존재했으나 비본인 게시로 기록. Visual Capitalist/NY Mag 등: 2010-06-04 첫 진짜 게시 후 약 1년 반 저조, 2012–13경부터 고빈도. X 발언 아크의 시작점.",
+    sources: [
+      {
+        name: "Visual Capitalist — decade of Musk tweets",
+        tier: "B",
+        url: "https://www.visualcapitalist.com/a-decade-of-elon-musks-tweets-visualized/",
+      },
+      {
+        name: "NY Mag — Musk Twitter feed",
+        tier: "B",
+        url: "https://nymag.com/intelligencer/2022/08/elon-musk-twitter-feed.html",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "ai-existential-2014",
+    date: "2014–2017",
+    year: 2014,
+    era: "scale",
+    category: "ai",
+    priority: "P2",
+    title: "AI ‘실존적 위협’ 공개 경고",
+    summary:
+      "2014년경(MIT 등)부터 AI를 인류 문명 최상위 위험 중 하나로 규정·반복 발언. 2017 주지사 회의 등.",
+    detail:
+      "NPR/Guardian: 2014 ‘악마를 소환’ 비유급 경고, 2017 National Governors Association “human civilization” 근본 위험. OpenAI 공동설립(2015)·이탈(2018)과 같은 철학 축. 예측 연도 확정이 아닌 위험 프레이밍.",
+    sources: [
+      {
+        name: "NPR — AI existential risk to governors",
+        tier: "B",
+        url: "https://www.npr.org/sections/thetwo-way/2017/07/17/537686649/elon-musk-warns-governors-artificial-intelligence-poses-existential-risk",
+      },
+      {
+        name: "The Guardian — AI biggest existential threat (2014)",
+        tier: "B",
+        url: "https://www.theguardian.com/technology/2014/oct/27/elon-musk-artificial-intelligence-ai-biggest-existential-threat",
+      },
+    ],
+    caution: "위험 인식·예측 발언 — 특정 재난 일정을 확정한 것이 아님.",
+  },
+  {
+    id: "simulation-hypothesis-2016",
+    date: "2016",
+    year: 2016,
+    era: "scale",
+    category: "media",
+    priority: "P2",
+    title: "시뮬레이션 가설 발언 (고인용)",
+    summary:
+      "Code Conference 등에서 우리가 베이스 리얼리티에 있을 확률이 극히 낮다는 취지(‘billion to one’급) 발언 — 철학 밈화.",
+    detail:
+      "인터뷰·팟캐스트에서 반복 인용. 다행성 문명·AI 위험 발언과 함께 ‘미래·존재론’ 묶음으로 소비. 과학적 입증 주장이 아니라 공개 사색.",
+    sources: [
+      {
+        name: "Wikipedia — Views of Elon Musk",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Views_of_Elon_Musk",
+      },
+      {
+        name: "Recurring major-interview coverage (Code Conference era)",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Elon_Musk",
+      },
+    ],
+    caution: "철학적 사색 — 실증 사실이 아님.",
+  },
+  {
+    id: "iac-multiplanetary-2016",
+    date: "2016-09",
+    year: 2016,
+    era: "scale",
+    category: "spacex",
+    priority: "P2",
+    title: "IAC 2016: 다행성 문명 로드맵 발표",
+    summary:
+      "제67회 국제우주회의(IAC)에서 자급 가능 화성 문명 아키텍처(재사용·급유·현지 추진제 등) 공개.",
+    detail:
+      "SpaceX 장기 서사의 핵심: multiplanetary species를 생존 전략으로 제시. 이후 Starship·HLS 경로의 언어 기반. 목표·예측 프레이밍 — 확정 일정 아님.",
+    sources: [
+      {
+        name: "SpaceX / IAC multiplanetary presentation coverage",
+        tier: "B",
+        url: "https://www.spacex.com/mission",
+      },
+      {
+        name: "Encyclopaedia Britannica",
+        tier: "A",
+        url: "https://www.britannica.com/money/Elon-Musk",
+      },
+    ],
+    caution: "식민·발사 일정은 목표치이며 변동.",
+  },
+  {
+    id: "amber-heard-2016",
+    date: "2016–2017",
+    year: 2016,
+    era: "scale",
+    category: "personal",
+    priority: "P2",
+    title: "Amber Heard와 공개 연애",
+    summary: "배우 Amber Heard와 약 2016–2017 공개 연애 보도(Talulah 재이혼 이후).",
+    detail:
+      "People/Business Insider 등: 공개 구간 약 2016–17. 이후 Depp–Heard 재판 보도에 2차로 등장. 연도 요약 개인사 카드.",
+    sources: [
+      {
+        name: "People — Musk dating history",
+        tier: "B",
+        url: "https://people.com/elon-musk-complete-dating-history-7502497",
+      },
+      {
+        name: "Business Insider — spouses and partners",
+        tier: "B",
+        url: "https://www.businessinsider.com/elon-musk-spouse-married",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "trump-advisory-2016",
+    date: "2016-12",
+    year: 2016,
+    era: "scale",
+    category: "politics",
+    priority: "P2",
+    title: "Trump 비즈니스 자문위원회 합류",
+    summary: "2016 대선 후 Trump 행정부 비즈니스·전략 자문 기구에 CEO들과 함께 합류.",
+    detail:
+      "NBC/Business Insider: 2016-12 임명. 대선 전 ‘적임자 아님’ 발언과도 병존. 2017-06 파리협정 탈퇴 후 자문 이탈로 1차 아크 종료.",
+    sources: [
+      {
+        name: "NBC — Trump–Musk relationship timeline",
+        tier: "B",
+        url: "https://www.nbcnews.com/politics/donald-trump/trump-elon-musk-summary-timeline-political-relationship-rcna211453",
+      },
+      {
+        name: "Business Insider — Musk–Trump timeline",
+        tier: "B",
+        url: "https://www.businessinsider.com/elon-musk-donald-trump-feud-relationship-timeline-2022-7",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "paris-councils-2017",
+    date: "2017-06-01",
+    year: 2017,
+    era: "scale",
+    category: "politics",
+    priority: "P2",
+    title: "파리협정 탈퇴 후 자문위 사퇴 (트윗)",
+    summary:
+      "미국 파리협정 탈퇴 발표 후 대통령 자문위에서 떠난다고 트윗.",
+    detail:
+      "고정 요지: “Am departing presidential councils. Climate change is real…” (2017-06-01). CNBC/Forbes: 탈퇴 시 사퇴하겠다고 사전 예고. 2022 설전·2024 동맹 이전의 초기 Trump–Musk 아크 종점.",
+    sources: [
+      {
+        name: "CNBC — leave councils if Paris exit",
+        tier: "B",
+        url: "https://www.cnbc.com/2017/05/31/elon-musk-threatens-to-leave-white-house-councils-if-trump-drops-paris-accord.html",
+      },
+      {
+        name: "Forbes — quits White House councils",
+        tier: "B",
+        url: "https://www.forbes.com/sites/maggiemcgrath/2017/06/01/elon-musk-quits-white-house-advisory-councils-in-wake-of-trumps-decision-to-pull-out-of-paris-climate-accord/",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "starman-roadster-2018",
+    date: "2018-02",
+    year: 2018,
+    era: "scale",
+    category: "spacex",
+    priority: "P2",
+    title: "Starman·Roadster 우주 페이로드 (밈)",
+    summary:
+      "Falcon Heavy 시험에 개인 Tesla Roadster와 ‘Starman’ 마네킹 — 전 세계 밈 이벤트.",
+    detail:
+      "2018-02. Wikipedia: 더미 페이로드가 태양 주회 궤도로. Bowie/Starman 문화 레이어. P0 Heavy 비행 카드와 구분되는 밈·커뮤니케이션 층. Roadster 선택은 트위터 제안·발표 경로.",
+    sources: [
+      {
+        name: "Wikipedia — Elon Musk's Tesla Roadster",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Elon_Musk%27s_Tesla_Roadster",
+      },
+      {
+        name: "CNBC — last photo of Starman",
+        tier: "B",
+        url: "https://www.cnbc.com/2018/02/08/elon-musk-shares-the-epic-last-photo-of-starman-in-the-red-tesla-he-shot-into-space.html",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "grimes-2018",
+    date: "2018–",
+    year: 2018,
+    era: "scale",
+    category: "personal",
+    priority: "P2",
+    title: "Grimes와 연애 시작",
+    summary: "음악가 Grimes(Claire Boucher)와 약 2018부터 공개 연애. 이후 자녀 3명 보도.",
+    detail:
+      "People 등: 2018 연애 시작, 이후 on/off 공개 상태. 자녀 출생(2020–2022)은 별도 카드. 이름 전부 나열은 루브릭상 생략(사생활·변동성).",
+    sources: [
+      {
+        name: "People — dating history / Grimes",
+        tier: "B",
+        url: "https://people.com/elon-musk-complete-dating-history-7502497",
+      },
+      {
+        name: "Wikipedia — Elon Musk",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Elon_Musk",
+      },
+    ],
+    caution: "관계 상태 표기는 시기·매체마다 다름.",
+  },
+  {
+    id: "population-collapse-2021",
+    date: "2021–",
+    year: 2021,
+    era: "platform",
+    category: "media",
+    priority: "P2",
+    title: "인구 붕괴·출산율 경고 발언",
+    summary:
+      "인구 붕괴·저출산이 문명 최대 위험 중 하나라는 반복 주장 — “Mars needs people” 등.",
+    detail:
+      "Fox/CNBC/WSJ 행사 등 2020–21: “greatest risk to the future of civilization”, “not enough people”. 다자녀 개인사와 함께 인용되는 미래 위험 레토릭. 인구학 합의와는 별개.",
+    sources: [
+      {
+        name: "CNBC — civilization / more children",
+        tier: "B",
+        url: "https://www.cnbc.com/2021/12/07/elon-musk-civilization-will-crumble-if-we-dont-have-more-children.html",
+      },
+      {
+        name: "Fox Business — population collapse tweet",
+        tier: "B",
+        url: "https://www.foxbusiness.com/technology/elon-musk-population-collapse-risk-future-civilization",
+      },
+    ],
+    caution: "의견·위험 프레이밍. 시점·심각성은 인구학자마다 다름.",
+  },
+  {
+    id: "grimes-child-x-2020",
+    date: "2020-05",
+    year: 2020,
+    era: "scale",
+    category: "personal",
+    priority: "P2",
+    title: "Grimes와 자녀 출생 · 이색 이름 밈",
+    summary: "2020 Grimes와 첫째 출생. X Æ A-Xii 계열 이름이 전 세계 밈화.",
+    detail:
+      "2020-05 출생 다수 보도. 캘리포니아 이름 규정에 맞춘 법적 표기 조정. 개인사+플랫폼 고인용 순간. 이후 추가 자녀는 이름 전부 나열 없이 ‘다수’로만 연계.",
+    sources: [
+      {
+        name: "People — Musk / Grimes children coverage",
+        tier: "B",
+        url: "https://people.com/elon-musk-complete-dating-history-7502497",
+      },
+      {
+        name: "Wikipedia — Elon Musk",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Elon_Musk",
+      },
+    ],
+    caution: "법적 표기·애칭은 서류·매체마다 다를 수 있음.",
+  },
+  {
+    id: "zilis-children-2021",
+    date: "2021–2022",
+    year: 2021,
+    era: "platform",
+    category: "personal",
+    priority: "P2",
+    title: "Shivon Zilis와 자녀 (2022 공개 보도)",
+    summary:
+      "Neuralink 임원 Shivon Zilis와 쌍둥이 등 2021년경 출생 — 2022 중반 공론화. Grimes 가정 뉴스와 근접.",
+    detail:
+      "People/Insider: 법원 서류·보도. 이후 연도에도 추가 출생 보도. Grimes 타임라인과 병행되는 가족 구조 사실만 기록. 이름 전체 목록 생략.",
+    sources: [
+      {
+        name: "People — Zilis / twins reporting",
+        tier: "B",
+        url: "https://people.com/elon-musk-complete-dating-history-7502497",
+      },
+      {
+        name: "Business Insider family reporting (cross-check)",
+        tier: "B",
+        url: "https://www.businessinsider.com/elon-musk-spouse-married",
+      },
+    ],
+    caution: "사생활 세부는 공개 출처가 불완전할 수 있음.",
+  },
+  {
+    id: "vote-republican-2022",
+    date: "2022-05",
+    year: 2022,
+    era: "platform",
+    category: "politics",
+    priority: "P2",
+    title: "트윗: 공화당 투표 선언 (민주당 이탈)",
+    summary:
+      "2022-05: 과거 민주 성향이었으나 더 이상 민주당을 지지할 수 없다며 공화당 투표 선언.",
+    detail:
+      "Reuters/LA Times가 정당 전환 트윗 인용. 맥락: Biden·EV 정책 마찰, CA→TX 이전, Twitter 인수 직전 정치. 2024 Trump 지지 전 피벗 마커.",
+    sources: [
+      {
+        name: "Reuters — will vote Republican",
+        tier: "B",
+        url: "https://www.reuters.com/world/us/teslas-musk-says-he-can-no-longer-support-democrats-will-vote-republican-2022-05-18/",
+      },
+      {
+        name: "LA Times — declares Republican",
+        tier: "B",
+        url: "https://www.latimes.com/business/technology/story/2022-05-18/elon-musk-declares-himself-a-republican-as-his-wealth-shrinks-by-12-billion",
+      },
+    ],
+    caution: "공개 투표 의사 표명 — 비공개 투표 증명 아님.",
+  },
+  {
+    id: "trump-feud-2022",
+    date: "2022-07",
+    year: 2022,
+    era: "platform",
+    category: "politics",
+    priority: "P2",
+    title: "2022 Trump 설전 (나이·“bullshit artist”)",
+    summary:
+      "Trump가 머스크를 “bullshit artist”로 호칭. 머스크는 Trump가 모자를 걸고 은퇴할 때라고 응수.",
+    detail:
+      "2022-07 (NBC/NPR/Wikipedia Trump–Musk feud). 같은 해 11월 계정 복구·2024 지지와 대비 — 관계가 선형이 아님을 보여주는 구간.",
+    sources: [
+      {
+        name: "Wikipedia — Trump–Musk feud",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Trump%E2%80%93Musk_feud",
+      },
+      {
+        name: "NPR — bromance breakup context",
+        tier: "B",
+        url: "https://www.npr.org/2025/06/05/nx-s1-5424686/donald-trump-elon-musk-bromance-breakup",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "let-that-sink-in-2022",
+    date: "2022-10-27",
+    year: 2022,
+    era: "platform",
+    category: "media",
+    priority: "P2",
+    title: "“Let that sink in” (본사 세면대 밈)",
+    summary:
+      "인수 종결일 Twitter 본사에 세면대를 들고 입장 — “let that sink in!” 바이럴.",
+    detail:
+      "2022-10-27 (CNBC 연대기). “the bird is freed”와 같은 날 층. 거래 가격 카드와 분리된 소유 순간의 밈 정점.",
+    sources: [
+      {
+        name: "CNBC — Twitter history / sink entrance",
+        tier: "B",
+        url: "https://www.cnbc.com/2022/10/29/a-brief-history-of-twitter-from-its-founding-in-2006-to-musk-takeover.html",
+      },
+      {
+        name: "Wikipedia — Acquisition of Twitter",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Acquisition_of_Twitter_by_Elon_Musk",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "trump-reinstate-2022",
+    date: "2022-11",
+    year: 2022,
+    era: "platform",
+    category: "politics",
+    priority: "P2",
+    title: "Trump Twitter 계정 복구",
+    summary:
+      "2022-11: 공개 투표 후 1.6 이후 정지됐던 Donald Trump 계정 복구.",
+    detail:
+      "BBC/NBC: 폴 후 복구. Trump는 당분간 Truth Social 중심 활동. 표현의 소유·이후 정치 동맹 경로의 한 단계.",
+    sources: [
+      {
+        name: "BBC — amnesty / Trump reinstatement",
+        tier: "B",
+        url: "https://www.bbc.com/news/business-63752208",
+      },
+      {
+        name: "NBC — relationship timeline",
+        tier: "B",
+        url: "https://www.nbcnews.com/politics/donald-trump/trump-elon-musk-summary-timeline-political-relationship-rcna211453",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "ai-pause-letter-2023",
+    date: "2023-03",
+    year: 2023,
+    era: "platform",
+    category: "ai",
+    priority: "P2",
+    title: "AI 학습 ‘일시 중단’ 공개 서한 서명",
+    summary:
+      "2023-03: GPT-4급 이상 학습 일시 중단을 촉구하는 Future of Life 공개 서한 서명.",
+    detail:
+      "NYT/Reuters: 다수 서명 서한. 같은 해 xAI 설립 — AI 위험 발언과 경쟁 랩 구축이 병행. 서한 행위만 기록(규제·산업 중단이 아님).",
+    sources: [
+      {
+        name: "Future of Life — Pause Giant AI Experiments",
+        tier: "A",
+        url: "https://futureoflife.org/open-letter/pause-giant-ai-experiments/",
+      },
+      {
+        name: "NYT — AI pause letter coverage",
+        tier: "B",
+        url: "https://www.nytimes.com/2023/03/29/technology/ai-artificial-intelligence-musk-risks.html",
+      },
+    ],
+    caution: "서한은 권고·운동 — 강제 중단이 아님.",
+  },
+  {
+    id: "trump-endorse-2024",
+    date: "2024-07-13",
+    year: 2024,
+    era: "platform",
+    category: "politics",
+    priority: "P2",
+    title: "Butler 피격 직후 Trump 전면 지지",
+    summary:
+      "2024-07-13 펜실베이니아 유세 피격 직후 “I fully endorse President Trump…” 게시.",
+    detail:
+      "CNBC/NPR 인용. 주먹 사진 공유는 별도 바이럴 카드. America PAC 지출·11월 DOGE 리드로 연결. 동기 해석 없음.",
+    sources: [
+      {
+        name: "CNBC — Trump–Musk relationship timeline",
+        tier: "B",
+        url: "https://www.cnbc.com/2025/06/06/a-timeline-of-donald-trump-and-elon-musks-relationship.html",
+      },
+      {
+        name: "NPR — endorsement after attempt",
+        tier: "B",
+        url: "https://www.npr.org/2025/06/05/nx-s1-5424686/donald-trump-elon-musk-bromance-breakup",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "trump-musk-feud-2025",
+    date: "2025-06",
+    year: 2025,
+    era: "now",
+    category: "politics",
+    priority: "P2",
+    title: "Trump–Musk 공개 설전 (DOGE 이후)",
+    summary:
+      "2025-06: DOGE 역할 종료 후 예산안·‘배은망덕’ 등을 둘러싼 공개 설전 — X 등에서 상호 비난.",
+    detail:
+      "ABC/CNBC/Wikipedia Trump–Musk feud: 2024 동맹·DOGE → 5월 이탈 → 6월 초 언어전(탄핵 동조 언급, Epstein 관련 주장 보도 등). 공개 파열만 기록 — 승패 평론 없음.",
+    sources: [
+      {
+        name: "ABC News — adviser to bitter feud",
+        tier: "B",
+        url: "https://abcnews.com/Politics/key-adviser-bitter-feud-timeline-musk-trumps-relationship/story?id=122558371",
+      },
+      {
+        name: "CNBC — bromance to feud timeline",
+        tier: "B",
+        url: "https://www.cnbc.com/2025/06/06/a-timeline-of-donald-trump-and-elon-musks-relationship.html",
+      },
+    ],
+    caution: "설전 세부·이후 화해 여부는 일일 보도에 따라 변동.",
+  },
+  {
+    id: "free-speech-absolutist-2022",
+    date: "2022-04",
+    year: 2022,
+    era: "platform",
+    category: "media",
+    priority: "P2",
+    title: "‘표현의 자유 절대주의자’ 프레이밍",
+    summary:
+      "2022 인수 과정에서 free speech absolutist·디지털 타운 스퀘어로 자처 — 고빈도 인용 라벨.",
+    detail:
+      "Britannica/Grokipedia 인수 서술. worst-critics 트윗, Twitter Files, 광고주 갈등과 짝. 본인 표방 입장 — 중재 정책 감사 결과가 아님.",
+    sources: [
+      {
+        name: "Encyclopaedia Britannica",
+        tier: "A",
+        url: "https://www.britannica.com/money/Elon-Musk",
+      },
+      {
+        name: "Wikipedia — Views of Elon Musk",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Views_of_Elon_Musk",
+      },
+    ],
+    caution: null,
+  },
+  {
+    id: "tesla-hq-texas-2021",
+    date: "2021",
+    year: 2021,
+    era: "platform",
+    category: "tesla",
+    priority: "P2",
+    title: "Tesla 본사 텍사스 이전",
+    summary: "2021: Tesla 본사를 캘리포니아에서 텍사스로 이전 — 정책·세금·COVID 갈등 보도와 병행.",
+    detail:
+      "2020 Fremont 재가동 갈등·이후 공화 투표 선언과 자주 묶여 인용. 법인 소재 사실 + 정치 동시 보도. 주 평가 없음.",
+    sources: [
+      {
+        name: "Reuters / major press (HQ move context)",
+        tier: "B",
+        url: "https://www.reuters.com/world/us/teslas-musk-says-he-can-no-longer-support-democrats-will-vote-republican-2022-05-18/",
+      },
+      {
+        name: "Wikipedia — Tesla, Inc.",
+        tier: "B",
+        url: "https://en.wikipedia.org/wiki/Tesla,_Inc.",
+      },
+    ],
+    caution: null,
+  },
 ];
 
 // English strings for detail events
@@ -1116,6 +1659,171 @@ window.DETAIL_EVENTS_EN = {
     detail:
       "27 Apr 2022 joke tweet. On Wikipedia most-liked lists. Cultural/viral marker of post-bid energy more than a policy act.",
     caution: "Joke post—not a real acquisition intent.",
+  },
+
+  // —— Expanded: X timeline, philosophy, relationships, Trump/politics (EN) ——
+  "twitter-first-2010": {
+    title: "First authentic tweet (takes @elonmusk)",
+    summary:
+      "4 Jun 2010 authentic first post: ignore prior tweets as impersonation—“This is actually me.”",
+    detail:
+      "Account existed earlier with non-Musk posts. Visual Capitalist/NY Mag: first real post 4 Jun 2010; sparse activity until ~2011–12, then high-volume years. Start of the X speech arc.",
+    caution: null,
+  },
+  "ai-existential-2014": {
+    title: "AI as “existential threat” (public warnings)",
+    summary:
+      "From ~2014 (e.g. MIT) frames AI among civilization’s top risks; repeats to governors etc. through 2017.",
+    detail:
+      "NPR/Guardian: 2014 “summoning the demon” style framing; 2017 National Governors Association “fundamental risk… human civilization.” Same era as OpenAI co-founding (2015) and later exit (2018).",
+    caution: "Forecast/risk view—not a calendar prediction of catastrophe.",
+  },
+  "simulation-hypothesis-2016": {
+    title: "Simulation hypothesis remarks (very high odds)",
+    summary:
+      "Widely cited remarks that base-reality odds are tiny (e.g. “billion to one” framing at Code Conference-era talks).",
+    detail:
+      "Recurs in interviews/podcasts. Cultural-philosophy marker often paired with multiplanetary and AI-risk speech—not a scientific claim the timeline endorses.",
+    caution: "Philosophical speculation, not empirical fact.",
+  },
+  "iac-multiplanetary-2016": {
+    title: "IAC 2016: multiplanetary civilization roadmap",
+    summary:
+      "At 67th IAC presents self-sustaining Mars civilization architecture (reusable ships, refueling, ISRU).",
+    detail:
+      "Core long-term SpaceX narrative: multiplanetary species as survival strategy. Feeds Starship design and later HLS path. Prediction/goal framing—not a guaranteed schedule.",
+    caution: "Mission dates and colony timelines are aspirational and move.",
+  },
+  "amber-heard-2016": {
+    title: "Public relationship with Amber Heard",
+    summary: "High-profile romance with actor Amber Heard reported ~2016–2017 (after second Talulah divorce).",
+    detail:
+      "People/Business Insider et al.: public period ~2016–17. Later overlaps Depp–Heard trials in secondary coverage. Year-level personal marker only.",
+    caution: null,
+  },
+  "trump-advisory-2016": {
+    title: "Joins Trump business advisory councils",
+    summary: "After 2016 election, joins Trump-era business/strategy advisory councils with other CEOs.",
+    detail:
+      "NBC/Business Insider: Dec 2016 appointments. Pre-election he had said Trump was “not the right guy.” Councils dissolve after Paris-accord exit (2017-06).",
+    caution: null,
+  },
+  "paris-councils-2017": {
+    title: "Leaves Trump councils after Paris pullout (tweet)",
+    summary:
+      "After U.S. announces Paris Agreement withdrawal, tweets departure from presidential councils.",
+    detail:
+      "Fixed gist: “Am departing presidential councils. Climate change is real…” (1 Jun 2017). CNBC/Forbes: follows prior threat to leave if U.S. exits Paris. Early Trump–Musk arc endpoint before 2022 feud and 2024 alliance.",
+    caution: null,
+  },
+  "starman-roadster-2018": {
+    title: "Starman & Roadster in space (meme payload)",
+    summary:
+      "Falcon Heavy demo lofted personal Tesla Roadster with “Starman” dummy—global meme event.",
+    detail:
+      "Feb 2018. Wikipedia: dummy payload became heliocentric; Bowie/Starman cultural layer. Distinct from P0 Heavy flight card—meme/comms layer. Roadster choice announced via Twitter.",
+    caution: null,
+  },
+  "grimes-2018": {
+    title: "Relationship with Grimes begins",
+    summary: "Public relationship with musician Grimes (Claire Boucher) from ~2018; three children later reported.",
+    detail:
+      "People et al.: dating from 2018; on/off public status. Children births (2020–2022) and later co-parenting coverage are separate detail cards. No full name list (privacy/volatility).",
+    caution: "Relationship status labels vary by period and outlet.",
+  },
+  "population-collapse-2021": {
+    title: "Population-collapse / birth-rate warnings",
+    summary:
+      "Repeated claims that population collapse/low birth rates are among civilization’s greatest risks—“Mars needs people.”",
+    detail:
+      "Fox/CNBC/WSJ events ~2020–21: “greatest risk to the future of civilization,” “not enough people.” Often cited alongside his large family. Future-risk rhetoric—not a demographic forecast the timeline validates.",
+    caution: "Opinion/risk framing; demographers disagree on timing/severity.",
+  },
+  "grimes-child-x-2020": {
+    title: "Child with Grimes; unusual name goes viral",
+    summary: "2020 birth of first child with Grimes; legal-name form (X Æ A-Xii class) becomes a global meme.",
+    detail:
+      "May 2020 birth widely covered; California naming rules led to adjusted legal form. High-mention personal+platform moment. Later second/third Grimes children reported without listing every name here.",
+    caution: "Exact legal strings and nicknames vary by filing/outlet.",
+  },
+  "zilis-children-2021": {
+    title: "Children with Shivon Zilis (public 2022)",
+    summary:
+      "Twins with Neuralink executive Shivon Zilis born ~Nov 2021; public reporting mid-2022 near Grimes family news.",
+    detail:
+      "People/Insider: court docs and reporting; more children with Zilis reported in later years. Overlaps Grimes timeline—fact of concurrent family lines only. No full name roster.",
+    caution: "Private family details remain incomplete in public sources.",
+  },
+  "vote-republican-2022": {
+    title: "Tweet: will vote Republican (leaves Dems)",
+    summary:
+      "May 2022: past Democrat voter says he can “no longer support” Democrats and will vote Republican.",
+    detail:
+      "Reuters/LA Times quote the party-switch tweet. Context: Biden/EV policy friction, California→Texas HQ moves, pre-Twitter-close politics. Pivot marker before 2024 Trump endorsement.",
+    caution: "Records stated voting intent—not private ballot proof.",
+  },
+  "trump-feud-2022": {
+    title: "2022 Trump feud (age / “bullshit artist”)",
+    summary:
+      "Trump calls Musk a “bullshit artist”; Musk replies Trump should “hang up his hat” and not run again.",
+    detail:
+      "Jul 2022 (NBC/NPR/Wikipedia Trump–Musk feud). Contrast with Nov 2022 account reinstatement and Jul 2024 endorsement—relationship is non-linear.",
+    caution: null,
+  },
+  "let-that-sink-in-2022": {
+    title: "“Let that sink in” (Twitter HQ sink meme)",
+    summary:
+      "Carries a bathroom sink into Twitter HQ on close day—“Entering Twitter HQ – let that sink in!” goes viral.",
+    detail:
+      "27 Oct 2022 (CNBC history). Paired with “the bird is freed.” Meme peak of ownership day, separate from deal-price card.",
+    caution: null,
+  },
+  "trump-reinstate-2022": {
+    title: "Reinstates Trump’s Twitter account",
+    summary:
+      "Nov 2022: after a public poll, restores Donald Trump’s account banned post–Jan 6.",
+    detail:
+      "BBC/NBC: poll then reinstatement. Trump largely stayed on Truth Social initially. Step on free-speech/ownership and later political alliance path.",
+    caution: null,
+  },
+  "ai-pause-letter-2023": {
+    title: "Signs AI training “pause” open letter",
+    summary:
+      "Mar 2023: signs Future of Life open letter urging pause on training AI systems beyond GPT-4 class.",
+    detail:
+      "NYT/Reuters: multi-signatory letter. Same year as xAI founding—AI-risk speech continues while building competing labs. Records the public letter act.",
+    caution: "Letter is advocacy, not regulation or industry halt.",
+  },
+  "trump-endorse-2024": {
+    title: "Full Trump endorsement after Butler shooting",
+    summary:
+      "13 Jul 2024: minutes after Pennsylvania assassination attempt—“I fully endorse President Trump…”",
+    detail:
+      "CNBC/NPR quote the endorsement post; fist-photo share is a separate viral card. Leads into America PAC spending and Nov DOGE lead role. Motive not analyzed.",
+    caution: null,
+  },
+  "trump-musk-feud-2025": {
+    title: "Public Trump–Musk feud (post-DOGE)",
+    summary:
+      "Jun 2025: after DOGE role ends, open clash over spending bill/ingratitude—insults and counter-claims on X and elsewhere.",
+    detail:
+      "ABC/CNBC/Wikipedia Trump–Musk feud: from 2024 alliance and DOGE to May exit then early-Jun verbal war (impeachment nods, Epstein claims in coverage, etc.). Records public rupture—not a winner.",
+    caution: "Feud details and any later thaw move with daily reporting.",
+  },
+  "free-speech-absolutist-2022": {
+    title: "“Free speech absolutist” framing (Twitter bid)",
+    summary:
+      "During 2022 bid/ownership path, widely quoted self-description as free-speech absolutist / digital town square.",
+    detail:
+      "Britannica/Grokipedia acquisition framing. Pairs with worst-critics tweet, Twitter Files, and advertiser conflicts. Label is his stated position—not a content-moderation audit.",
+    caution: null,
+  },
+  "tesla-hq-texas-2021": {
+    title: "Tesla HQ move to Texas (from California)",
+    summary: "2021: Tesla headquarters relocates from California to Texas amid policy/tax/COVID-era friction coverage.",
+    detail:
+      "Often tied to 2020 Fremont reopen fight and later “vote Republican” politics. Corporate domicile fact with political co-coverage—not a verdict on either state.",
+    caution: null,
   },
 };
 

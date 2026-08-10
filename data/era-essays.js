@@ -30,6 +30,7 @@ window.ERA_ESSAYS = {
       lede: "1995–2002는 **첫 유동성 이벤트**의 시대입니다. 이후 우주·자동차 투자의 ‘시드 자본’이 여기서 형성됩니다.",
       body: [
         "Zip2(1995 공동창업) → Compaq 인수(~$307M, 1999) → X.com(1999) → Confinity 합병·PayPal → eBay 인수($1.5B, 2002). 숫자는 백과사전·다수 매체 기준이며 Zip2 금액은 $305M 표기도 있어 주의 배지를 둡니다.",
+        "개인사 Detail: Justine Wilson 결혼·이혼(2000–2008)은 P1 카드. 이후 Talulah·Amber·Grimes 구간은 Detail 레이어.",
         "2002년 미국 시민권 취득은 이주 궤적의 제도적 완료 지점입니다. 같은 해 SpaceX 설립으로 시대가 다음 블록으로 넘어갑니다.",
         "개인사(Justine Wilson 결혼 2000–08)는 연도 요약만 수록합니다. 사업 타임라인과 병렬로 두되 비중은 낮춥니다.",
       ],
@@ -53,9 +54,9 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX(2002 설립)는 머스크가 설립자로 명확합니다. Tesla는 2003년 Eberhard·Tarpenning 법인 설립 → 2004 Series A·의장 → 2008 CEO. ‘단독 창업’ 서술은 배제합니다.",
         "2008년은 압축된 위기·전환 해: Falcon 1 궤도 성공, Tesla CEO 취임, Roadster 인도, NASA 화물 계약 경로. 성공 서사만 넣지 않고 **시점이 겹치는 사실**을 나란히 둡니다.",
-        "2010–2012: Falcon 9, Tesla IPO, Dragon 회수·ISS 방문, Model S. ‘민간 firsts’는 SpaceX·NASA 공식 서술을 따릅니다.",
+        "2010–2012: Falcon 9, Tesla IPO, Dragon 회수·ISS 방문, Model S. ‘민간 firsts’는 SpaceX·NASA 공식 서술을 따릅니다. Detail: 2010-06 Twitter 첫 본인 게시 — 이후 고빈도 발언 아크의 원점.",
       ],
-      takeaway: "구조 요약: 자본 투입 → 실패·계약·양산 → 공공 파트너십 → 상장·주류 제품.",
+      takeaway: "구조 요약: 자본 투입 → 실패·계약·양산 → 공공 파트너십 → 상장·주류 제품·소셜.",
     },
     en: {
       title: "Dual bet: building SpaceX and Tesla together",
@@ -63,9 +64,9 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX (founded 2002) is clearly Musk-founded. Tesla: 2003 incorporation by Eberhard & Tarpenning → 2004 Series A/chair → 2008 CEO. Solo-founder slogans are excluded.",
         "2008 is a compressed crisis-and-turn year: Falcon 1 orbit, Tesla CEO appointment, Roadster deliveries, NASA cargo contract path. Facts sit side by side without a hero edit.",
-        "2010–2012: Falcon 9, Tesla IPO, Dragon recovery/ISS visit, Model S. Commercial “firsts” follow SpaceX/NASA official framing.",
+        "2010–2012: Falcon 9, Tesla IPO, Dragon recovery/ISS visit, Model S. Commercial “firsts” follow SpaceX/NASA official framing. Detail: Jun 2010 first authentic tweet—origin of the later high-volume speech arc.",
       ],
-      takeaway: "Structure: capital in → failure/contracts/production → public partnership → IPO & flagship product.",
+      takeaway: "Structure: capital in → failure/contracts/production → public partnership → IPO, flagship product, social.",
     },
   },
   scale: {
@@ -75,10 +76,10 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX: 2015 1단 지상 착륙, 2017 재비행, 2018 Falcon Heavy, 2019 Starlink 배치, 2020 Crew Dragon 유인 비행. 재사용은 비용 구조 변화의 증거로 공식 기록됩니다.",
         "Tesla: Model X·3·Y, SolarCity 인수, 2018 SEC 합의(‘funding secured’). 규제 사건도 사실이면 포함합니다—평가 없이.",
-        "Detail 레이어: 2018 Unsworth 소송·JRE 출연, 2020 “stock too high imo”·Fremont 재가동 트윗 등 — X(당시 Twitter) 발언이 시장·소송과 맞닿은 구간.",
+        "Detail 레이어: AI 실존 위험·시뮬레이션·IAC 다행성 발언, 2016–17 Trump 자문→파리 사퇴, Starman 밈, Unsworth·JRE·funding secured, 2020 stock/Fremont 트윗, Grimes·이색 이름 등 — 공개 발언·개인사·정치가 스케일과 겹침.",
         "신규 축: OpenAI(2015 공동설립·2018 이탈), Neuralink·Boring Company(2016~). 이후 플랫폼·AI 시대의 씨앗입니다.",
       ],
-      takeaway: "구조 요약: 프로토타입 → 재사용/양산 → 규제·거버넌스·공개 발언 → 다각화.",
+      takeaway: "구조 요약: 프로토타입 → 재사용/양산 → 규제·거버넌스·공개 발언·개인사 → 다각화.",
     },
     en: {
       title: "Scale: reusable rockets and volume EVs",
@@ -86,10 +87,10 @@ window.ERA_ESSAYS = {
       body: [
         "SpaceX: 2015 land landing, 2017 reflight, 2018 Falcon Heavy, 2019 Starlink batch, 2020 crewed Dragon. Reuse is recorded as a cost-structure shift.",
         "Tesla: Models X/3/Y, SolarCity acquisition, 2018 SEC settlement (“funding secured”). Regulatory events are included as facts—without moral coloring.",
-        "Detail layer: 2018 Unsworth suit & JRE, 2020 “stock too high imo” and Fremont reopen tweets—where Twitter speech met markets and litigation.",
+        "Detail layer: AI existential risk & simulation & IAC multiplanetary speech; 2016–17 Trump councils then Paris exit; Starman meme; Unsworth/JRE/funding secured; 2020 stock/Fremont tweets; Grimes and viral baby name—speech, personal life, and politics overlap scale.",
         "New axes: OpenAI (co-founded 2015; exit 2018), Neuralink and Boring Company (~2016). Seeds of the later platform/AI era.",
       ],
-      takeaway: "Structure: prototype → reuse/volume → regulation/governance/public speech → diversification.",
+      takeaway: "Structure: prototype → reuse/volume → regulation/governance/public speech/personal → diversification.",
     },
   },
   platform: {
@@ -98,22 +99,22 @@ window.ERA_ESSAYS = {
       lede: "2021–2025는 **유통 채널(소셜) + AI + 정부 효율 기구**가 겹치는 구간입니다. 정치 평가는 넣지 않고 행위 연표만 둡니다.",
       body: [
         "2022 Twitter $44B 인수 완료 → 2023 X 리브랜딩 → xAI·Grok. 미디어 소유와 AI 제품이 한 인물 포트폴리오 안에서 연결됩니다.",
-        "Detail: “the bird is freed”, Twitter Files, DealBook 광고주 발언, 최다 좋아요급 게시 등 — 소유 후 플랫폼 언어·바이럴 마커.",
+        "Detail: 공화 투표 선언, Trump 2022 설전→계정 복구→2024 지지→2025 설전; bird/sink/Files/DealBook; 인구 붕괴 발언; Zilis 자녀 공개 등.",
         "Neuralink 인체 임상 보고, Cybertruck 인도 시작 등 기존 하드웨어 축도 병행됩니다.",
-        "정치 아크(사실만): 2024 Trump 지지·정치 자금 → DOGE 리드 발표 → 2025-01-20 EO → 2025-05 역할 종료. 성패 평론 없음.",
+        "정치 아크(사실만): 2024 Trump 지지·정치 자금 → DOGE 리드 발표 → 2025-01-20 EO → 2025-05 역할 종료 → 2025-06 공개 설전. 성패 평론 없음.",
       ],
-      takeaway: "구조 요약: 플랫폼 인수 → 브랜드·발언·AI → 공공 역할 진입·종료.",
+      takeaway: "구조 요약: 플랫폼 인수 → 브랜드·발언·AI → 공공 역할 진입·종료·파열.",
     },
     en: {
       title: "Platform & politics: X, xAI, DOGE",
       lede: "2021–2025 stacks **distribution (social) + AI + a government-efficiency vehicle**. No political verdicts—only an act chronology.",
       body: [
         "2022 Twitter close at ~$44B → 2023 X rebrand → xAI/Grok. Media ownership and AI product sit in one portfolio.",
-        "Detail: “the bird is freed,” Twitter Files, DealBook advertiser line, top most-liked posts—ownership-era speech and viral markers.",
+        "Detail: vote-Republican pivot; Trump 2022 feud → reinstate → 2024 endorse → 2025 feud; bird/sink/Files/DealBook; population-collapse speech; Zilis family reporting.",
         "Hardware threads continue: Neuralink human-trial reports, Cybertruck deliveries.",
-        "Politics arc (acts only): 2024 Trump support/spending → DOGE lead announcement → 20 Jan 2025 EO → May 2025 role end. No win/loss essay.",
+        "Politics arc (acts only): 2024 Trump support/spending → DOGE lead → 20 Jan 2025 EO → May 2025 role end → Jun 2025 public feud. No win/loss essay.",
       ],
-      takeaway: "Structure: platform acquisition → brand/speech/AI → public-role entry and exit.",
+      takeaway: "Structure: platform acquisition → brand/speech/AI → public-role entry, exit, rupture.",
     },
   },
   now: {
