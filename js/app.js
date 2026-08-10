@@ -496,6 +496,7 @@
 
       const media = getEventMedia(ev);
       if (media[0]) {
+        btn.classList.add("has-media");
         const thumb = document.createElement("div");
         thumb.className = "card-media-thumb";
         const img = document.createElement("img");

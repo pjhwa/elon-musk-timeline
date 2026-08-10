@@ -781,31 +781,62 @@ html[data-theme="light"] .chip[data-cat="media"].active {
   font-weight: 600;
 }
 
-/* —— Event meme / iconic images —— */
+/* —— Event meme / iconic images (timeline cards) —— */
+.card.has-media {
+  padding-bottom: 0.85rem;
+}
 .card-media-thumb {
   position: relative;
-  margin: 0.5rem 0 0.35rem;
-  border-radius: 8px;
+  margin: 0.55rem 0 0.5rem;
+  border-radius: 10px;
   overflow: hidden;
-  max-height: 120px;
-  background: var(--surface-2, rgba(0, 0, 0, 0.06));
+  width: 100%;
+  min-height: 168px;
+  max-height: 220px;
+  background: var(--surface-2, rgba(0, 0, 0, 0.12));
+  border: 1px solid var(--border, rgba(127, 127, 127, 0.2));
 }
 .card-media-thumb img {
   display: block;
   width: 100%;
-  height: 120px;
-  object-fit: cover;
+  height: 200px;
+  object-fit: contain;
+  object-position: center;
+  background: #0b1220;
+}
+html[data-theme="light"] .card-media-thumb img {
+  background: #e8eef6;
 }
 .card-media-count {
   position: absolute;
-  right: 0.4rem;
-  bottom: 0.35rem;
-  font-size: 0.7rem;
+  right: 0.5rem;
+  bottom: 0.45rem;
+  font-size: 0.72rem;
   font-weight: 600;
-  padding: 0.1rem 0.35rem;
+  padding: 0.15rem 0.4rem;
   border-radius: 4px;
-  background: rgba(0, 0, 0, 0.55);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
+}
+
+@media (min-width: 900px) {
+  .card-media-thumb {
+    min-height: 200px;
+    max-height: 260px;
+  }
+  .card-media-thumb img {
+    height: 240px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-media-thumb {
+    min-height: 140px;
+    max-height: 180px;
+  }
+  .card-media-thumb img {
+    height: 160px;
+  }
 }
 
 .event-media-section {
