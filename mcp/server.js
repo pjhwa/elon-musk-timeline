@@ -11,6 +11,9 @@ import {
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import {
+  BLOCKED, STYLE_KEYS, ASPECTS, closestReference, refYear, buildIllustrationPrompt,
+} from "./prompt.js";
 const REF_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", "assets", "references");
 const refs = (() => {
   try { return JSON.parse(fs.readFileSync(path.join(REF_DIR, "manifest.json"), "utf8")).items; } catch { return []; }
@@ -156,67 +159,67 @@ server.registerTool("get_references", {
   });
 });
 
-// ---- build_prompt: stylised, clearly non-photographic illustration prompts -------------------
-const STYLES = {
-  "editorial-caricature": "editorial newspaper caricature illustration, exaggerated proportions, bold expressive ink lines, flat watercolor wash, visibly hand-drawn",
-  "flat-vector": "flat vector illustration, simple geometric shapes, limited bold palette, clean outlines, poster style",
-  "ink-sketch": "loose ink and pen sketch on cream paper, cross-hatching, sketchbook feel, visible pencil construction lines",
-  "woodcut": "linocut woodcut print, chunky carved lines, two-colour ink on paper, vintage propaganda-poster composition",
-  "pixel-art": "16-bit pixel art, chunky pixels, limited palette, retro video game scene",
-  "low-poly": "low-poly 3D illustration, faceted shapes, flat shading, obviously stylised toy-like figure",
-  "comic-panel": "comic book panel, halftone dots, thick outlines, speech-bubble-free composition",
-};
-const BLOCKED = /\b(nude|naked|nsfw|sexual|porn|gore|blood|corpse|child|children|kid|minor|swastika|nazi)\b/i;
-
 server.registerTool("build_prompt", {
   description:
-    "Compose a Midjourney prompt for a satirical or illustrated image about Elon Musk. Always a clearly non-photographic style (caricature, vector, ink, woodcut, pixel, low-poly, comic): never a photoreal likeness. Optionally anchor the scene to a timeline event so it shows something that really happened. Returns the prompt, parameters and a checklist.",
+    "Compose a satirical illustration prompt of Elon Musk for Grok Imagine (default) or Midjourney. Always a clearly non-photographic caricature, never a photoreal likeness. Grok Imagine gets natural-language prose (subject, likeness, scene and composition, style, lighting and color, text layout) plus ui.aspect and ui.quality. Imagine ignores --ar, --style, --iw, and image URLs; set aspect and quality in the UI (2:3, 3:2, 1:1, 16:9, 9:16; quality highest). Optional headline, caption, and labels are Korean strings to render exactly. With no text, the prompt forbids lettering and drops newspaper and signage cues. Optional topic turns free text, such as a news item, into the scene. Optional event_id anchors a real timeline event. reference_year selects an era likeness from assets/references/manifest.json when that file exists, and still works from the year alone when it does not.",
   inputSchema: {
-    scene: z.string().min(3).describe("What the illustration shows, e.g. 'standing on a rocket booster holding a tiny flag, cartoon sea behind'."),
-    style: z.enum(Object.keys(STYLES)).default("editorial-caricature"),
-    event_id: z.string().optional().describe("Optional timeline event id; its title/date are added as grounding so the picture matches the record."),
-    aspect: z.enum(["16:9", "4:5", "1:1", "3:2", "2:3", "9:16"]).default("4:5"),
-    reference_year: z.number().int().optional().describe("Optional: use the openly licensed reference photo closest to this year as an image prompt, so the caricature's likeness follows how he looked then."),
+    scene: z.string().min(3).optional().describe("What the illustration shows, e.g. 'standing on a rocket booster holding a tiny flag, cartoon sea behind'. Optional when topic or event_id is set."),
+    topic: z.string().min(3).optional().describe("Free text turned into the scene, e.g. a recent news item. Visual metaphor only; not lettering."),
+    style: z.enum(STYLE_KEYS).default("editorial-caricature"),
+    target: z.enum(["grok-imagine", "midjourney"]).default("grok-imagine").describe("grok-imagine (default) returns prose plus UI settings. midjourney keeps --ar, --style raw, and an optional reference-photo URL."),
+    event_id: z.string().optional().describe("Optional timeline event id. Its title and date ground the picture in the record."),
+    aspect: z.enum(ASPECTS).optional().describe("Frame ratio. Grok Imagine default 2:3, chosen in the UI. Midjourney default 4:5, written as --ar. 4:5 is mapped to 2:3 for Grok Imagine. Imagine also offers 3:2, 1:1, 16:9, 9:16."),
+    reference_year: z.number().int().optional().describe("Era of the caricature. Uses the closest assets/references/manifest.json photo (year, then title) when the file exists. The written likeness still works if that folder is missing. Only Midjourney receives the photo URL."),
+    headline: z.string().min(1).max(160).optional().describe("Korean title rendered exactly, in a top banner. Quoted verbatim. No other writing."),
+    caption: z.string().min(1).max(80).optional().describe("Short Korean caption rendered exactly, inside one speech bubble."),
+    labels: z.array(z.string().min(1).max(40)).max(6).optional().describe("Short Korean words, one per small sign, and no other writing."),
     lang,
   },
   annotations: { readOnlyHint: true },
-}, async ({ scene, style, event_id, aspect, reference_year, lang }) => {
-  if (BLOCKED.test(scene)) return fail("Scene refused: no sexual, gory, hateful-symbol or child-related content in images of a real person.");
+}, async ({ scene, topic, style, target, event_id, aspect, reference_year, headline, caption, labels, lang }) => {
+  const cleanScene = scene?.trim();
+  const cleanTopic = topic?.trim();
+  const cleanHeadline = headline?.trim();
+  const cleanCaption = caption?.trim();
+  const cleanLabels = (labels ?? []).map((s) => s.trim()).filter(Boolean);
+  if (!cleanScene && !cleanTopic && !event_id) return fail("Provide a scene, a topic, or an event_id.");
+  const blob = [cleanScene, cleanTopic, cleanHeadline, cleanCaption, ...cleanLabels].filter(Boolean).join("\n");
+  if (BLOCKED.test(blob)) return fail("Scene refused: no sexual, gory, hateful-symbol or child-related content in images of a real person.");
   let grounding = null;
+  let eventYear = null;
   if (event_id) {
     const e = eventById.get(event_id);
     if (!e) return fail(`No event '${event_id}'. Use list_events to find ids.`);
     const v = eventView(e, "en");
-    grounding = { id: e.id, date: v.date, title: v.title, caution: eventView(e, "en", { full: true }).caution };
+    grounding = { id: e.id, date: v.date, title: v.title, caution: eventView(e, "en", { full: true }).caution || null };
+    eventYear = e.year;
   }
-  let reference = null;
-  if (reference_year != null) {
-    const cands = refs.filter((r) => r.year != null).sort((a, b) => Math.abs(a.year - reference_year) - Math.abs(b.year - reference_year));
-    if (!cands.length) return fail("No reference photos collected yet: run node scripts/collect-references.mjs");
-    reference = refView(cands[0]);
+  const requestedYear = reference_year ?? eventYear ?? new Date().getUTCFullYear();
+  const picked = reference_year != null ? closestReference(refs, reference_year) : null;
+  const reference = picked ? refView(picked) : null;
+  const likenessYear = picked ? refYear(picked) : requestedYear;
+  const built = buildIllustrationPrompt({
+    target, scene: cleanScene, topic: cleanTopic, style, aspect, grounding,
+    likenessYear, referenceUrl: reference?.imageUrl ?? null, hasReference: Boolean(reference),
+    headline: cleanHeadline, caption: cleanCaption, labels: cleanLabels,
+  });
+  if (reference_year != null) built.likeness.requested_year = reference_year;
+  built.likeness.source = reference ? "reference" : "year";
+  const notes = [];
+  if (reference_year != null && !reference) {
+    notes.push("No dated photos in assets/references/manifest.json. Likeness is described from reference_year only.");
+  } else if (reference && refYear(picked) !== reference_year) {
+    notes.push(`Nearest reference photo is ${refYear(picked)} (${picked.title}), so the caricature uses that year's look.`);
   }
-  const subject = "a satirical caricature of Elon Musk, drawn as an obvious cartoon figure";
-  const prompt = [
-    subject, scene.trim(),
-    grounding ? `referencing the real event: ${grounding.title} (${grounding.date})` : null,
-    STYLES[style],
-    "clearly an illustration, not a photograph, not photorealistic",
-    "no text, no letters, no logos, no captions",
-  ].filter(Boolean).join(", ");
+  if (grounding?.caution) notes.push(`Event caution: ${grounding.caution}`);
+  if (lang === "en" && (cleanHeadline || cleanCaption || cleanLabels.length)) {
+    notes.push("Korean strings are quoted inside the English prompt so the image model copies them.");
+  }
   return json({
-    prompt: `${reference ? reference.imageUrl + " " : ""}${prompt} --ar ${aspect} --style raw${reference ? " --iw 0.7" : ""}`,
+    ...built,
     reference,
-    parameters: { aspect, style },
     grounding,
-    checklist: [
-      "Result must read as drawn/rendered, never as a photograph; re-roll if it looks photoreal.",
-      "Show events as they happened (see grounding); do not invent scenes presented as real.",
-      "Do not add made-up quotes or captions; type is drawn in code on top, if needed.",
-      "Satire of public conduct is fine; keep it out of private life, family and appearance-shaming.",
-      reference ? "The photo is only a likeness reference (--iw 0.7 keeps the style prompt in charge); if the output turns photographic, lower --iw or re-roll." : null,
-      "If you publish it, label it as an illustration (and as AI-made where the platform asks).",
-    ].filter(Boolean),
-    note: grounding?.caution ? `Event caution: ${grounding.caution}` : undefined,
+    note: notes.length ? notes.join(" ") : undefined,
   });
 });
 
