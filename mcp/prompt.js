@@ -94,6 +94,159 @@ function propFor(text) {
   return found.length ? found.join(", plus ") : "one oversized unmarked object that stands for the action";
 }
 
+const REPLACEMENT = /\b(rewr(?:ote|ite|iting|itten)|from scratch|replac\w*|throw(?:n|ing)? out|discard\w*|legacy|overhaul|migrat\w*)\b/i;
+const BEAM = "a single bold beam of teal light";
+const BEAM_SENTENCE = "The beam is one continuous thick cable of light that sweeps in a smooth diagonal from the upper left down toward the centre.";
+const CRATES = "a small tidy pile of old discarded plain wooden crates with a few loose gears, showing the old tools being thrown out; the crates are completely blank";
+const AI_CORE = "the large glowing AI core, a smooth sphere of warm amber light with neat concentric rings, clearly being powered by the beam, with a soft glow around it";
+const PLUG_ACTION = "confidently catching the light cable in one hand and plugging it into the side of a big glowing spherical AI core, the way an engineer connects a cable";
+
+function hasWord(text, re) {
+  return re.test(text);
+}
+
+function baseMetaphor(text) {
+  const hasStarlink = hasWord(text, /starlink|satellite/i);
+  const hasAI = hasWord(text, /grok|\bxai\b|inference|reinforcement|\brl\b|\bai\b|artificial intelligence/i);
+  const hasStarship = hasWord(text, /starship/i);
+  const hasRocket = hasWord(text, /\brocket|\bfalcon\b|\bbooster\b|liftoff/i);
+  const hasRobotaxi = hasWord(text, /robotaxi/i);
+  const hasTesla = hasWord(text, /tesla|cybertruck|electric vehicle/i);
+  const hasOptimus = hasWord(text, /optimus|humanoid robot/i);
+  const hasX = hasWord(text, /\btwitter\b|x app|the x platform/i);
+  const hasMars = hasWord(text, /\bmars\b/i);
+  const hasCode = hasWord(text, /\bcode\b|software|c\+\+|\bstack\b/i);
+
+  let metaphor;
+  if (hasStarlink && hasAI) {
+    metaphor = {
+      preset: "starlink-ai",
+      source: "one large, clearly drawn Starlink-style flat-panel satellite in orbit above the curve of the Earth",
+      link: BEAM,
+      linkSentence: BEAM_SENTENCE,
+      action: PLUG_ACTION,
+      result: AI_CORE,
+      eye: "satellite, beam, Elon's face, AI core",
+    };
+  } else if (hasStarlink) {
+    metaphor = {
+      preset: "starlink",
+      source: "one large, clearly drawn Starlink-style flat-panel satellite in orbit above the curve of the Earth",
+      link: BEAM,
+      linkSentence: BEAM_SENTENCE,
+      action: "confidently catching the light cable in one hand and aiming it down toward the ground",
+      result: "one small plain ground dish with no markings, clearly receiving the beam, with a soft glow around it",
+      eye: "satellite, beam, Elon's face, the dish",
+    };
+  } else if (hasStarship || hasRocket) {
+    metaphor = {
+      preset: "rocket",
+      source: hasStarship
+        ? "one large Starship-style rocket with no markings"
+        : "one large plain rocket with no markings",
+      link: "a single bold plume of warm light",
+      linkSentence: "The plume is one continuous thick trail that sweeps in a smooth diagonal from the upper left down toward the centre.",
+      action: "confidently catching that trail in one hand and steering it onward",
+      result: hasMars
+        ? "a small red planet, clearly receiving the trail, with a soft glow around it"
+        : "a plain open arc of sky where the trail arrives, with no markings",
+      eye: "the rocket, the plume, Elon's face, the destination",
+    };
+  } else if (hasRobotaxi || hasTesla) {
+    metaphor = {
+      preset: hasRobotaxi ? "robotaxi" : "tesla",
+      source: "a plain unmarked garage bay",
+      link: "a single bold path of teal light",
+      linkSentence: "The path is one continuous thick ribbon of light that sweeps in a smooth diagonal from the upper left down toward the centre.",
+      action: "guiding the ribbon outward with one hand",
+      result: hasRobotaxi
+        ? "one simplified robotaxi with no badges and no text, with a soft glow around it"
+        : "one simplified electric car with no badges and no text, with a soft glow around it",
+      eye: "the garage, the path, Elon's face, the car",
+    };
+  } else if (hasOptimus) {
+    metaphor = {
+      preset: "optimus",
+      source: "a plain workbench with no labels",
+      link: BEAM,
+      linkSentence: BEAM_SENTENCE,
+      action: "catching the light cable in one hand and offering it forward",
+      result: "one humanoid robot with a smooth blank face and no logos, taking a single step",
+      eye: "the bench, the beam, Elon's face, the robot",
+    };
+  } else if (hasAI) {
+    metaphor = {
+      preset: "ai",
+      source: "one plain unmarked block standing in for a server",
+      link: BEAM,
+      linkSentence: BEAM_SENTENCE,
+      action: PLUG_ACTION,
+      result: AI_CORE,
+      eye: "the server, the beam, Elon's face, AI core",
+    };
+  } else if (hasX) {
+    metaphor = {
+      preset: "x-app",
+      source: "a small plain dark rounded rectangle with a blank face, standing in for a phone",
+      link: "a single bold stream of light, not letters",
+      linkSentence: "The stream is one continuous thick cable of light that sweeps in a smooth diagonal from the upper left down toward the centre.",
+      action: "catching the cable in one hand and sending it onward",
+      result: "a larger plain dark rectangle, also completely blank, with a soft glow around it",
+      eye: "the phone, the stream, Elon's face, the larger screen",
+    };
+  } else {
+    metaphor = {
+      preset: "generic",
+      source: "one large unmarked object that stands for the cause",
+      link: BEAM,
+      linkSentence: BEAM_SENTENCE,
+      action: "confidently catching the light cable in one hand and connecting it to the object on the right",
+      result: "one large unmarked object that stands for the outcome, with a soft glow around it",
+      eye: "the source, the beam, Elon's face, the result",
+    };
+  }
+
+  if (REPLACEMENT.test(text)) {
+    metaphor.discarded = hasCode || metaphor.preset === "starlink-ai" || metaphor.preset === "ai"
+      ? CRATES
+      : "a small tidy pile of blank discarded objects from the old way";
+  } else {
+    metaphor.discarded = null;
+  }
+  return metaphor;
+}
+
+/**
+ * Left-to-right magazine-cover metaphor.
+ * Overrides replace the derived part. `discarded: null` is ignored; pass a string to set the pile.
+ * An empty discarded string suppresses the pile.
+ */
+export function deriveMetaphor(text, overrides = {}) {
+  const metaphor = baseMetaphor(text || "");
+  const custom = ["source", "link", "action", "result"].some((key) => overrides[key]);
+  if (overrides.source) metaphor.source = overrides.source;
+  if (overrides.link) {
+    metaphor.link = overrides.link;
+    metaphor.linkSentence = "That connection is one continuous bold element that sweeps in a smooth diagonal from the upper left down toward the centre.";
+  }
+  if (overrides.action) metaphor.action = overrides.action;
+  if (overrides.result) metaphor.result = overrides.result;
+  if (overrides.discarded != null && String(overrides.discarded).trim() === "") metaphor.discarded = null;
+  else if (overrides.discarded) metaphor.discarded = String(overrides.discarded).trim();
+  if (custom) metaphor.eye = "the source, the beam, Elon's face, the result";
+  metaphor.preset = custom ? "custom" : metaphor.preset;
+  return {
+    preset: metaphor.preset,
+    source: metaphor.source,
+    link: metaphor.link,
+    linkSentence: metaphor.linkSentence,
+    action: metaphor.action,
+    result: metaphor.result,
+    discarded: metaphor.discarded || null,
+    eye: metaphor.eye,
+  };
+}
+
 const FRAME_WORD = {
   "16:9": "wide",
   "9:16": "tall",
@@ -279,7 +432,29 @@ function sceneParagraph({ scene, topic, grounding, hasText, hasHeadline, frameWo
       : "Background: simpler shapes, quieter than the figure.";
   const layers = `Composition uses three depth layers on a ${frameWord} frame. Foreground: the caricature, waist-up, large in the frame. Midground: ${midground}, just behind him. ${background} Camera angle: a slight low angle, three-quarter view, medium shot. Focal point: the face.`;
 
-  return `${lead.join(". ")}. ${layers} Show software, data, and source code only as abstract ribbons, blocks, and arcs of light, never as readable characters.`;
+  return `${lead.join(". ")}. ${layers} Show software, data, and source code only as abstract ribbons, blocks, and arcs of light, never as readable characters. No letters or symbols inside any object, including the AI core.`;
+}
+
+function flowParagraph({ metaphor, frameWord, aspect, hasHeadline, grounding }) {
+  const parts = [];
+  if (grounding) {
+    parts.push(`Respect the real public event ${quote(grounding.title)} (${grounding.date}), and do not invent a different incident.`);
+  }
+  parts.push(`One clear story told in a single left-to-right flow, like a well-designed magazine cover. Tight, balanced composition on a ${frameWord} ${aspect} frame, rule of thirds, few elements, every element connected, generous empty space, no clutter, no crowd, no extra people.`);
+  parts.push(`Left third, upper area: ${metaphor.source}, emitting ${metaphor.link}. ${metaphor.linkSentence}`);
+  parts.push(`Centre third: the caricature of Elon Musk, waist-up, three-quarter view, slight low angle, ${metaphor.action}. His face is the focal point and the sharpest detail in the picture.`);
+  let right = `Right third: ${clause(metaphor.result)}.`;
+  if (metaphor.discarded) {
+    const pile = clause(metaphor.discarded);
+    const blank = /blank/i.test(pile) ? "" : " Those objects are completely blank.";
+    right += ` At his feet in the lower right, ${pile}.${blank}`;
+  }
+  parts.push(right);
+  const top = hasHeadline
+    ? "Top band: a clean empty strip of ivory paper across the full width, reserved only for the headline."
+    : "Top band: a clean empty strip of ivory paper across the full width, left empty.";
+  parts.push(`${top} The eye should travel ${metaphor.eye}. Show software and data only as light, never as readable characters. No letters or symbols inside any object, including the AI core.`);
+  return parts.join("\n\n");
 }
 
 function negativeList({ hasText, caption, labels }) {
@@ -291,6 +466,7 @@ function negativeList({ hasText, caption, labels }) {
     "appearance-shaming",
     "gore",
     "readable source code",
+    "letters or symbols inside objects",
     "watermark",
     "logo",
   ];
@@ -372,6 +548,12 @@ export function buildIllustrationPrompt({
   headline,
   caption,
   labels = [],
+  layout = "flow",
+  source,
+  link,
+  action,
+  result,
+  discarded,
 } = {}) {
   const resolvedTarget = target === "midjourney" ? "midjourney" : "grok-imagine";
   const resolvedStyle = GROK_LOOK[style] ? style : "editorial-caricature";
@@ -383,14 +565,26 @@ export function buildIllustrationPrompt({
   const hasText = Boolean(cleanHeadline || cleanCaption || cleanLabels.length);
   const frameWord = FRAME_WORD[resolvedAspect.aspect] || "chosen";
   const look = GROK_LOOK[resolvedStyle];
-  const sceneText = sceneParagraph({
-    scene,
-    topic,
-    grounding,
-    hasText,
-    hasHeadline: Boolean(cleanHeadline),
-    frameWord,
+  const resolvedLayout = resolvedTarget === "grok-imagine" && layout === "layers" ? "layers" : "flow";
+  const metaphor = deriveMetaphor([topic, scene, grounding?.title].filter(Boolean).join(" "), {
+    source, link, action, result, discarded,
   });
+  const sceneText = resolvedLayout === "layers"
+    ? sceneParagraph({
+      scene,
+      topic,
+      grounding,
+      hasText,
+      hasHeadline: Boolean(cleanHeadline),
+      frameWord,
+    })
+    : flowParagraph({
+      metaphor,
+      frameWord,
+      aspect: resolvedAspect.aspect,
+      hasHeadline: Boolean(cleanHeadline),
+      grounding,
+    });
   const lettering = textParagraph({
     headline: cleanHeadline,
     caption: cleanCaption,
@@ -400,7 +594,7 @@ export function buildIllustrationPrompt({
   let prompt;
   if (resolvedTarget === "grok-imagine") {
     prompt = [
-      "A satirical caricature of Elon Musk, drawn as an obvious cartoon figure. Clearly an illustration, not a photograph, not photorealistic. Friendly satire of public work, with one detailed face, and any other people as faceless silhouettes.",
+      "A satirical caricature of Elon Musk, drawn as an obvious cartoon figure. Clearly an illustration, not a photograph, not photorealistic. Friendly satire of public work. He is the only person in the picture.",
       likeness.text,
       sceneText,
       `The style is ${look.style}. The line quality is ${look.line}.`,
@@ -412,7 +606,7 @@ export function buildIllustrationPrompt({
       ? lettering
       : "no text, no letters, no logos, no captions, no English words, no newspaper masthead, no signage";
     const body = [
-      "a satirical caricature of Elon Musk, drawn as an obvious cartoon figure",
+      "a satirical caricature of Elon Musk, drawn as an obvious cartoon figure, the only person in the picture",
       likeness.text,
       scene ? clause(scene) : null,
       topic ? `illustrating the news: ${clause(topic)}` : null,
@@ -452,7 +646,15 @@ export function buildIllustrationPrompt({
       requested_aspect: resolvedAspect.requested,
       style: resolvedStyle,
       target: resolvedTarget,
+      layout: resolvedTarget === "grok-imagine" ? resolvedLayout : undefined,
     },
+    metaphor: resolvedTarget === "grok-imagine" && resolvedLayout === "flow" ? {
+      source: metaphor.source,
+      link: metaphor.link,
+      action: metaphor.action,
+      result: metaphor.result,
+      discarded: metaphor.discarded,
+    } : undefined,
     likeness,
     checklist: checklist({
       target: resolvedTarget,

@@ -90,8 +90,9 @@ assert.ok(!(await call("build_prompt", { scene: "waving from a dock" })).err);
 
 const TOPIC = "xAI rewrote its RL and inference stack in C/C++ from scratch, based on software SpaceX engineers wrote for Starlink data transfer; Grok 4.8 RL stage, rolling out to Grok Bot users first";
 const HEADLINE = "스타링크 코드로 AI를 학습한다?";
-const withText = (await call("build_prompt", { topic: TOPIC, headline: HEADLINE, aspect: "16:9", reference_year: 2026 })).json;
+const withText = (await call("build_prompt", { topic: TOPIC, headline: HEADLINE, aspect: "16:9", reference_year: 2025 })).json;
 assert.equal(withText.target, "grok-imagine");
+assert.equal(withText.parameters.layout, "flow");
 assert.equal(withText.ui.aspect, "16:9");
 assert.equal(withText.ui.quality, "highest");
 assert.equal(withText.korean_text.headline, HEADLINE);
@@ -102,25 +103,36 @@ assert.ok(withText.prompt.includes(`"${HEADLINE}"`));
 assert.ok(withText.prompt.includes("top banner"));
 assert.ok(withText.prompt.includes("bold, clean Hangul sans-serif"));
 assert.ok(withText.prompt.includes("Nothing else written."));
-assert.ok(withText.prompt.includes(TOPIC));
+assert.ok(!withText.prompt.includes("C/C++"));
 assert.ok(!withText.prompt.includes("--ar") && !withText.prompt.includes("--style") && !withText.prompt.includes("--iw"));
 assert.ok(!/^https?:/i.test(withText.prompt.trim()));
-assert.match(withText.prompt, /foreground/i);
-assert.match(withText.prompt, /midground/i);
-assert.match(withText.prompt, /background/i);
-assert.match(withText.prompt, /slight low angle/);
-assert.match(withText.prompt, /focal point/i);
+assert.ok(!/faceless silhouettes/i.test(withText.prompt));
+assert.match(withText.prompt, /only person in the picture/);
+assert.match(withText.prompt, /left-to-right flow/);
+assert.match(withText.prompt, /rule of thirds/);
+assert.match(withText.prompt, /no clutter, no crowd, no extra people/);
+assert.match(withText.prompt, /Left third, upper area: one large, clearly drawn Starlink-style flat-panel satellite in orbit above the curve of the Earth/);
+assert.match(withText.prompt, /one continuous thick cable of light that sweeps in a smooth diagonal/);
+assert.match(withText.prompt, /Centre third: the caricature of Elon Musk, waist-up, three-quarter view, slight low angle/);
+assert.match(withText.prompt, /plugging it into the side of a big glowing spherical AI core/);
+assert.match(withText.prompt, /His face is the focal point and the sharpest detail/);
+assert.match(withText.prompt, /Right third: the large glowing AI core/);
+assert.match(withText.prompt, /plain wooden crates with a few loose gears/);
+assert.match(withText.prompt, /reserved only for the headline/);
+assert.match(withText.prompt, /The eye should travel satellite, beam, Elon's face, AI core/);
+assert.match(withText.prompt, /No letters or symbols inside any object, including the AI core/);
+assert.match(withText.prompt, /wide 16:9 frame/);
+assert.match(withText.prompt, /circa 2025/);
 assert.match(withText.prompt, /line quality/i);
 assert.match(withText.prompt, /palette/i);
-assert.match(withText.prompt, /wide frame/);
-assert.match(withText.prompt, /unmarked satellites/);
-assert.match(withText.prompt, /training run/);
 assert.match(withText.prompt, /swept back/);
 assert.match(withText.prompt, /2020s/);
 assert.ok(withText.prompt.includes("not photorealistic"));
 assert.ok(!/editorial newspaper/i.test(withText.prompt));
 assert.ok(Array.isArray(withText.negative) && withText.negative.includes("newspaper masthead"));
+assert.ok(withText.negative.includes("letters or symbols inside objects"));
 assert.ok(withText.checklist.some((line) => /photograph/i.test(line) && /re-roll/i.test(line)));
+assert.equal(withText.metaphor.discarded.includes("wooden crates"), true);
 
 const noText = (await call("build_prompt", { topic: TOPIC, aspect: "16:9", reference_year: 2026 })).json;
 assert.equal(noText.ui.aspect, "16:9");
@@ -137,8 +149,11 @@ assert.ok(!/mission control/i.test(noText.prompt));
 assert.ok(!noText.prompt.includes("--ar"));
 assert.ok(noText.negative.includes("signage"));
 assert.ok(noText.negative.includes("english words"));
-assert.ok(noText.prompt.includes(TOPIC));
-assert.match(noText.prompt, /unmarked satellites/);
+assert.ok(!noText.prompt.includes("C/C++"));
+assert.match(noText.prompt, /Starlink-style flat-panel satellite/);
+assert.match(noText.prompt, /left empty/);
+assert.ok(!/reserved only for the headline/.test(noText.prompt));
+assert.match(noText.prompt, /No letters or symbols inside any object/);
 
 const labeled = (await call("build_prompt", {
   scene: "pointing at a glowing satellite",
@@ -151,6 +166,41 @@ assert.ok(labeled.prompt.includes('"스타링크"') && labeled.prompt.includes('
 assert.ok(labeled.prompt.includes("small sign"));
 assert.equal(labeled.korean_caption_suggestion, "궤도 위 데이터\n스타링크\n학습");
 assert.equal(labeled.ui.aspect, "2:3");
+
+const layered = (await call("build_prompt", { topic: TOPIC, headline: HEADLINE, aspect: "16:9", layout: "layers" })).json;
+assert.equal(layered.parameters.layout, "layers");
+assert.match(layered.prompt, /foreground/i);
+assert.match(layered.prompt, /midground/i);
+assert.match(layered.prompt, /background/i);
+assert.ok(layered.prompt.includes(TOPIC));
+assert.ok(!/faceless silhouettes/i.test(layered.prompt));
+
+const custom = (await call("build_prompt", {
+  topic: "a quiet afternoon outside",
+  source: "a red kettle",
+  link: "a blue hose",
+  action: "pouring with the hose",
+  result: "a yellow basin",
+  discarded: "old cups",
+})).json;
+assert.match(custom.prompt, /a red kettle/);
+assert.match(custom.prompt, /a blue hose/);
+assert.match(custom.prompt, /pouring with the hose/);
+assert.match(custom.prompt, /a yellow basin/);
+assert.match(custom.prompt, /old cups/);
+assert.match(custom.prompt, /Those objects are completely blank/);
+assert.equal(custom.metaphor.source, "a red kettle");
+
+const taxi = (await call("build_prompt", { topic: "robotaxi service opens on an empty street" })).json;
+assert.match(taxi.prompt, /robotaxi/);
+assert.ok(!/Starlink-style/i.test(taxi.prompt));
+assert.equal(taxi.metaphor.discarded, null);
+const optimus = (await call("build_prompt", { topic: "Optimus humanoid robot takes a step" })).json;
+assert.match(optimus.prompt, /smooth blank face/);
+const ship = (await call("build_prompt", { topic: "Starship flies toward Mars" })).json;
+assert.match(ship.prompt, /Starship-style rocket/);
+assert.match(ship.prompt, /small red planet/);
+assert.ok((await call("build_prompt", { source: "a naked statue", result: "a stone pedestal" })).err);
 
 const mapped = (await call("build_prompt", { scene: "waving from a dock", aspect: "4:5" })).json;
 assert.equal(mapped.ui.aspect, "2:3");
