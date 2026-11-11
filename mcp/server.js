@@ -161,11 +161,12 @@ server.registerTool("get_references", {
 
 server.registerTool("build_prompt", {
   description:
-    "Compose a satirical illustration prompt of Elon Musk for Grok Imagine (default) or Midjourney. Always a clearly non-photographic caricature, never a photoreal likeness. Grok Imagine gets natural-language prose (subject, likeness, scene and composition, style, lighting and color, text layout) plus ui.aspect and ui.quality. Imagine ignores --ar, --style, --iw, and image URLs; set aspect and quality in the UI (2:3, 3:2, 1:1, 16:9, 9:16; quality highest). Optional headline, caption, and labels are Korean strings to render exactly. With no text, the prompt forbids lettering and drops newspaper and signage cues. Optional topic turns free text, such as a news item, into the scene. Optional event_id anchors a real timeline event. reference_year selects an era likeness from assets/references/manifest.json when that file exists, and still works from the year alone when it does not.",
+    "Compose a satirical illustration prompt of Elon Musk for Grok Imagine (default) or Midjourney. Always a clearly non-photographic caricature, never a photoreal likeness. Grok Imagine default layout is a left-to-right magazine-cover flow (source, beam, Elon, result) in natural-language prose, plus ui.aspect and ui.quality. layout 'layers' keeps the older foreground/midground/background staging. Imagine ignores --ar, --style, --iw, and image URLs. Optional source, link, action, result, and discarded fill the metaphor; otherwise they are derived from topic or scene. Optional headline, caption, and labels are Korean strings to render exactly. Optional event_id anchors a real timeline event. reference_year selects an era likeness from assets/references/manifest.json when that file exists, and still works from the year alone when it does not.",
   inputSchema: {
-    scene: z.string().min(3).optional().describe("What the illustration shows, e.g. 'standing on a rocket booster holding a tiny flag, cartoon sea behind'. Optional when topic or event_id is set."),
-    topic: z.string().min(3).optional().describe("Free text turned into the scene, e.g. a recent news item. Visual metaphor only; not lettering."),
+    scene: z.string().min(3).optional().describe("What the illustration shows. Optional when topic, event_id, or metaphor parts are set. Used as keyword text for the flow metaphor."),
+    topic: z.string().min(3).optional().describe("Free text turned into the metaphor, e.g. a recent news item. Not lettered in the picture."),
     style: z.enum(STYLE_KEYS).default("editorial-caricature"),
+    layout: z.enum(["flow", "layers"]).default("flow").describe("Grok Imagine composition. flow (default) is one left-to-right story. layers is foreground, midground, and background."),
     target: z.enum(["grok-imagine", "midjourney"]).default("grok-imagine").describe("grok-imagine (default) returns prose plus UI settings. midjourney keeps --ar, --style raw, and an optional reference-photo URL."),
     event_id: z.string().optional().describe("Optional timeline event id. Its title and date ground the picture in the record."),
     aspect: z.enum(ASPECTS).optional().describe("Frame ratio. Grok Imagine default 2:3, chosen in the UI. Midjourney default 4:5, written as --ar. 4:5 is mapped to 2:3 for Grok Imagine. Imagine also offers 3:2, 1:1, 16:9, 9:16."),
@@ -173,17 +174,29 @@ server.registerTool("build_prompt", {
     headline: z.string().min(1).max(160).optional().describe("Korean title rendered exactly, in a top banner. Quoted verbatim. No other writing."),
     caption: z.string().min(1).max(80).optional().describe("Short Korean caption rendered exactly, inside one speech bubble."),
     labels: z.array(z.string().min(1).max(40)).max(6).optional().describe("Short Korean words, one per small sign, and no other writing."),
+    source: z.string().min(3).max(240).optional().describe("Left-third cause object. Derived from the topic when omitted."),
+    link: z.string().min(3).max(240).optional().describe("The one continuous beam or cable from the source to the centre."),
+    action: z.string().min(3).max(240).optional().describe("What Elon does with the link, as a verb phrase, e.g. 'catching the cable and plugging it in'."),
+    result: z.string().min(3).max(240).optional().describe("Right-third result object."),
+    discarded: z.string().min(3).max(240).optional().describe("Optional blank pile of the old thing thrown out, lower right. Derived when the topic is a replacement."),
     lang,
   },
   annotations: { readOnlyHint: true },
-}, async ({ scene, topic, style, target, event_id, aspect, reference_year, headline, caption, labels, lang }) => {
+}, async ({ scene, topic, style, layout, target, event_id, aspect, reference_year, headline, caption, labels, source, link, action, result, discarded, lang }) => {
   const cleanScene = scene?.trim();
   const cleanTopic = topic?.trim();
   const cleanHeadline = headline?.trim();
   const cleanCaption = caption?.trim();
   const cleanLabels = (labels ?? []).map((s) => s.trim()).filter(Boolean);
-  if (!cleanScene && !cleanTopic && !event_id) return fail("Provide a scene, a topic, or an event_id.");
-  const blob = [cleanScene, cleanTopic, cleanHeadline, cleanCaption, ...cleanLabels].filter(Boolean).join("\n");
+  const cleanSource = source?.trim();
+  const cleanLink = link?.trim();
+  const cleanAction = action?.trim();
+  const cleanResult = result?.trim();
+  const cleanDiscarded = discarded?.trim();
+  if (!cleanScene && !cleanTopic && !event_id && !cleanSource && !cleanResult) {
+    return fail("Provide a scene, a topic, an event_id, or metaphor source and result.");
+  }
+  const blob = [cleanScene, cleanTopic, cleanHeadline, cleanCaption, cleanSource, cleanLink, cleanAction, cleanResult, cleanDiscarded, ...cleanLabels].filter(Boolean).join("\n");
   if (BLOCKED.test(blob)) return fail("Scene refused: no sexual, gory, hateful-symbol or child-related content in images of a real person.");
   let grounding = null;
   let eventYear = null;
@@ -199,9 +212,10 @@ server.registerTool("build_prompt", {
   const reference = picked ? refView(picked) : null;
   const likenessYear = picked ? refYear(picked) : requestedYear;
   const built = buildIllustrationPrompt({
-    target, scene: cleanScene, topic: cleanTopic, style, aspect, grounding,
+    target, scene: cleanScene, topic: cleanTopic, style, layout, aspect, grounding,
     likenessYear, referenceUrl: reference?.imageUrl ?? null, hasReference: Boolean(reference),
     headline: cleanHeadline, caption: cleanCaption, labels: cleanLabels,
+    source: cleanSource, link: cleanLink, action: cleanAction, result: cleanResult, discarded: cleanDiscarded,
   });
   if (reference_year != null) built.likeness.requested_year = reference_year;
   built.likeness.source = reference ? "reference" : "year";
